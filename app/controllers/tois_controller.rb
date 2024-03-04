@@ -1,0 +1,2 @@
+class ToisController < ApplicationController
+end
