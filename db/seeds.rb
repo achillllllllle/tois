@@ -1,7 +1,6 @@
 puts "Clearing existing data..."
 
 
-# Call API
 
 
 
@@ -236,35 +235,35 @@ TITLE_SPECTACLE_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
 }
 
 TITLE_LITTERATURE_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
-  "The Great Gatsby" => {
-    description: "L'histoire de Jay Gatsby, un millionnaire mystérieux qui passionnément poursuit la belle Daisy Buchanan, reflétant les illusions du rêve américain et la haute société des années 1920.",
+  "Gatsby le Magnifique" => {
+    description: "L'histoire de Jay Gatsby, un millionnaire mystérieux qui poursuit passionnément la belle Daisy Buchanan, reflétant les illusions du rêve américain et la haute société des années 1920.",
     trailer: "https://www.youtube.com/watch?v=rARN6agiW7o"
   },
-  "To Kill a Mockingbird" => {
+  "Ne tirez pas sur l'oiseau moqueur" => {
     description: "Dans le sud ségrégationniste des États-Unis, Atticus Finch, un avocat intègre, défend un homme noir accusé à tort de viol, enseignant à ses enfants des leçons précieuses sur la justice et l'empathie.",
     trailer: "https://www.youtube.com/watch?v=KR7loA_oziY"
   },
-  "Pride and Prejudice" => {
+  "Orgueil et Préjugés" => {
     description: "L'histoire d'Elizabeth Bennet et de M. Darcy, deux personnes très différentes qui surmontent les malentendus et les différences de classe sociale pour découvrir l'amour véritable dans l'Angleterre du 19e siècle.",
     trailer: "https://www.youtube.com/watch?v=fJA27Jujzq4"
   },
-  "Harry Potter and the Sorcerer's Stone" => {
+  "Harry Potter à l'école des sorciers" => {
     description: "Harry Potter découvre qu'il est le fils de deux sorciers puissants et qu'il possède des pouvoirs magiques uniques. À l'école de sorcellerie de Poudlard, il trouve l'amitié et le courage face au sorcier maléfique Voldemort.",
     trailer: "https://www.youtube.com/watch?v=VyHV0BRtdxo"
   },
-  "The Lord of the Rings: The Fellowship of the Ring" => {
+  "Le Seigneur des Anneaux: La Communauté de l'Anneau" => {
     description: "Frodon Sacquet, un jeune hobbit, hérite d'un anneau magique aux pouvoirs immenses. Avec l'aide de ses amis, il doit entreprendre un voyage périlleux pour détruire l'anneau et empêcher le mal de s'emparer du monde.",
     trailer: "https://www.youtube.com/watch?v=V75dMMIW2B4"
   },
-  "The Hunger Games" => {
+  "Les Jeux de la Faim" => {
     description: "Dans un futur dystopique, Katniss Everdeen se porte volontaire pour remplacer sa sœur dans les Hunger Games, une compétition télévisée où les participants doivent se battre à mort. Son courage changera le destin de la nation.",
     trailer: "https://www.youtube.com/watch?v=mfmrPu43DF8"
   },
-  "Gone with the Wind" => {
+  "Autant en emporte le vent" => {
     description: "L'histoire épique de Scarlett O'Hara et de Rhett Butler pendant la guerre civile américaine et la reconstruction, explorant l'amour, la guerre, la passion et la perte dans le sud des États-Unis.",
     trailer: "https://www.youtube.com/watch?v=0X94oZgJis4"
   },
-  "The Shawshank Redemption" => {
+  "Les Évadés" => {
     description: "Basé sur la nouvelle de Stephen King, ce film suit l'histoire d'Andy Dufresne, un banquier injustement condamné à la prison à vie, qui trouve l'espoir et l'humanité dans les murs sombres de Shawshank.",
     trailer: "https://www.youtube.com/watch?v=6hB3S9bIaco"
   },
@@ -280,15 +279,15 @@ TITLE_LITTERATURE_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
     description: "L'adaptation cinématographique du roman de Victor Hugo et de la comédie musicale, racontant l'histoire de Jean Valjean, un ex-convict cherchant la rédemption dans la France post-révolutionnaire, tout en étant poursuivi par l'inspecteur Javert.",
     trailer: "https://www.youtube.com/watch?v=IuEFm84s4oI"
   },
-  "Life of Pi" => {
+  "L'Odyssée de Pi" => {
     description: "Après un naufrage, Pi Patel se retrouve sur un canot de sauvetage avec un tigre du Bengale. Au cours de leur voyage extraordinaire, Pi découvre la force de la volonté et le pouvoir de l'histoire.",
     trailer: "https://www.youtube.com/watch?v=j9Hjrs6WQ8M"
   },
-  "The Godfather" => {
+  "Le Parrain" => {
     description: "Le patriarche vieillissant d'une dynastie du crime organisé transfère le contrôle de son empire clandestin à son fils réticent. Adapté du roman de Mario Puzo, ce film est une saga épique sur la famille, le pouvoir et la loyauté.",
     trailer: "https://www.youtube.com/watch?v=sY1S34973zA"
   },
-  "Schindler's List" => {
+  "La Liste de Schindler" => {
     description: "L'histoire vraie d'Oskar Schindler, un industriel allemand qui a sauvé la vie de plus de mille Juifs polonais pendant l'Holocauste en les employant dans ses usines.",
     trailer: "https://www.youtube.com/watch?v=gG22XNhtnoY"
   },
@@ -296,46 +295,26 @@ TITLE_LITTERATURE_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
     description: "Forrest Gump, un homme aux capacités mentales limitées, mais au cœur pur, traverse des moments historiques des États-Unis au 20e siècle, influençant la vie de ceux qu'il rencontre grâce à sa naïveté désarmante.",
     trailer: "https://www.youtube.com/watch?v=bLvqoHBptjg"
   },
-  "The Silence of the Lambs" => {
+  "Le Silence des Agneaux" => {
     description: "Clarice Starling, une jeune agente du FBI, doit solliciter l'aide d'Hannibal Lecter, un psychiatre emprisonné et cannibale, pour attraper un autre tueur en série. Une plongée terrifiante dans l'esprit de la folie.",
     trailer: "https://www.youtube.com/watch?v=W6Mm8Sbe__o"
   },
-  "Pride & Prejudice" => {
-    description: "Elizabeth Bennet et M. Darcy naviguent dans les complexités des conventions sociales, des malentendus et des jugements hâtifs pour découvrir l'amour véritable dans l'Angleterre rurale du début du 19e siècle.",
-    trailer: "https://www.youtube.com/watch?v=1dYv5u6v55Y"
-  },
-  "The Da Vinci Code" => {
+  "Da Vinci Code" => {
     description: "Robert Langdon, symbologiste, est entraîné dans une chasse au trésor à travers des monuments historiques, sur la piste d'un secret qui pourrait remettre en question les fondements du christianisme.",
     trailer: "https://www.youtube.com/watch?v=zMba3fckhuQ"
   },
-  "The Maze Runner" => {
+  "Le Labyrinthe" => {
     description: "Des adolescents sont piégés dans un labyrinthe géant et doivent s'associer pour trouver une issue. Basé sur le roman de James Dashner, c'est une histoire de survie, de leadership et de courage face à l'inconnu.",
     trailer: "https://www.youtube.com/watch?v=AwwbhhjQ9Xk"
   },
-  "Divergent" => {
+  "Divergente" => {
     description: "Dans une société dystopique divisée en cinq factions basées sur les vertus humaines, Tris Prior découvre qu'elle est Divergente et ne rentre dans aucune faction, la mettant en danger de mort.",
     trailer: "https://www.youtube.com/watch?v=sutgWjz10sM"
-  },
-  "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe" => {
-    description: "Quatre enfants voyagent à travers une armoire vers le pays de Narnia et apprennent leur destin avec le lion Aslan pour libérer le pays sous le règne tyrannique de la Sorcière Blanche.",
-    trailer: "https://www.youtube.com/watch?v=lWKj41HZBzM"
-  },
-  "Atonement" => {
-    description: "Une jeune fille accuse à tort l'amant de sa sœur d'un crime qu'il n'a pas commis. Basé sur le roman de Ian McEwan, 'Atonement' est une histoire d'amour tragique, de culpabilité et de rédemption.",
-    trailer: "https://www.youtube.com/watch?v=rkVQwwPrr4c"
-  },
-  "The Help" => {
-    description: "Dans le Mississippi des années 1960, une jeune femme blanche et deux femmes noires travaillant comme domestiques s'unissent pour documenter les injustices raciales, changeant leur ville et leurs propres vies.",
-    trailer: "https://www.youtube.com/watch?v=WbuKgzgeUIU"
-  },
-  "Little Women" => {
-    description: "L'histoire des sœurs March qui grandissent dans l'Amérique post-guerre civile. Basé sur le roman de Louisa May Alcott, ce récit explore les aspirations, les amours et les rêves des quatre jeunes femmes.",
-    trailer: "https://www.youtube.com/watch?v=AST2-4db4ic"
   }
 }
 
 TITLE_EXPOSITION_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
-  "Van Gogh: Painted with Words" => {
+  "Van Gogh : Peint avec des Mots" => {
     description: "Un voyage cinématographique dans la vie de Vincent Van Gogh, raconté à travers ses lettres à son frère Théo, révélant l'homme derrière les toiles emblématiques.",
     trailer: "https://www.youtube.com/watch?v=6a8Eimr-fm0"
   },
@@ -343,27 +322,27 @@ TITLE_EXPOSITION_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
     description: "La vie passionnée de Frida Kahlo, peinte à travers son art, son amour tumultueux avec Diego Rivera et sa lutte personnelle, dans un portrait vibrant de l'artiste.",
     trailer: "https://www.youtube.com/watch?v=uOUzQYqba4Y"
   },
-  "The Impressionists" => {
+  "Les Impressionnistes" => {
     description: "L'histoire des pionniers de l'art moderne, les Impressionnistes, et comment ils ont révolutionné la peinture, présentée à travers une série documentaire captivante.",
     trailer: "https://www.youtube.com/watch?v=5ZAxZQ0_-mk"
   },
-  "Leonardo: The Works" => {
+  "Léonard de Vinci : L'Œuvre" => {
     description: "Une exploration cinématographique des œuvres de Léonard de Vinci, offrant un regard intime sur les peintures et dessins du maître de la Renaissance.",
     trailer: "https://www.youtube.com/watch?v=v7uRFVR9BPU"
   },
-  "Girl with a Pearl Earring" => {
+  "La Jeune Fille à la Perle" => {
     description: "Inspiré par le mystérieux tableau de Vermeer, ce film explore l'histoire derrière la création de l'une des œuvres d'art les plus célèbres au monde.",
     trailer: "https://www.youtube.com/watch?v=IERZr6Lcuyo"
   },
-  "Loving Vincent" => {
+  "Aimer Vincent" => {
     description: "Le premier long métrage peint à la main au monde, qui explore la vie et les œuvres controversées de Vincent Van Gogh à travers les yeux des personnes qui l'ont connu.",
     trailer: "https://www.youtube.com/watch?v=CGzKnyhYDQI"
   },
-  "Klimt & Schiele: Eros and Psyche" => {
+  "Klimt & Schiele : Eros et Psyché" => {
     description: "Revisitant l'époque érotique et psychologique de Vienne de 1900 à travers les œuvres de Gustav Klimt et Egon Schiele dans une exposition captivante.",
     trailer: "https://www.youtube.com/watch?v=BrVnc0xwvZ4"
   },
-  "Basquiat: Rage to Riches" => {
+  "Basquiat : La Rage de la Richesse" => {
     description: "Une plongée profonde dans la vie de Jean-Michel Basquiat, suivant son ascension fulgurante dans le monde de l'art new-yorkais des années 80 et son héritage durable.",
     trailer: "https://www.youtube.com/watch?v=3Ms1RQxB5F8"
   },
@@ -371,63 +350,63 @@ TITLE_EXPOSITION_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
     description: "Célébrant le 150e anniversaire de la naissance d'Edvard Munch, cette exposition rassemble le plus grand nombre d'œuvres de Munch jamais présentées.",
     trailer: "https://www.youtube.com/watch?v=frSED6XBRzE"
   },
-  "The Artist's Garden: American Impressionism" => {
-    description: "Explorant l'American Impressionism à travers l'objectif des jardins d'artistes, ce documentaire offre un aperçu de l'intersection de l'art, du jardinage et de l'histoire sociale.",
+  "Le Jardin de l'Artiste : L'Impressionnisme Américain" => {
+    description: "Explorant l'Impressionnisme Américain à travers l'objectif des jardins d'artistes, ce documentaire offre un aperçu de l'intersection de l'art, du jardinage et de l'histoire sociale.",
     trailer: "https://www.youtube.com/watch?v=Ys7mP68_Mds"
   },
-  "Water Lilies of Monet: The Magic of Water and Light" => {
+  "Les Nymphéas de Monet : La Magie de l'Eau et de la Lumière" => {
     description: "Découvrez comment les Nymphéas de Monet ont révolutionné l'art moderne, à travers une exploration de son œuvre ultime au sein de l'Orangerie Museum à Paris.",
     trailer: "https://www.youtube.com/watch?v=7Zn95OF_D3M"
   },
-  "Picasso: Love, Sex and Art" => {
+  "Picasso : Amour, Sexe et Art" => {
     description: "Un regard sur la vie de Pablo Picasso, avec un accent particulier sur ses muses, ses amours et son impact sur l'art du 20e siècle.",
     trailer: "https://www.youtube.com/watch?v=3GmJ11G5bP4"
   },
-  "Gauguin: Voyage to Tahiti" => {
+  "Gauguin : Voyage à Tahiti" => {
     description: "Suivez Paul Gauguin dans son voyage à Tahiti, une quête de liberté, d'évasion et d'inspiration loin de la civilisation occidentale.",
     trailer: "https://www.youtube.com/watch?v=9MrnAJsxL8c"
   },
-  "Degas: Passion for Perfection" => {
+  "Degas : Passion pour la Perfection" => {
     description: "À travers une série d'expositions et de collections privées, découvrez la quête de la perfection d'Edgar Degas et son impact sur l'art moderne.",
     trailer: "https://www.youtube.com/watch?v=ZjgBQ2tDufI"
   },
-  "Michelangelo: Love and Death" => {
+  "Michel-Ange : Amour et Mort" => {
     description: "Une exploration de la vie et des œuvres de Michel-Ange, révélant les luttes et les succès de l'un des plus grands artistes de la Renaissance.",
     trailer: "https://www.youtube.com/watch?v=0FG6NXFkF3k"
   },
-  "Raphael: The Lord of the Arts" => {
+  "Raphaël : Le Seigneur des Arts" => {
     description: "Plongez dans la vie de Raphaël, un génie de la Renaissance, dont les œuvres continuent d'influencer l'art mondial des siècles après sa mort.",
     trailer: "https://www.youtube.com/watch?v=9vHFsXOdTt0"
   },
-  "Turner: Paintings of Light" => {
+  "Turner : Peintures de Lumière" => {
     description: "L'histoire de J.M.W. Turner, dont les peintures révolutionnaires ont capturé la beauté transitoire de la lumière et annoncé l'ère de l'impressionnisme.",
     trailer: "https://www.youtube.com/watch?v=Tn4zSR_5ioI"
   },
-  "Vermeer: The Golden Age of Dutch Art" => {
+  "Vermeer : L'Âge d'Or de l'Art Hollandais" => {
     description: "Découvrez Johannes Vermeer, le maître de la lumière, dont les peintures intimes et détaillées offrent un aperçu fascinant de la vie quotidienne au 17e siècle.",
     trailer: "https://www.youtube.com/watch?v=FTtW0Jq9f5I"
   },
-  "The World of Banksy" => {
+  "Le Monde de Banksy" => {
     description: "Une immersion dans l'univers mystérieux de Banksy, l'artiste de rue le plus célèbre au monde, connu pour ses œuvres provocatrices et politiquement engagées.",
     trailer: "https://www.youtube.com/watch?v=9R5VwxvUUvI"
   },
-  "Warhol: The Art of Pop" => {
+  "Warhol : L'Art du Pop" => {
     description: "Un regard sur la vie et l'œuvre d'Andy Warhol, figure emblématique du Pop Art, dont l'approche novatrice a changé la perception de l'art.",
     trailer: "https://www.youtube.com/watch?v=U3YFgZj6zUw"
   },
-  "Kandinsky: A Journey into Abstraction" => {
+  "Kandinsky : Un Voyage vers l'Abstraction" => {
     description: "Explorez le voyage de Wassily Kandinsky vers l'abstraction, un mouvement qui a bouleversé l'art traditionnel et ouvert la voie à une nouvelle forme d'expression.",
     trailer: "https://www.youtube.com/watch?v=tiX_Af33vN8"
   },
-  "Magritte: This is Not a Pipe" => {
+  "Magritte : Ceci n'Est Pas une Pipe" => {
     description: "Une exploration de l'œuvre de René Magritte, maître du surréalisme, dont les images trompeuses et les idées philosophiques ont défié la réalité.",
     trailer: "https://www.youtube.com/watch?v=h6lLQb6Z8Ho"
   },
-  "Hopper: Windows into Solitude" => {
+  "Hopper : Fenêtres sur la Solitude" => {
     description: "Edward Hopper, peintre de la solitude moderne, capture l'isolement et la mélancolie à travers ses représentations emblématiques de la vie américaine.",
     trailer: "https://www.youtube.com/watch?v=SpMzoBR2Szo"
   },
-  "The Age of Rembrandt" => {
+  "L'Âge de Rembrandt" => {
     description: "Revivez l'âge d'or de la peinture hollandaise à travers l'œuvre de Rembrandt, dont les portraits et scènes bibliques révèlent une humanité profonde et une maîtrise de la lumière.",
     trailer: "https://www.youtube.com/watch?v=1pUWJGmN8ZU"
   }
