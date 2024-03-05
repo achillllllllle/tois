@@ -23,7 +23,7 @@ puts "#{User.count} users created successfully!"
 
 puts "Creating categories..."
 
-['Cinema', 'Spectacle', 'Littérature', 'Exposition'].each do |category_name|
+['Cinema', 'Spectacle', 'Litterature', 'Exposition'].each do |category_name|
   Category.create!(name: category_name)
 end
 
@@ -44,7 +44,7 @@ def dynamic_content_for_toi(category_id)
       description: Faker::Lorem.paragraph,
       trailer: "https://example.com/trailer#{category_id}"
     }
-  when "Littérature"
+  when "Litterature"
     {
       title: "Livre: #{Faker::Book.title}",
       description: Faker::Lorem.paragraph,
@@ -69,7 +69,7 @@ puts "Creating tois..."
 
   Toi.create!(
     title: content[:title],
-    category_id: category.id,
+    category: category,
     location: Faker::Address.full_address,
     description: content[:description],
     trailer: content[:trailer]
