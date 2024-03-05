@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_05_100017) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_05_135335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
 
   create_table "bookmarks", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -50,14 +56,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_100017) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "toi_artists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "artist_id"
+    t.bigint "toi_id"
+    t.index ["artist_id"], name: "index_toi_artists_on_artist_id"
+    t.index ["toi_id"], name: "index_toi_artists_on_toi_id"
+  end
+
   create_table "tois", force: :cascade do |t|
     t.string "title"
     t.bigint "category_id", null: false
-    t.string "director"
-    t.string "actors"
     t.string "location"
-    t.string "author"
-    t.text "synopsis"
+    t.text "description"
     t.string "trailer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,5 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_100017) do
   add_foreign_key "friends", "users", column: "following_id"
   add_foreign_key "posts", "tois"
   add_foreign_key "posts", "users"
+  add_foreign_key "toi_artists", "artists"
+  add_foreign_key "toi_artists", "tois"
   add_foreign_key "tois", "categories"
 end
