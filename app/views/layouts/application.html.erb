@@ -13,13 +13,16 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <div class="container">
+    <div class="container my-4">
       <%= yield %>
     </div>
+    <% if user_signed_in? %>
+      <%= render "shared/menu_bar" %>
+    <% end %>
   </body>
 </html>
