@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="btn btn-secondary">Close</button>
+    </div>
+    <div class="col-md-6 text-right">
+      <button type="button" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+
+  <!-- new form -->
+  <%= simple_form_for @post do |f| %>
+    <%= f.input :category %>
+    <!-- <%= f.input :title %> -->
+    <%= f.input :review %>
+    <%= f.input :rating %>
+    <!-- <%= f.input :location %> -->
+    <!-- <%= f.input :friends %> -->
+    <!-- <%= f.input :photos %> -->
+
+    <%= f.button :submit, "Share", class: "btn btn-success mt-3" %>
+  <% end %>
+
+</div>
