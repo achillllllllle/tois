@@ -5,6 +5,9 @@ User.destroy_all()
 Category.destroy_all()
 Toi.destroy_all()
 Post.destroy_all()
+ToiArtist.destroy_all()
+Artist.destroy_all()
+
 
 puts "Creating users..."
 
@@ -36,25 +39,30 @@ def dynamic_content_for_toi(category_id)
     {
       title: "Film: #{Faker::Movie.title}",
       description: Faker::Lorem.sentence,
-      trailer: "https://example.com/trailer#{category_id}"
+      trailer: "https://example.com/trailer#{category_id}",
+      name: Faker::Name.name
+
     }
   when "Spectacle"
     {
       title: "Spectacle: #{Faker::Lorem.sentence(word_count: 3)}",
       description: Faker::Lorem.paragraph,
-      trailer: "https://example.com/trailer#{category_id}"
+      trailer: "https://example.com/trailer#{category_id}",
+      name: Faker::Name.name
     }
   when "Litterature"
     {
       title: "Livre: #{Faker::Book.title}",
       description: Faker::Lorem.paragraph,
-      trailer: ""
+      trailer: "",
+      name: Faker::Book.author
     }
   when "Exposition"
     {
       title: "Expo: #{Faker::Lorem.sentence(word_count: 3)}",
       description: Faker::Lorem.paragraph,
-      trailer: "https://example.com/trailer#{category_id}"
+      trailer: "https://example.com/trailer#{category_id}",
+      name: Faker::Artist.name
     }
   else
     { title: "N/A", description: "N/A", trailer: "N/A" }
@@ -93,3 +101,30 @@ puts "Creating posts..."
   )
 end
 puts "#{Post.count} posts created sucessfully!"
+
+puts "Creating artists..."
+
+24.times do |i|
+  category = Category.order('RANDOM()').first
+  content = dynamic_content_for_toi(category.id)
+
+   Artist.create!(
+    name: content[:name]
+  )
+end
+
+puts "#{Artist.count} artists created sucessfully!"
+
+puts "Creating toi_artists..."
+
+24.times do |i|
+  artist = Artist.order('RANDOM()').first
+  toi = Toi.order('RANDOM()').first
+
+   ToiArtist.create!(
+    artist: artist,
+    toi:toi
+  )
+end
+
+puts "#{ToiArtist.count} toi_artists created sucessfully!"

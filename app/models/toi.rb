@@ -2,7 +2,7 @@ class Toi < ApplicationRecord
   belongs_to :category
   has_many :posts
   has_many :bookmarks
-  has_many :toi_artists
+  has_many :toi_artists, dependent: :destroy
   has_many :artists, through: :toi_artists
 
   validates :title, :category, :description, presence: true
