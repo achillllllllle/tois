@@ -1,24 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <button type="button" class="btn btn-secondary">Close</button>
+      <button type="button" class="btn btn-secondary">X</button>
     </div>
     <div class="col-md-6 text-right">
-      <button type="button" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-primary">Enregistrer</button>
     </div>
   </div>
 
-  <!-- new form -->
   <%= simple_form_for @post do |f| %>
-    <%= f.input :category %>
-    <!-- <%= f.input :title %> -->
-    <%= f.input :review %>
-    <%= f.input :rating %>
-    <!-- <%= f.input :location %> -->
-    <!-- <%= f.input :friends %> -->
-    <!-- <%= f.input :photos %> -->
+    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Sélectionner une catégorie" }, { class: "form-control" } %>
 
-    <%= f.button :submit, "Share", class: "btn btn-success mt-3" %>
+    <!-- <%= f.input :toi_title, label: "Titre du TOI" %> -->
+
+    <%= f.input :description, label: "Description" %>
+
+    <%= f.input :review, label: "Add a review" %>
+
+    <%= f.input :rating, label: "Add a rating" %>
+
+   <% if @toi.cinema? %>
+      <%= f.input :trailer, label: "Trailer" %>
+    <% elsif @toi.spectacle? || @toi.exposition? %>
+      <%= f.input :location, label: "Lieu" %>
+    <% end %>
+
+    <!-- <%= f.input :toi_location, label: "Add a location" %> -->
+    <!-- <%= f.input :user_friends, label: "Add some friends" %> -->
+    <!-- <%= f.input :toi_photos, label: "Add some pics" %> -->
+
+    <%= f.button :submit, "Partager", class: "btn btn-success mt-3" %>
   <% end %>
 
 </div>
