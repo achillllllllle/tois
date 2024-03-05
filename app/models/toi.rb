@@ -5,20 +5,20 @@ class Toi < ApplicationRecord
   has_many :toi_artists
   has_many :artists, through: :toi_artists
 
-  validates :title, :category, :artists, :description, presence: true
+  validates :title, :category, :description, presence: true
   validates :trailer, presence: true, if: :cinema?
   validates :location, presence: true, if: :spectacle?
   validates :location, presence: true, if: :exposition?
 
   def cinema?
-    this.category == "Cinema"
+    self.category == "Cinema"
   end
 
   def spectacle?
-    this.category == "Spectacle"
+    self.category == "Spectacle"
   end
 
   def exposition?
-    this.category == "Exposition"
+    self.category == "Exposition"
   end
 end
