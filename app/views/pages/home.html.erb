@@ -1,7 +1,7 @@
 <div class="d-flex flex-column justify-content-center align-middle" style="height: 100vh;">
 
 
-<% if current_user.permitted? %>
+<% if current_user&.permitted?  %>
   <div class="p-3 d-flex justify-content-center align-items-center bg-primary rounded text-white">
     <i class="fa-solid fa-unlock fa-2xl me-2 animate__animated animate__rubberBand animate__infinite"> </i>
     <h3 class="m-0 fw-bold">Welcome</h3>
