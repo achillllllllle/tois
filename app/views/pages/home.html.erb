@@ -1,13 +1,18 @@
-<div class="justify-content-center" style="height: 100vh;">
+<div class="d-flex flex-column justify-content-center align-middle" style="height: 100vh;">
 
-  <div class="d-flex justify-content-center align-items-center mb-4">
-    <i class="fa-solid fa-lock fa-2xl"></i>
-    <h3 class="m-0">You're locked!</h3>
+
+<% if current_user.permitted? %>
+  <div class="p-3 d-flex justify-content-center align-items-center bg-primary rounded text-white">
+    <i class="fa-solid fa-unlock fa-2xl me-2"></i>
+    <h3 class="m-0 fw-bold">You're unlocked!</h3>
   </div>
-
-  <div class="d-flex justify-content-center align-items-center">
-    <i class="fa-solid fa-unlock fa-2xl"></i>
-    <h3 class="m-0">You're unlocked!</h3>
-  </div>
-
 </div>
+<% else %>
+  <div class="d-flex flex-column justify-content-center align-items-center p-3">
+    <div class="d-flex justify-content-center align-items-center mb-4">
+      <i class="fa-solid fa-lock fa-2xl me-2"></i>
+      <h3 class="m-0 fw-bold">You're locked!</h3>
+    </div>
+    <div class="btn btn-primary rounded">Add a new post</div>
+  </div>
+<% end %>
