@@ -1,4 +1,4 @@
-# class ToisController < ApplicationController
+class ToisController < ApplicationController
 #   def index
 #     @tois = Toi.all
 #   end
@@ -39,4 +39,4 @@
 #     params.require(:post).permit(:photo, :review, :rating, :user_id, :toi_id)
 #   end
 
-# end
+end
