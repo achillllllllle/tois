@@ -31,10 +31,10 @@
     <div class="d-none" data-post-form-target="newToiForm">
       <p class="">Décris ton TOI</p>
       <%= f.simple_fields_for(:toi) do |ff| %>
-        <%= ff.input :description %>
-        <%= ff.association :category %>
-        <%= ff.input :location %>
-        <%= ff.input :photo, as: :file, label: "Images" %>
+        <%= ff.input :description, label: "Description" %>
+        <%= ff.association :category, label: "Catégorie" %>
+        <%= ff.input :location, label: "Lieu" %>
+        <%= ff.input :photo, as: :file, label: "Image" %>
       <% end %>
     </div>
 
