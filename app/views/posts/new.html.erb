@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-6">
       <button type="button" class="btn btn-secondary">X</button>
@@ -8,28 +8,40 @@
     </div>
   </div>
 
-  <%= simple_form_for @post do |f| %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Sélectionner une catégorie" }, { class: "form-control" } %>
+  <%= simple_form_for @post,
+                      html: {
+                        data: {
+                          controller: 'post-form'
+                        }
+                      } do |f| %>
+    <%= f.input :toi,
+                collection: Toi.all,
+                label_method: :title,
+                value_method: :title,
+                label: "TOI",
+                input_html: {
+                  placeholder: "Sélectionne un titre",
+                  data: {
+                    post_form_target: 'selectInput'
+                  }
+                } %>
 
-    <%= f.input :toi_title, label: "Titre du TOI" %>
+    <%# TOI INPUTS %>
+    <div class="d-none" data-post-form-target="newToiForm">
+      <p class="">Décris ton TOI</p>
+      <%= f.simple_fields_for(:toi) do |ff| %>
+        <%= ff.input :description %>
+        <%= ff.association :category %>
+        <%= ff.input :location %>
+      <% end %>
+    </div>
 
-    <%= f.input :description, label: "Description" %>
-
-    <%= f.input :review, label: "Add a review" %>
-
-    <%= f.input :rating, label: "Add a rating" %>
-
-   <% if @toi.cinema? %>
-      <%= f.input :trailer, label: "Trailer" %>
-    <% elsif @toi.spectacle? || @toi.exposition? %>
-      <%= f.input :location, label: "Lieu" %>
-    <% end %>
-
-    <%= f.input :toi_location, label: "Add a location" %>
-    <%= f.input :user_friends, label: "Add some friends" %>
-    <%= f.input :toi_photos, label: "Add some pics" %>
+    <%# POST INPUTS %>
+    <%= f.input :rating, label: "Note", collection: (1..5), include_blank: "Select Rating" %>
+    <%= f.input :review, label: "Commentaire", input_html: { rows: 4 } %>
+    <%= f.input :photo, as: :file, label: "Images" %>
 
     <%= f.button :submit, "Partager", class: "btn btn-success mt-3" %>
   <% end %>
 
-</div>-->
+</div>
