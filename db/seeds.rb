@@ -497,120 +497,175 @@ puts "Creating posts..."
 
 
 critiques = {
-  "Le Fantôme de l'Opéra" => ["Une performance spectaculaire qui captive dès le début.", "Un classique intemporel magnifiquement interprété.", "Une expérience théâtrale mémorable, bien que par moments prévisible."],
-  "Hamilton" => ["Une révolution dans le monde de la comédie musicale, absolument incontournable.", "Hamilton mélange histoire et modernité avec brio.", "Une œuvre d'art qui redéfinit le genre musical, même si elle peut sembler longue."],
-  "Cirque du Soleil : O" => ["Une immersion totale dans un monde aquatique féerique. 'O' repousse les limites de la performance live.", "Le Cirque du Soleil éblouit encore avec 'O', mêlant eau, feu, et acrobaties dans un spectacle inoubliable.", "Bien que visuellement époustouflant, 'O' peut par moments sembler répétitif. Néanmoins, une expérience à voir."],
-  "Wicked" => ["Wicked offre une perspective rafraîchissante sur le monde d'Oz, avec des performances vocales qui donnent des frissons.", "Un conte de sorcières captivant, 'Wicked' séduit par son histoire profonde et ses décors somptueux.", "Malgré une mise en scène et des effets spéciaux impressionnants, 'Wicked' peut parfois manquer de rythme."],
-  "Les Misérables" => ["Une adaptation bouleversante et puissante du classique de Victor Hugo. Les Misérables touche droit au cœur.", "Les voix, l'histoire, l'émotion brute - 'Les Misérables' est un tour de force théâtral.", "Si l'histoire est intemporelle, certaines longueurs peuvent freiner l'élan de cette production des 'Misérables'."],
-  "Le Roi Lion" => ["Le Roi Lion sur scène est une prouesse technique et artistique, capturant toute la magie du film original.", "Avec des costumes et une mise en scène innovants, 'Le Roi Lion' est un spectacle familial par excellence.", "Bien que le spectacle soit visuellement spectaculaire, il peine parfois à capturer l'essence émotionnelle du film."],
-  "Groupe Blue Man" => ["Un spectacle énergique et interactif qui brise les conventions. Le Groupe Blue Man est un incontournable.", "Innovant, drôle, et surprenant, le Groupe Blue Man offre une expérience unique en son genre.", "Bien que divertissant, le Groupe Blue Man peut ne pas plaire à tous, son approche étant parfois trop expérimentale."],
-  "Le Livre de Mormon" => ["Hilarant, provocateur, et étonnamment touchant, 'Le Livre de Mormon' est une réussite.", "Ce musical pousse les limites tout en offrant des numéros mémorables et des rires constants.", "Peut-être un peu trop osé pour certains, mais 'Le Livre de Mormon' est une critique intelligente sous couvert d'humour."],
+
+  "Le Fantôme de l'Opéra" => [
+    "Une performance spectaculaire qui captive dès le début.",
+    "Un classique intemporel magnifiquement interprété.",
+    "Une expérience théâtrale mémorable, bien que par moments prévisible."],
+
+  "Hamilton" => [
+    "Une révolution dans le monde de la comédie musicale, absolument incontournable.",
+    "Hamilton mélange histoire et modernité avec brio.",
+    "Une œuvre d'art qui redéfinit le genre musical, même si elle peut sembler longue."],
+
+  "Cirque du Soleil : O" => [
+    "Une immersion totale dans un monde aquatique féerique. 'O' repousse les limites de la performance live.",
+     "Le Cirque du Soleil éblouit encore avec 'O', mêlant eau, feu, et acrobaties dans un spectacle inoubliable.",
+     "Bien que visuellement époustouflant, 'O' peut par moments sembler répétitif. Néanmoins, une expérience à voir."],
+
+  "Wicked" => [
+    "Wicked offre une perspective rafraîchissante sur le monde d'Oz, avec des performances vocales qui donnent des frissons.",
+    "Un conte de sorcières captivant, 'Wicked' séduit par son histoire profonde et ses décors somptueux.",
+    "Malgré une mise en scène et des effets spéciaux impressionnants, 'Wicked' peut parfois manquer de rythme."],
+
+  "Les Misérables" => [
+    "Une adaptation bouleversante et puissante du classique de Victor Hugo. Les Misérables touche droit au cœur.",
+    "Les voix, l'histoire, l'émotion brute - 'Les Misérables' est un tour de force théâtral.",
+    "Si l'histoire est intemporelle, certaines longueurs peuvent freiner l'élan de cette production des 'Misérables'."],
+
+  "Le Roi Lion" => [
+    "Le Roi Lion sur scène est une prouesse technique et artistique, capturant toute la magie du film original.",
+    "Avec des costumes et une mise en scène innovants, 'Le Roi Lion' est un spectacle familial par excellence.",
+    "Bien que le spectacle soit visuellement spectaculaire, il peine parfois à capturer l'essence émotionnelle du film."],
+
+  "Groupe Blue Man" => [
+    "Un spectacle énergique et interactif qui brise les conventions. Le Groupe Blue Man est un incontournable.",
+    "Innovant, drôle, et surprenant, le Groupe Blue Man offre une expérience unique en son genre.",
+    "Bien que divertissant, le Groupe Blue Man peut ne pas plaire à tous, son approche étant parfois trop expérimentale."],
+
+  "Le Livre de Mormon" => [
+    "Hilarant, provocateur, et étonnamment touchant,
+    'Le Livre de Mormon' est une réussite.",
+    "Ce musical pousse les limites tout en offrant des numéros mémorables et des rires constants.",
+     "Peut-être un peu trop osé pour certains, mais 'Le Livre de Mormon' est une critique intelligente sous couvert d'humour."],
+
   "Avatar" => [
     "Une immersion incroyable dans le monde de Pandora, où chaque détail est un spectacle visuel.",
     "Avatar sur scène apporte une dimension nouvelle à l'histoire, malgré quelques longueurs.",
     "Visuellement impressionnant, mais manque parfois de la profondeur émotionnelle du film."
   ],
+
   "E.T. l'extra-terrestre" => [
     "Une aventure qui réchauffe le cœur, rappelant l'importance de l'amitié et du courage.",
     "E.T. revient dans une adaptation touchante, bien que certains moments clés manquent d'impact sur scène.",
     "Captivant pour les enfants et nostalgique pour les adultes, même si l'adaptation perd un peu de magie."
   ],
+
   "Casablanca" => [
     "Un classique intemporel magnifiquement adapté au théâtre, capturant l'essence de l'amour et du sacrifice.",
     "Casablanca sur scène est une réussite, bien que l'alchimie entre les personnages principaux puisse parfois sembler forcée.",
     "Rend hommage au film, mais manque de surprises pour ceux qui connaissent déjà l'histoire par cœur."
   ],
+
   "Retour vers le futur" => [
     "Une machine à remonter le temps théâtrale qui apporte humour et nostalgie en abondance.",
     "Inventive et divertissante, cette adaptation joue habilement avec le temps, malgré quelques incohérences.",
     "Amusant, mais ne parvient pas à égaler l'originalité et le charme du film."
   ],
+
   "Le Seigneur des Anneaux : La Communauté de l'Anneau" => [
     "Une épopée fantastique qui prend vie de manière spectaculaire sur scène, avec des décors et des effets spéciaux époustouflants.",
     "Captivant et fidèle à l'œuvre de Tolkien, bien que la durée puisse tester la patience de certains.",
     "Une aventure immersive, mais qui peut parfois se sentir surchargée par sa propre ambition."
   ],
+
   "Les Dents de la mer" => [
     "Un thriller palpitant qui réussit à transmettre la tension et la terreur du film original.",
     "Les effets spéciaux sont impressionnants, mais le spectacle peut parfois manquer de profondeur narrative.",
     "Excitant et effrayant, bien que certains éléments semblent moins convaincants sur scène."
   ],
+
   "Gladiator" => [
     "Une histoire de vengeance épique qui transporte le public dans l'ancienne Rome avec une puissance dramatique inégalée.",
     "Spectaculaire et émouvant, Gladiator sur scène est une réussite, même si le rythme est inégal.",
     "Des performances fortes et une mise en scène grandiose, mais manque parfois de subtilité."
   ],
+
   "Il faut sauver le soldat Ryan" => [
     "Une représentation théâtrale poignante de la guerre, soulignant le courage et le sacrifice.",
     "Intense et émotionnellement chargé, bien que certaines scènes de combat puissent sembler moins réalistes sur scène.",
     "Captivant, rendant hommage aux héros de guerre, mais avec des moments qui peuvent sembler surjoués."
   ],
+
   "Les Aventuriers de l'Arche perdue" => [
     "Une aventure exaltante qui capture l'esprit du film avec action et humour.",
     "Dynamique et divertissante, cette adaptation fait revivre l'excitation de la chasse au trésor.",
     "Amusante, mais manque parfois de la profondeur et de la complexité du film original."
   ],
+
   "Le Silence des agneaux" => [
     "Un thriller psychologique saisissant qui explore les profondeurs de l'esprit humain.",
     "Intense et captivant, avec des performances qui glacent le sang, bien que l'adaptation puisse parfois diluer l'impact du récit.",
     "Terrifiant et fascinant, mais la transition du film au théâtre n'est pas sans défis."
   ],
+
   "La Liste de Schindler" => [
     "Une œuvre profondément émouvante qui rend hommage à l'histoire vraie d'un homme extraordinaire.",
     "Puissant et poignant, bien que la représentation de l'horreur puisse parfois sembler atténuée.",
     "Inspirant et éducatif, mais la gravité du sujet exige une mise en scène délicate."
   ],
+
   "Toy Story" => [
     "Une joyeuse aventure qui ravira les enfants et touchera les adultes, pleine de nostalgie et de rires.",
     "Créatif et coloré, Toy Story sur scène est un régal, même si certains gags perdent de leur effet en live.",
     "Amusant et sentimental, mais certains personnages et moments clés manquent de l'éclat du film."
   ],
+
   "Psychose" => [
     "Un classique du suspense magnifiquement adapté, qui garde le public en haleine jusqu'à la fin.",
     "Intrigant et bien exécuté, bien que la célèbre scène de la douche soit difficile à reproduire avec le même impact.",
     "Captivant, mais l'atmosphère unique d'Alfred Hitchcock est un défi à égaler sur scène."
   ],
+
   "Autant en emporte le vent" => [
     "Une saga épique d'amour et de perte, magnifiquement transposée sur scène, capturant l'essence du Sud américain.",
     "Emouvant et visuellement impressionnant, bien que la longueur du récit puisse peser sur le rythme.",
     "Romantique et tragique, mais certains aspects du récit semblent datés à l'ère moderne."
 
   ],
+
   "Van Gogh : Peint avec des Mots" => [
     "Une exploration émouvante et profondément personnelle de la vie de Van Gogh, à travers ses propres mots.",
     "Ce film offre un regard intime sur l'âme tourmentée de Van Gogh, enrichi par des visuels magnifiques.",
     "Bien que captivant, le format peut parfois sembler restrictif pour couvrir l'ampleur de sa vie complexe."
   ],
+
   "Frida" => [
     "Une représentation vibrante et colorée de la vie de Frida Kahlo, pleine de passion et de douleur.",
     "Le film capture brillamment l'esprit indomptable de Frida, mais peut parfois glisser dans le mélodrame.",
     "Salma Hayek incarne Frida Kahlo avec une intensité remarquable, apportant à la vie l'artiste iconique."
   ],
+
   "Les Impressionnistes" => [
     "Un voyage fascinant à travers le mouvement impressionniste, éclairant ses innovations artistiques.",
     "Le documentaire brille par ses insights mais manque parfois de contexte historique approfondi.",
     "Visuellement stupéfiant, il rend hommage aux œuvres mais peut laisser les amateurs d'art vouloir plus."
   ],
+
   "Léonard de Vinci : L'Œuvre" => [
     "Une plongée captivante dans le génie de Léonard de Vinci, révélant des détails fascinants de ses œuvres.",
     "Le film éclaire brillamment l'esprit de Da Vinci, bien que sa structure puisse parfois désorienter.",
     "Un hommage éducatif et inspirant à l'un des plus grands esprits de l'histoire, magnifiquement produit."
   ],
+
   "La Jeune Fille à la Perle" => [
     "Une interprétation visuellement époustouflante qui donne vie à l'énigmatique tableau de Vermeer.",
     "Le film brille par sa reconstitution historique et la performance subtile de Scarlett Johansson.",
     "Captivant et esthétiquement plaisant, mais certains pourraient trouver le rythme un peu lent."
   ],
+
   "Aimer Vincent" => [
     "Une prouesse technique et artistique, racontant la vie de Van Gogh de manière innovante.",
     "Chaque scène peinte à la main est un hommage vibrant à l'œuvre de Van Gogh, bien que le récit puisse parfois sembler décousu.",
     "Une expérience cinématographique unique, mêlant art et émotion de manière inoubliable."
   ],
+
   "Klimt & Schiele : Eros et Psyché" => [
     "Une exploration fascinante de deux figures centrales de la Sécession viennoise, riche en détails artistiques et historiques.",
     "Le documentaire offre un aperçu profond de leur art, mais peut parfois sembler trop académique pour un public non initié.",
     "Visuellement captivant, il met en lumière l'influence durable de Klimt et Schiele sur l'art moderne."
   ],
+
   "Basquiat : La Rage de la Richesse" => [
     "Un portrait cru et dynamique de Basquiat, capturant l'essence de sa créativité et de sa complexité.",
     "Le film navigue habilement entre son ascension fulgurante et sa chute tragique, bien que certains aspects de sa vie restent effleurés.",
@@ -633,28 +688,197 @@ critiques = {
   "Le documentaire marie habilement l'art et la nature, bien que par moments il puisse sembler un peu didactique.",
   "Une célébration de la couleur et de la lumière, offrant une perspective fraîche sur des œuvres bien-aimées."
 ],
+
    "Kandinsky : Un Voyage vers l'Abstraction"=> [
   "Une plongée captivante dans l'évolution de Kandinsky vers l'abstraction, illuminant son génie artistique.",
   "Le documentaire navigue habilement à travers les phases créatives de Kandinsky, bien que certains puissent désirer plus de contexte historique.",
   "Visuellement époustouflant, il démontre comment Kandinsky a brisé les conventions pour explorer l'expression pure."
+],
+
+ "Degas : Passion pour la Perfection" => [
+  "Une exploration fascinante de l'obsession de Degas pour maîtriser chaque détail, capturant l'essence de ses sujets avec une précision inégalée.",
+  "Ce documentaire plonge profondément dans la quête incessante de perfection de Degas, révélant à la fois sa rigueur artistique et les défis personnels qu'il a dû surmonter.",
+  "Inspirant et révélateur, bien qu'il puisse par moments sembler se perdre dans les détails techniques, laissant peu de place à l'émotion."
+],
+
+"Le Monde de Banksy" => [
+  "Une immersion audacieuse dans l'univers provocateur de Banksy, où l'art rencontre l'activisme avec un impact visuel stupéfiant.",
+  "Ce documentaire capture l'esprit rebelle de Banksy, explorant comment ses œuvres éphémères ont remis en question les conventions sociales et politiques.",
+  "Fascinant et énigmatique, bien que certains spectateurs puissent désirer une exploration plus approfondie de l'identité secrète de l'artiste."
+],
+
+"Le Bourgeois Gentilhomme" => [
+  "Une satire délicieuse qui se moque brillamment des prétentions du bourgeois aspirant à l'ascension sociale, avec l'esprit de Molière qui brille de mille feux.",
+  "Cette production donne vie au génie comique de Molière, offrant un portrait vibrant du Monsieur Jourdain, à la fois ridicule et attachant.",
+  "Divertissante et perspicace, bien que par moments, la moquerie élaborée de la pièce puisse sembler quelque peu répétitive pour les spectateurs modernes."
+],
+
+"Cats - Comédie Musicale" => [
+  "Un spectacle enchanteur qui transporte les spectateurs dans un monde mystique peuplé de chats aux personnalités fascinantes.",
+  "Avec des chorégraphies époustouflantes et des costumes innovants, 'Cats' réussit à captiver l'audience du début à la fin.",
+  "Magique et immersif, bien que l'histoire puisse parfois sembler secondaire face à la splendeur visuelle et à la performance artistique."
+],
+
+"Ballet de l'Opéra National de Paris: Lac des Cygnes" => [
+  "Une interprétation époustouflante du chef-d'œuvre de Tchaïkovski, alliant grâce, technique et émotion dans une performance inoubliable.",
+  "Le Ballet de l'Opéra National de Paris donne vie à cette histoire d'amour tragique avec une précision et une beauté qui laissent sans voix.",
+  "Magnifique et envoûtant, bien que la familiarité de l'œuvre puisse ne pas surprendre les aficionados du ballet, la qualité de l'exécution reste sans égale."
+],
+
+ "Notre-Dame de Paris" => [
+  "Une adaptation scénique émouvante et puissante du roman classique de Victor Hugo, qui captive le public avec ses mélodies envoûtantes et ses performances passionnées.",
+  "Cette comédie musicale transporte les spectateurs au cœur du Paris médiéval, avec une mise en scène spectaculaire et des décors qui recréent l'ambiance de l'époque de manière magistrale.",
+  "Inoubliable et profondément touchante, bien que l'œuvre aborde des thèmes sombres, elle est illuminée par des moments de beauté et d'humanité qui éclairent la condition humaine."
+],
+
+"West Side Story - Comédie Musicale" => [
+  "Une retranscription scénique électrisante de la tragédie shakespearienne, transposée dans le New York des années 50, qui brille par son intensité dramatique et ses numéros musicaux iconiques.",
+  "Cette production capture à la perfection la tension et la passion de l'histoire d'amour maudite entre Tony et Maria, soutenue par des chorégraphies époustouflantes et une musique inoubliable.",
+  "Poignante et vibrante, 'West Side Story' est une œuvre intemporelle qui explore les thèmes de l'amour, du conflit et de l'espoir, malgré un contexte de violence et de préjugés."
+],
+
+"Stomp" => [
+  "Un spectacle rythmique explosif qui transforme des objets du quotidien en instruments de musique, offrant une expérience sonore et visuelle sans pareil.",
+  "Avec une énergie contagieuse, 'Stomp' mélange danse, musique et théâtre de rue dans une performance qui défie les conventions et captive le public de tous âges.",
+  "Innovant et dynamique, bien que basé sur un concept simple, 'Stomp' réussit à surprendre et à divertir grâce à son originalité et à la virtuosité de ses interprètes."
+],
+
+"Billy Elliot - Le Musical" => [
+  "Une histoire émouvante d'aspiration et de courage, 'Billy Elliot' touche le cœur avec son récit inspirant d'un jeune garçon qui défie les conventions pour poursuivre sa passion pour la danse.",
+  "Avec des numéros de danse époustouflants et une musique captivante, ce musical transcende le divertissement pour offrir une expérience profondément humaine et motivante.",
+  "Puissant et poignant, 'Billy Elliot' est une célébration de la détermination et de l'esprit humain, bien que son contexte social difficile puisse émouvoir de manière inattendue."
+],
+
+"Fight Club" => [
+  "Une plongée audacieuse dans les abysses de la psyché masculine, 'Fight Club' déconstruit avec brio les notions d'identité, de consommation et de rébellion dans la société moderne.",
+  "Avec des performances inoubliables et une mise en scène qui oscille entre le brut et le stylisé, ce film reste un jalon culturel provocateur qui défie les attentes à chaque tournant.",
+  "Intense et perturbant, 'Fight Club' est à la fois une critique acerbe de notre époque et une célébration de la libération personnelle, bien que son message puisse parfois sembler ambigu ou controversé."
+],
+
+"Hopper : Fenêtres sur la Solitude" => [
+  "Une exploration intime et contemplative de l'œuvre d'Edward Hopper, capturant avec sensibilité les moments de solitude et de mélancolie qui définissent son art.",
+  "Ce documentaire plonge le spectateur dans l'univers silencieux de Hopper, où la lumière et l'ombre jouent un rôle central, révélant la profondeur émotionnelle cachée dans la banalité du quotidien.",
+  "Emouvant et révélateur, 'Hopper : Fenêtres sur la Solitude' offre une nouvelle perspective sur les tableaux emblématiques de l'artiste, bien que certains puissent désirer une analyse plus approfondie de ses techniques et influences."
+],
+
+"Chicago - Le Musical" => [
+  "Un tourbillon de jazz, de scandale et de séduction, 'Chicago' captive par son histoire cynique de célébrité et de crime dans les années 1920, servie par des numéros musicaux électrisants.",
+  "Avec son style vif et sa satire mordante, ce musical emblématique offre une critique acerbe de la corruption judiciaire et de la quête effrénée de notoriété, le tout enveloppé dans une chorégraphie époustouflante.",
+  "Séduisant et provocateur, 'Chicago' est un spectacle incontournable qui allie parfaitement humour noir et performances brillantes, bien que son cynisme puisse ne pas plaire à tous les publics."
+],
+
+"Le Roi Lion - Comédie Musicale" => [
+  "Une adaptation scénique époustouflante du classique de Disney, 'Le Roi Lion' émerveille par sa créativité, ses costumes somptueux et ses marionnettes innovantes, qui donnent vie à la savane africaine avec une magie inégalée.",
+  "Avec une musique emblématique qui résonne dans le cœur des spectateurs, ce musical transcende l'histoire de Simba pour explorer des thèmes universels de courage, d'amour et d'identité, captivant petits et grands.",
+  "Magnifique et immersif, 'Le Roi Lion' est une prouesse artistique qui marie harmonieusement spectacle visuel et profondeur émotionnelle, bien que son succès planétaire puisse parfois éclipser la simplicité touchante de son message."
+],
+
+"Cirque du Soleil: Alegria" => [
+  "Une ode à la beauté de la performance humaine, 'Alegria' captive par son mélange exquis de cirque, de théâtre et de musique, offrant un spectacle qui touche l'âme et éveille les sens.",
+  "Avec des acrobaties à couper le souffle, des costumes féériques et une bande sonore envoûtante, 'Alegria' emmène les spectateurs dans un voyage émotionnel à travers la joie, la tristesse et l'espoir.",
+  "Inoubliable et profondément humain, 'Alegria' est une célébration de la vie et de ses hauts et bas, présentée avec la magie et la maestria caractéristiques du Cirque du Soleil, bien que son ampleur puisse parfois sembler écrasante."
+],
+
+"Da Vinci Code" => [
+  "Un voyage captivant qui mêle mystères historiques et aventure palpitante, 'Da Vinci Code' séduit par son intrigue complexe et ses énigmes intellectuelles.",
+  "Avec un mélange de théories controversées et une narration rapide, le récit remet en question les perceptions et maintient le public en haleine.",
+  "Engageant et provocateur, bien que ses interprétations historiques spéculatives ne soient pas du goût de tous, 'Da Vinci Code' reste une exploration fascinante de la foi, de l'art et de la conspiration."
+],
+"Jurassic Park" => [
+  "Une révolution cinématographique qui a marqué une génération, 'Jurassic Park' combine des effets spéciaux révolutionnaires avec une narration captivante pour recréer le monde fascinant des dinosaures.",
+  "Sous la direction de maître de Steven Spielberg, ce film mélange parfaitement aventure, suspense et une réflexion profonde sur les limites de la science et de l'ingénierie génétique.",
+  "Inoubliable et visuellement époustouflant, 'Jurassic Park' est à la fois un divertissement de haut niveau et une mise en garde contre l'arrogance humaine face aux forces de la nature, bien que certains aspects de son scénario puissent sembler simplifiés avec le recul."
+],
+"Picasso : Amour, Sexe et Art" => [
+  "Une plongée intime et révélatrice dans la vie tumultueuse de Picasso, explorant comment ses passions ont façonné son œuvre et révolutionné l'art moderne.",
+  "Ce documentaire met en lumière les relations complexes et souvent controversées de Picasso, soulignant l'influence de ses muses et de ses amours sur son processus créatif.",
+  "Captivant et provocateur, 'Picasso : Amour, Sexe et Art' offre une perspective nuancée sur le génie artistique, bien que son approche sans concession puisse parfois choquer. L'œuvre demeure une célébration de la force créatrice inépuisable de Picasso."
+],
+"Grease - Comédie Musicale" => [
+  "Un voyage nostalgique et énergique dans les années 50, 'Grease' capture l'essence de l'adolescence, de l'amour et des défis de grandir avec une bande sonore qui reste intemporelle.",
+  "Avec ses personnages iconiques et ses numéros musicaux entraînants, cette comédie musicale est une célébration de la jeunesse et de la culture pop, mêlant humour, danse et émotions.",
+  "Vibrante et pleine de vie, 'Grease' est à la fois un hommage affectueux et une parodie légère de l'époque du rock'n'roll, bien que sa représentation des stéréotypes de genre puisse sembler datée à certains spectateurs modernes."
+],
+"Le Labyrinthe" => [
+  "Un thriller dystopique captivant qui mêle habilement suspense, action et mystère, plongeant les spectateurs dans un univers aussi intrigant qu'effrayant.",
+  "Avec son récit haletant et ses personnages bien dessinés, 'Le Labyrinthe' offre une exploration fascinante de la survie, de l'amitié et de la résilience face à l'inconnu.",
+  "Intense et immersif, bien que certains éléments de l'intrigue puissent sembler prévisibles, le film réussit à maintenir l'intérêt grâce à son rythme soutenu et à ses rebondissements inattendus."
+],
+"Orgueil et Préjugés" => [
+  "Une adaptation exquise du classique de Jane Austen, qui capture avec brio l'esprit et l'ironie du roman, tout en explorant les thèmes de l'amour, de la classe sociale et des malentendus.",
+  "Avec des dialogues étincelants et une reconstitution fidèle de l'époque, 'Orgueil et Préjugés' séduit par son mélange de romance, d'humour et de critique sociale.",
+  "Élégant et intelligent, bien que fidèle à l'esprit du livre, le film parvient à rester accessible et captivant pour un public moderne, offrant une réflexion toujours actuelle sur les préjugés et l'orgueil."
+],
+"Forrest Gump" => [
+  "Un voyage émotionnel à travers les décennies de l'histoire américaine, vu à travers les yeux d'un homme au grand cœur et à l'esprit simple, qui trouve sa voie dans les moments clés du 20e siècle.",
+  "Avec une performance inoubliable de Tom Hanks, 'Forrest Gump' mélange comédie, drame et romance, créant une œuvre cinématographique touchante qui célèbre la résilience et la bonté humaine.",
+  "Captivant et profondément humain, bien que par moments idéalisé, le film offre une perspective unique sur l'histoire, l'amour et l'amitié, le tout enveloppé dans une narration magistrale."
+],
+"L'Odyssée de Pi" => [
+  "Une épopée visuelle stupéfiante qui explore les thèmes de la survie, de la foi et de l'extraordinaire voyage d'un jeune homme à travers l'océan, accompagné d'un tigre du Bengale.",
+  "Grâce à des effets spéciaux révolutionnaires et une mise en scène poétique, 'L'Odyssée de Pi' transporte les spectateurs dans un monde où le réel et le merveilleux se rencontrent de la manière la plus émouvante.",
+  "Envoûtant et profond, le film réussit à capturer l'essence du roman original tout en offrant une expérience cinématographique unique, bien que certains trouvent son approche philosophique par moments un peu abstraite."
+],
+"KÀ by Cirque du Soleil" => [
+  "Une aventure épique qui défie la gravité, 'KÀ' combine des prouesses acrobatiques à couper le souffle avec une histoire captivante de bien contre mal, le tout dans une production visuellement somptueuse.",
+  "Avec sa scène révolutionnaire qui tourne et s'élève, créant des terrains de jeu verticaux, 'KÀ' pousse les limites de la performance live, offrant une expérience immersive inégalée.",
+  "Spectaculaire et innovant, bien que l'histoire puisse par moments sembler secondaire face à l'extravagance visuelle et technique, 'KÀ' reste une démonstration magistrale de ce que le Cirque du Soleil fait de mieux."
+],
+"Gatsby le Magnifique" => [
+  "Une plongée envoûtante dans le faste et la décadence des années 1920, 'Gatsby le Magnifique' capture l'essence de l'ambition, de l'amour perdu et de l'illusion du rêve américain.",
+  "Avec des décors somptueux et une bande sonore qui mêle habilement jazz classique et rythmes modernes, le film offre une reconstitution vibrante de l'époque tout en explorant la complexité des personnages de Fitzgerald.",
+  "Magnifique et tragique, le film réussit à transmettre la mélancolie et le désir inassouvi au cœur du roman, bien que certains critiques trouvent que le style visuel flamboyant peut parfois éclipser la profondeur narrative."
+],
+"Divergente" => [
+  "Un thriller dystopique captivant qui explore les thèmes de l'identité, du choix et de la résistance dans une société divisée en factions basées sur les vertus humaines.",
+  "Avec son intrigue riche et son univers bien construit, 'Divergente' entraîne les spectateurs dans une aventure pleine de suspense et d'action, portée par des performances solides et un développement de personnage convaincant.",
+  "Inspirant et haletant, bien que certains éléments de l'histoire puissent sembler familiers aux amateurs du genre dystopique, 'Divergente' se distingue par sa réflexion sur le courage et l'individualité."
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 def post_function(rating, toi_title, critiques)
   base_critique = critiques[toi_title] || ["Default critique positive", "Default critique neutral", "Default critique negative"]
 
   critique = case rating
-             when 0..4
+             when 0..2
                "Décevant. #{base_critique[2]}"
-             when 5..7
+             when 3..6
                "Moyen. #{base_critique[1]}"
-             when 8..10
+             when 7..10
                "Exceptionnel ! #{base_critique[0]}"
              else
                "Rating non valide."
              end
 
-  return critique 
+  return critique
 end
 
 
