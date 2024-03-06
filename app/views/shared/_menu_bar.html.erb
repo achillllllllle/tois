@@ -1,24 +1,24 @@
 <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid d-flex justifiy-content-around mx-2">
-    <%= link_to root_path do %>
+    <%= link_to my_feed_path do %>
       <div class="flex-grow-1 text-center p-2 ">
         <i class="fa-solid fa-house text-white fa-xl"></i>
       </div>
     <% end %>
 
-    <%= link_to root_path do %>
+    <%= link_to tois_path do %>
       <div class="flex-grow-1 text-center p-2">
           <i class="fa-solid fa-magnifying-glass text-white fa-xl"></i>
       </div>
     <% end %>
 
-    <%= link_to root_path do %>
+    <%= link_to bookmarks_path do %>
       <div class="flex-grow-1 text-center p-2">
           <i class="fa-solid fa-bookmark text-white fa-xl"></i>
       </div>
     <% end %>
 
-    <%= link_to root_path do %>
+    <%= link_to user_path(current_user) do %>
       <div class="flex-grow-1 text-center p-2">
           <i class="fa-solid fa-user text-white fa-xl"></i>
       </div>

@@ -1,0 +1,9 @@
+<h1>toi show</h1>
+<h2><%= @toi.title %></h2>
+<h3><%= @toi.description %></h3>
+<p><%= @toi.posts.count %></p>
+
+<% @posts.each do |post| %>
+  <h2><%= post.review %></h2>
+  <h2><%= post.user.username  %></h2>
+<% end %>

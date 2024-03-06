@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+  end
+
+  def my_feed
+    @tois = current_user.followed_users_tois
   end
 end

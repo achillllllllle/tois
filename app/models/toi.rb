@@ -21,4 +21,8 @@ class Toi < ApplicationRecord
   def exposition?
     self.category == "Exposition"
   end
+
+  def followed_users_posts(user)
+    posts.where(user_id: user.followed_users.pluck(:id))
+  end
 end
