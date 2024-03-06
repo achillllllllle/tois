@@ -9,25 +9,26 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @toi = Toi.new
+    @post = Post.new(toi: @toi)
   end
 
   def create
     @post = Post.new(post_params)
-    @toi = Toi.find_or_initialize_by(toi_params)
-
+    @post.user = current_user
+    @toi = Toi.find_or_initialize_by(title: toi_params[:title])
     if @toi.new_record?
-      if @toi.save
-        @post.toi_id = @toi.id
+      if @toi.update(toi_params) && @toi.save
+        @post.toi = @toi
       else
         render :new, status: :unprocessable_entity
         return
       end
     else
-      @post.toi_id = @toi.id
+      @post.toi = @toi
     end
 
-    if @post.save
+    if @post.save!
       redirect_to post_path(@post)
     else
       render :new, status: :unprocessable_entity
@@ -37,11 +38,10 @@ class PostsController < ApplicationController
   private
 
   def toi_params
-    params.require(:toi).permit(:title, :category_id, :location, :description, :trailer)
+    params[:post][:toi_attributes].permit!.to_h.merge({ title: params[:post][:toi] })
   end
 
   def post_params
     params.require(:post).permit(:photo, :review, :rating, :user_id, :toi_id)
   end
-
 end

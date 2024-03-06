@@ -8,35 +8,38 @@
     </div>
   </div>
 
-  <%= simple_form_for @post do |f| %>
-    <%#= f.input :toi, collection: Toi.all, label_method: :title, value_method: :id, label: "TOI", placeholder: "Sélectionne un titre" %>
-    <%= f.input :toi, collection: Toi.all, label_method: :title, value_method: :id, label: "TOI", input_html: { data: { controller: 'slim', title_target: 'title' }, placeholder: "Sélectionne un titre" } %>
-    <%#= form.select :user_id, User.pluck(:email, :id), {include_blank: true}, {data: { controller: 'slim', slim_target: 'field' } } %>
+  <%= simple_form_for @post,
+                      html: {
+                        data: {
+                          controller: 'post-form'
+                        }
+                      } do |f| %>
+    <%= f.input :toi,
+                collection: Toi.all,
+                label_method: :title,
+                value_method: :title,
+                label: "TOI",
+                input_html: {
+                  placeholder: "Sélectionne un titre",
+                  data: {
+                    post_form_target: 'selectInput'
+                  }
+                } %>
 
-    <%# if @post.toi.present? %>
-      <%#= f.collection_select :category_id, @post.toi.category_id, :id, :name, { prompt: "Sélectionner une catégorie" }, { class: "form-control" } %>
-    <%# else %>
-      <%#= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Sélectionner une catégorie" }, { class: "form-control" } %>
-    <%# end %>
+    <%# TOI INPUTS %>
+    <div class="d-none" data-post-form-target="newToiForm">
+      <p class="">Décris ton TOI</p>
+      <%= f.simple_fields_for(:toi) do |ff| %>
+        <%= ff.input :description %>
+        <%= ff.association :category %>
+        <%= ff.input :location %>
+      <% end %>
+    </div>
 
-    <%= f.input :description, label: "Description", input_html: { rows: 4 }, value: @post.toi.description if @post.toi.present? %>
-
+    <%# POST INPUTS %>
     <%= f.input :rating, label: "Note", collection: (1..5), include_blank: "Select Rating" %>
     <%= f.input :review, label: "Commentaire", input_html: { rows: 4 } %>
-
-    <%#= f.input :category, collection: Category.all %>
-
-    <%= f.input :location, label: "Location", value: @post.toi.location if @post.toi.present?  %>
-    <%#= f.association :friends, label: "Amis", as: :check_boxes, collection: current_user.friends %>
-
-    <%= f.input :images, as: :file, input_html: { multiple: true }, label: "Images" %>
-
-
-   <%# if @post.toi.cinema? %>
-      <%#= f.input :trailer, label: "Trailer" %>
-    <%# elsif @post.toi.spectacle? || @post.toi.exposition? %>
-      <%#= f.input :location, label: "Lieu" %>
-    <%# end %>
+    <%= f.input :photo, as: :file, label: "Images" %>
 
     <%= f.button :submit, "Partager", class: "btn btn-success mt-3" %>
   <% end %>
