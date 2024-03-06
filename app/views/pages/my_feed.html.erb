@@ -1,0 +1,11 @@
+<h1>MY FEED</h1>
+
+<% @tois.each do |toi| %>
+  <h2><%= toi.title %></h2>
+  <p>posts :</p>
+  <% toi.followed_users_posts(current_user).each do |post| %>
+    <div>
+      <%= post.rating %> | <%= post.review %>
+    </div>
+  <% end %>
+<% end %>

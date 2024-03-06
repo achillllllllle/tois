@@ -6,8 +6,7 @@ class ToisController < ApplicationController
   end
 
   def show
-    user_friends = Friend.where(follower_id: current_user.id).pluck(:following_id).uniq!
-    @filtered_posts = Post.where(toi_id: @toi.id, user_id: user_friends).order(created_at: :desc)
+    @posts = @toi.followed_users_posts(current_user)
   end
 
   private
