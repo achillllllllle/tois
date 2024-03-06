@@ -1,9 +1,5 @@
 puts "Clearing existing data..."
 
-
-
-
-
 # Destroy de toute les instances
 User.destroy_all()
 Category.destroy_all()
@@ -12,10 +8,9 @@ Post.destroy_all()
 ToiArtist.destroy_all()
 Artist.destroy_all()
 
-
 puts "Creating users..."
 
-User.create!(email: "test@test.com", password:"azerty", username:"testuser")
+User.create!(email: "test@test.com", password: "azerty", username: "testuser")
 
 24.times do ||
   User.create!(
@@ -28,7 +23,6 @@ end
 
 puts "#{User.count} users created successfully!"
 
-
 puts "Creating categories..."
 
 ['Cinema', 'Spectacle', 'Litterature', 'Exposition'].each do |category_name|
@@ -36,7 +30,6 @@ puts "Creating categories..."
 end
 
 puts "#{Category.count} categories created sucessfully!"
-
 
 TITLE_MOVIE_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
   "Le Fantôme de l'Opéra" => {
@@ -413,9 +406,6 @@ TITLE_EXPOSITION_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER = {
   }
 }
 
-
-
-
 def dynamic_content_for_toi(category_id)
   category = Category.find(category_id)
 
@@ -439,7 +429,7 @@ def dynamic_content_for_toi(category_id)
   exposition_description = TITLE_EXPOSITION_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER[exposition_book][:description]
   exposition_trailer = TITLE_EXPOSITION_AND_CINEMA_DESCRIPTION_AND_CINEMA_TRAILER[exposition_book][:trailer]
 
- case category.name
+  case category.name
   when "Cinema"
     {
       title: cinema_film,
@@ -474,8 +464,6 @@ def dynamic_content_for_toi(category_id)
   end
 end
 
-
-
 puts "Creating tois..."
 
 24.times do ||
@@ -494,7 +482,6 @@ end
 puts "#{Toi.count} tois created sucessfully!"
 
 puts "Creating posts..."
-
 
 critiques = {
   "Le Fantôme de l'Opéra" => ["Une performance spectaculaire qui captive dès le début.", "Un classique intemporel magnifiquement interprété.", "Une expérience théâtrale mémorable, bien que par moments prévisible."],
@@ -654,18 +641,14 @@ def post_function(rating, toi_title, critiques)
                "Rating non valide."
              end
 
-  return critique 
+  return critique
 end
-
 
 24.times do ||
   user = User.order('RANDOM()').first
   toi = Toi.order('RANDOM()').first
   toi_title = toi.title
   rating = rand(0..10)
-
-
-
 
   Post.create!(
     photo: "photo.jpg",

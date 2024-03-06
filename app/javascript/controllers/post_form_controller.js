@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import TomSelect from "tom-select"
 
-// Connects to data-controller="select"
+// Connects to data-controller="post-form"
 export default class extends Controller {
   static targets = ["selectInput", "newToiForm"]
 
@@ -19,7 +19,7 @@ export default class extends Controller {
 
   createEvent(toiName) {
     this.newToiFormTarget.classList.remove('d-none')
-    console.log(toiName);
+
     return {value:toiName,text:toiName}
   }
 

@@ -20,6 +20,7 @@
                 value_method: :title,
                 label: "TOI",
                 input_html: {
+
                   placeholder: "Sélectionne un titre",
                   data: {
                     post_form_target: 'selectInput'
@@ -33,13 +34,14 @@
         <%= ff.input :description %>
         <%= ff.association :category %>
         <%= ff.input :location %>
+        <%= ff.input :photo, as: :file, label: "Images" %>
       <% end %>
     </div>
 
     <%# POST INPUTS %>
     <%= f.input :rating, label: "Note", collection: (1..5), include_blank: "Select Rating" %>
     <%= f.input :review, label: "Commentaire", input_html: { rows: 4 } %>
-    <%= f.input :photo, as: :file, label: "Images" %>
+    <%#= f.input :photo, as: :file, label: "Images" %>
 
     <%= f.button :submit, "Partager", class: "btn btn-success mt-3" %>
   <% end %>
