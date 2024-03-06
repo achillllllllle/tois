@@ -1,26 +1,27 @@
-<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark footer-height">
+<i class="fa-solid fa-circle-plus plus-menu-bar"></i>
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-white footer-height menu-bar">
   <div class="container-fluid d-flex justifiy-content-around mx-2">
     <%= link_to my_feed_path do %>
       <div class="flex-grow-1 text-center p-2 ">
-        <i class="fa-solid fa-house text-white fa-xl"></i>
+        <i class="fa-solid fa-house text-white fa-xl icon-menu-bar"></i>
       </div>
     <% end %>
 
     <%= link_to tois_path do %>
       <div class="flex-grow-1 text-center p-2">
-          <i class="fa-solid fa-magnifying-glass text-white fa-xl"></i>
+          <i class="fa-solid fa-magnifying-glass text-white fa-xl icon-menu-bar"></i>
       </div>
     <% end %>
 
     <%= link_to bookmarks_path do %>
       <div class="flex-grow-1 text-center p-2">
-          <i class="fa-solid fa-bookmark text-white fa-xl"></i>
+          <i class="fa-solid fa-bookmark text-white fa-xl icon-menu-bar"></i>
       </div>
     <% end %>
 
     <%= link_to user_path(current_user) do %>
       <div class="flex-grow-1 text-center p-2">
-          <i class="fa-solid fa-user text-white fa-xl"></i>
+          <i class="fa-solid fa-user text-white fa-xl icon-menu-bar"></i>
       </div>
     <% end %>
   </div>
