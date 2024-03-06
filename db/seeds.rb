@@ -1102,7 +1102,6 @@ end
   rating = rand(0..10)
 
   Post.create!(
-    photo: "photo.jpg",
     rating: rating,
     review: post_function(rating, toi_title, critiques),
     user_id: user.id,
