@@ -18,9 +18,7 @@
 
   <body>
     <%= render "shared/flashes" %>
-    <div class="container my-4">
-      <%= yield %>
-    </div>
+    <%= yield %>
     <% if user_signed_in? %>
       <%= render "shared/menu_bar" %>
     <% end %>
