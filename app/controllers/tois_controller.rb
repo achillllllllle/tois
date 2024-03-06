@@ -1,7 +1,7 @@
-# class ToisController < ApplicationController
-#   def index
-#     @tois = Toi.all
-#   end
+class ToisController < ApplicationController
+  def index
+    @tois = Toi.all
+  end
 
 #   def show
 #     @toi = Toi.find(params[:id])
@@ -38,5 +38,4 @@
 #   def post_params
 #     params.require(:post).permit(:photo, :review, :rating, :user_id, :toi_id)
 #   end
-
-# end
+end
