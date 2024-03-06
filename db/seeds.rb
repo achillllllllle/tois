@@ -21,7 +21,8 @@ User.create!(email: "test@test.com", password:"azerty", username:"testuser")
   User.create!(
     email: "#{Faker::Internet.email}",
     password: "123456",
-    username: "#{Faker::Name.name}"
+    username: "#{Faker::Name.name}",
+    permitted: true
   )
 end
 
@@ -441,7 +442,7 @@ def dynamic_content_for_toi(category_id)
  case category.name
   when "Cinema"
     {
-      title: "cinema_film: #{cinema_film}",
+      title: cinema_film,
       cinema_description: cinema_description,
       cinema_trailer: cinema_trailer,
       name: cinema_film
@@ -449,21 +450,21 @@ def dynamic_content_for_toi(category_id)
     }
   when "Spectacle"
     {
-      title: "Spectacle: #{spectacle_film}",
+      title: spectacle_film,
       cinema_description: spectacle_description,
       cinema_trailer: spectacle_trailer,
       name: spectacle_film
     }
   when "Litterature"
     {
-      title: "Livre: #{litterature_book}",
+      title: litterature_book,
       cinema_description: litterature_description,
       cinema_trailer: litterature_trailer,
       name: litterature_book
     }
   when "Exposition"
     {
-      title: "Expo: #{exposition_book}",
+      title: exposition_book,
       cinema_description: exposition_description,
       cinema_trailer: exposition_trailer,
       name: Faker::Artist.name
@@ -472,6 +473,8 @@ def dynamic_content_for_toi(category_id)
     { title: "N/A", cinema_description: "N/A", cinema_trailer: "N/A" }
   end
 end
+
+
 
 puts "Creating tois..."
 
@@ -490,21 +493,189 @@ end
 
 puts "#{Toi.count} tois created sucessfully!"
 
-# puts "Creating posts..."
+puts "Creating posts..."
 
-# 24.times do |i|
-#   user = User.order('RANDOM()').first
-#   toi = Toi.order('RANDOM()').first
 
-#   Post.create!(
-#     photo: "photo#{i}.jpg",
-#     review: "Critique numéro #{i}",
-#     rating: rand(1..10),
-#     user_id: user.id,
-#     toi_id: toi.id
-#   )
-# end
-# puts "#{Post.count} posts created sucessfully!"
+critiques = {
+  "Le Fantôme de l'Opéra" => ["Une performance spectaculaire qui captive dès le début.", "Un classique intemporel magnifiquement interprété.", "Une expérience théâtrale mémorable, bien que par moments prévisible."],
+  "Hamilton" => ["Une révolution dans le monde de la comédie musicale, absolument incontournable.", "Hamilton mélange histoire et modernité avec brio.", "Une œuvre d'art qui redéfinit le genre musical, même si elle peut sembler longue."],
+  "Cirque du Soleil : O" => ["Une immersion totale dans un monde aquatique féerique. 'O' repousse les limites de la performance live.", "Le Cirque du Soleil éblouit encore avec 'O', mêlant eau, feu, et acrobaties dans un spectacle inoubliable.", "Bien que visuellement époustouflant, 'O' peut par moments sembler répétitif. Néanmoins, une expérience à voir."],
+  "Wicked" => ["Wicked offre une perspective rafraîchissante sur le monde d'Oz, avec des performances vocales qui donnent des frissons.", "Un conte de sorcières captivant, 'Wicked' séduit par son histoire profonde et ses décors somptueux.", "Malgré une mise en scène et des effets spéciaux impressionnants, 'Wicked' peut parfois manquer de rythme."],
+  "Les Misérables" => ["Une adaptation bouleversante et puissante du classique de Victor Hugo. Les Misérables touche droit au cœur.", "Les voix, l'histoire, l'émotion brute - 'Les Misérables' est un tour de force théâtral.", "Si l'histoire est intemporelle, certaines longueurs peuvent freiner l'élan de cette production des 'Misérables'."],
+  "Le Roi Lion" => ["Le Roi Lion sur scène est une prouesse technique et artistique, capturant toute la magie du film original.", "Avec des costumes et une mise en scène innovants, 'Le Roi Lion' est un spectacle familial par excellence.", "Bien que le spectacle soit visuellement spectaculaire, il peine parfois à capturer l'essence émotionnelle du film."],
+  "Groupe Blue Man" => ["Un spectacle énergique et interactif qui brise les conventions. Le Groupe Blue Man est un incontournable.", "Innovant, drôle, et surprenant, le Groupe Blue Man offre une expérience unique en son genre.", "Bien que divertissant, le Groupe Blue Man peut ne pas plaire à tous, son approche étant parfois trop expérimentale."],
+  "Le Livre de Mormon" => ["Hilarant, provocateur, et étonnamment touchant, 'Le Livre de Mormon' est une réussite.", "Ce musical pousse les limites tout en offrant des numéros mémorables et des rires constants.", "Peut-être un peu trop osé pour certains, mais 'Le Livre de Mormon' est une critique intelligente sous couvert d'humour."],
+  "Avatar" => [
+    "Une immersion incroyable dans le monde de Pandora, où chaque détail est un spectacle visuel.",
+    "Avatar sur scène apporte une dimension nouvelle à l'histoire, malgré quelques longueurs.",
+    "Visuellement impressionnant, mais manque parfois de la profondeur émotionnelle du film."
+  ],
+  "E.T. l'extra-terrestre" => [
+    "Une aventure qui réchauffe le cœur, rappelant l'importance de l'amitié et du courage.",
+    "E.T. revient dans une adaptation touchante, bien que certains moments clés manquent d'impact sur scène.",
+    "Captivant pour les enfants et nostalgique pour les adultes, même si l'adaptation perd un peu de magie."
+  ],
+  "Casablanca" => [
+    "Un classique intemporel magnifiquement adapté au théâtre, capturant l'essence de l'amour et du sacrifice.",
+    "Casablanca sur scène est une réussite, bien que l'alchimie entre les personnages principaux puisse parfois sembler forcée.",
+    "Rend hommage au film, mais manque de surprises pour ceux qui connaissent déjà l'histoire par cœur."
+  ],
+  "Retour vers le futur" => [
+    "Une machine à remonter le temps théâtrale qui apporte humour et nostalgie en abondance.",
+    "Inventive et divertissante, cette adaptation joue habilement avec le temps, malgré quelques incohérences.",
+    "Amusant, mais ne parvient pas à égaler l'originalité et le charme du film."
+  ],
+  "Le Seigneur des Anneaux : La Communauté de l'Anneau" => [
+    "Une épopée fantastique qui prend vie de manière spectaculaire sur scène, avec des décors et des effets spéciaux époustouflants.",
+    "Captivant et fidèle à l'œuvre de Tolkien, bien que la durée puisse tester la patience de certains.",
+    "Une aventure immersive, mais qui peut parfois se sentir surchargée par sa propre ambition."
+  ],
+  "Les Dents de la mer" => [
+    "Un thriller palpitant qui réussit à transmettre la tension et la terreur du film original.",
+    "Les effets spéciaux sont impressionnants, mais le spectacle peut parfois manquer de profondeur narrative.",
+    "Excitant et effrayant, bien que certains éléments semblent moins convaincants sur scène."
+  ],
+  "Gladiator" => [
+    "Une histoire de vengeance épique qui transporte le public dans l'ancienne Rome avec une puissance dramatique inégalée.",
+    "Spectaculaire et émouvant, Gladiator sur scène est une réussite, même si le rythme est inégal.",
+    "Des performances fortes et une mise en scène grandiose, mais manque parfois de subtilité."
+  ],
+  "Il faut sauver le soldat Ryan" => [
+    "Une représentation théâtrale poignante de la guerre, soulignant le courage et le sacrifice.",
+    "Intense et émotionnellement chargé, bien que certaines scènes de combat puissent sembler moins réalistes sur scène.",
+    "Captivant, rendant hommage aux héros de guerre, mais avec des moments qui peuvent sembler surjoués."
+  ],
+  "Les Aventuriers de l'Arche perdue" => [
+    "Une aventure exaltante qui capture l'esprit du film avec action et humour.",
+    "Dynamique et divertissante, cette adaptation fait revivre l'excitation de la chasse au trésor.",
+    "Amusante, mais manque parfois de la profondeur et de la complexité du film original."
+  ],
+  "Le Silence des agneaux" => [
+    "Un thriller psychologique saisissant qui explore les profondeurs de l'esprit humain.",
+    "Intense et captivant, avec des performances qui glacent le sang, bien que l'adaptation puisse parfois diluer l'impact du récit.",
+    "Terrifiant et fascinant, mais la transition du film au théâtre n'est pas sans défis."
+  ],
+  "La Liste de Schindler" => [
+    "Une œuvre profondément émouvante qui rend hommage à l'histoire vraie d'un homme extraordinaire.",
+    "Puissant et poignant, bien que la représentation de l'horreur puisse parfois sembler atténuée.",
+    "Inspirant et éducatif, mais la gravité du sujet exige une mise en scène délicate."
+  ],
+  "Toy Story" => [
+    "Une joyeuse aventure qui ravira les enfants et touchera les adultes, pleine de nostalgie et de rires.",
+    "Créatif et coloré, Toy Story sur scène est un régal, même si certains gags perdent de leur effet en live.",
+    "Amusant et sentimental, mais certains personnages et moments clés manquent de l'éclat du film."
+  ],
+  "Psychose" => [
+    "Un classique du suspense magnifiquement adapté, qui garde le public en haleine jusqu'à la fin.",
+    "Intrigant et bien exécuté, bien que la célèbre scène de la douche soit difficile à reproduire avec le même impact.",
+    "Captivant, mais l'atmosphère unique d'Alfred Hitchcock est un défi à égaler sur scène."
+  ],
+  "Autant en emporte le vent" => [
+    "Une saga épique d'amour et de perte, magnifiquement transposée sur scène, capturant l'essence du Sud américain.",
+    "Emouvant et visuellement impressionnant, bien que la longueur du récit puisse peser sur le rythme.",
+    "Romantique et tragique, mais certains aspects du récit semblent datés à l'ère moderne."
+
+  ],
+  "Van Gogh : Peint avec des Mots" => [
+    "Une exploration émouvante et profondément personnelle de la vie de Van Gogh, à travers ses propres mots.",
+    "Ce film offre un regard intime sur l'âme tourmentée de Van Gogh, enrichi par des visuels magnifiques.",
+    "Bien que captivant, le format peut parfois sembler restrictif pour couvrir l'ampleur de sa vie complexe."
+  ],
+  "Frida" => [
+    "Une représentation vibrante et colorée de la vie de Frida Kahlo, pleine de passion et de douleur.",
+    "Le film capture brillamment l'esprit indomptable de Frida, mais peut parfois glisser dans le mélodrame.",
+    "Salma Hayek incarne Frida Kahlo avec une intensité remarquable, apportant à la vie l'artiste iconique."
+  ],
+  "Les Impressionnistes" => [
+    "Un voyage fascinant à travers le mouvement impressionniste, éclairant ses innovations artistiques.",
+    "Le documentaire brille par ses insights mais manque parfois de contexte historique approfondi.",
+    "Visuellement stupéfiant, il rend hommage aux œuvres mais peut laisser les amateurs d'art vouloir plus."
+  ],
+  "Léonard de Vinci : L'Œuvre" => [
+    "Une plongée captivante dans le génie de Léonard de Vinci, révélant des détails fascinants de ses œuvres.",
+    "Le film éclaire brillamment l'esprit de Da Vinci, bien que sa structure puisse parfois désorienter.",
+    "Un hommage éducatif et inspirant à l'un des plus grands esprits de l'histoire, magnifiquement produit."
+  ],
+  "La Jeune Fille à la Perle" => [
+    "Une interprétation visuellement époustouflante qui donne vie à l'énigmatique tableau de Vermeer.",
+    "Le film brille par sa reconstitution historique et la performance subtile de Scarlett Johansson.",
+    "Captivant et esthétiquement plaisant, mais certains pourraient trouver le rythme un peu lent."
+  ],
+  "Aimer Vincent" => [
+    "Une prouesse technique et artistique, racontant la vie de Van Gogh de manière innovante.",
+    "Chaque scène peinte à la main est un hommage vibrant à l'œuvre de Van Gogh, bien que le récit puisse parfois sembler décousu.",
+    "Une expérience cinématographique unique, mêlant art et émotion de manière inoubliable."
+  ],
+  "Klimt & Schiele : Eros et Psyché" => [
+    "Une exploration fascinante de deux figures centrales de la Sécession viennoise, riche en détails artistiques et historiques.",
+    "Le documentaire offre un aperçu profond de leur art, mais peut parfois sembler trop académique pour un public non initié.",
+    "Visuellement captivant, il met en lumière l'influence durable de Klimt et Schiele sur l'art moderne."
+  ],
+  "Basquiat : La Rage de la Richesse" => [
+    "Un portrait cru et dynamique de Basquiat, capturant l'essence de sa créativité et de sa complexité.",
+    "Le film navigue habilement entre son ascension fulgurante et sa chute tragique, bien que certains aspects de sa vie restent effleurés.",
+    "Une célébration puissante de son génie, tout en exposant les défis qu'il a affrontés dans le monde de l'art."
+  ],
+
+ "Fuerza Bruta" =>[
+  "Un tourbillon d'énergie et de créativité, 'Fuerza Bruta' brise les frontières entre le spectacle et le public.",
+  "Une expérience sensorielle unique, où la musique, la lumière et le mouvement fusionnent pour créer un moment d'évasion pure.",
+  "Malgré son intensité, certains pourraient trouver le spectacle déroutant, mais son audace est incontestablement captivante."
+],
+
+"Warhol : L'Art du Pop" => [
+  "Une exploration fascinante de l'icône du Pop Art, révélant les multiples facettes de Warhol, de l'artiste à l'observateur social.",
+  "Le documentaire brille par son accès à des œuvres rares et des interviews, offrant une perspective neuve sur l'impact de Warhol.",
+  "Bien qu'il puisse parfois sembler superficiel dans son traitement de sujets complexes, il capture avec brio l'esprit de l'époque de Warhol."
+
+], "Le Jardin de l'Artiste : L'Impressionnisme Américain" => [
+  "Un voyage éblouissant à travers les jardins qui ont inspiré les maîtres de l'Impressionnisme américain.",
+  "Le documentaire marie habilement l'art et la nature, bien que par moments il puisse sembler un peu didactique.",
+  "Une célébration de la couleur et de la lumière, offrant une perspective fraîche sur des œuvres bien-aimées."
+],
+   "Kandinsky : Un Voyage vers l'Abstraction"=> [
+  "Une plongée captivante dans l'évolution de Kandinsky vers l'abstraction, illuminant son génie artistique.",
+  "Le documentaire navigue habilement à travers les phases créatives de Kandinsky, bien que certains puissent désirer plus de contexte historique.",
+  "Visuellement époustouflant, il démontre comment Kandinsky a brisé les conventions pour explorer l'expression pure."
+]
+}
+
+def post_function(rating, toi_title, critiques)
+  base_critique = critiques[toi_title] || ["Default critique positive", "Default critique neutral", "Default critique negative"]
+
+  critique = case rating
+             when 0..4
+               "Décevant. #{base_critique[2]}"
+             when 5..7
+               "Moyen. #{base_critique[1]}"
+             when 8..10
+               "Exceptionnel ! #{base_critique[0]}"
+             else
+               "Rating non valide."
+             end
+
+  return critique 
+end
+
+
+24.times do ||
+  user = User.order('RANDOM()').first
+  toi = Toi.order('RANDOM()').first
+  toi_title = toi.title
+  rating = rand(0..10)
+
+
+
+
+  Post.create!(
+    photo: "photo.jpg",
+    rating: rating,
+    review: post_function(rating, toi_title, critiques),
+    user_id: user.id,
+    toi_id: toi.id
+  )
+end
+puts "#{Post.count} posts created sucessfully!"
 
 # puts "Creating artists..."
 
