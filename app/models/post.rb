@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  attr_accessor :category
+
   belongs_to :user
   belongs_to :toi
 

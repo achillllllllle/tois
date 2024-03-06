@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-6">
       <button type="button" class="btn btn-secondary">X</button>
@@ -9,27 +9,35 @@
   </div>
 
   <%= simple_form_for @post do |f| %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Sélectionner une catégorie" }, { class: "form-control" } %>
+    <%#= f.input :toi, collection: Toi.all, label_method: :title, value_method: :id, label: "TOI", placeholder: "Sélectionne un titre" %>
+    <%= f.input :toi, collection: Toi.all, label_method: :title, value_method: :id, label: "TOI", input_html: { class: 'search-title slimselect', placeholder: "Sélectionne un titre" } %>
 
-    <%= f.input :toi_title, label: "Titre du TOI" %>
+    <%# if @post.toi.present? %>
+      <%#= f.collection_select :category_id, @post.toi.category_id, :id, :name, { prompt: "Sélectionner une catégorie" }, { class: "form-control" } %>
+    <%# else %>
+      <%#= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Sélectionner une catégorie" }, { class: "form-control" } %>
+    <%# end %>
 
-    <%= f.input :description, label: "Description" %>
+    <%= f.input :description, label: "Description", input_html: { rows: 4 }, value: @post.toi.description if @post.toi.present? %>
 
-    <%= f.input :review, label: "Add a review" %>
+    <%= f.input :rating, label: "Note", collection: (1..5), include_blank: "Select Rating" %>
+    <%= f.input :review, label: "Commentaire", input_html: { rows: 4 } %>
 
-    <%= f.input :rating, label: "Add a rating" %>
+    <%#= f.input :category, collection: Category.all %>
 
-   <% if @toi.cinema? %>
-      <%= f.input :trailer, label: "Trailer" %>
-    <% elsif @toi.spectacle? || @toi.exposition? %>
-      <%= f.input :location, label: "Lieu" %>
-    <% end %>
+    <%= f.input :location, label: "Location", value: @post.toi.location if @post.toi.present?  %>
+    <%#= f.association :friends, label: "Amis", as: :check_boxes, collection: current_user.friends %>
 
-    <%= f.input :toi_location, label: "Add a location" %>
-    <%= f.input :user_friends, label: "Add some friends" %>
-    <%= f.input :toi_photos, label: "Add some pics" %>
+    <%= f.input :images, as: :file, input_html: { multiple: true }, label: "Images" %>
+
+
+   <%# if @toi.cinema? %>
+      <%#= f.input :trailer, label: "Trailer" %>
+    <%# elsif @toi.spectacle? || @toi.exposition? %>
+      <%#= f.input :location, label: "Lieu" %>
+    <%# end %>
 
     <%= f.button :submit, "Partager", class: "btn btn-success mt-3" %>
   <% end %>
 
-</div>-->
+</div>
