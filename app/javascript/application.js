@@ -3,3 +3,10 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  new SlimSelect({
+      select: '.search-title'
+  });
+});
