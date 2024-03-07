@@ -1,26 +1,37 @@
-
-
-
-<div class="container">
+<div class="container my-feed fullheight">
   <div class="heading">
-    <h1 class="fa-7x fw-bold"> My feed</h1>
+    <h1 class="fa-7x fw-bold">My feed</h1>
   </div>
-
-  <% @tois.each do |toi| %>
-    <div class="card flex-row justify-content-between">
-      <div class="infos d-flex">
-        <div class="">
-          <div>
-            <h3 class="text-dark fw-bold">  <%= toi.title %> </h3>
-              <% toi.followed_users_posts(current_user).each do |post| %>
-              <div class="d-flex">
-                <img class="avatar d-block" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
-              </div>
+  <% @tois.each_with_index do |toi, index| %>
+    <%= link_to toi_path(toi) do %>
+      <div class="card flex-row justify-content-between <%= "bg-color-#{(index % 3) + 1}" %>">
+        <div class="infos d-flex p-1">
+          <div class="">
+            <div>
+              <h3 class="text-dark fw-bold"><%= toi.title %></h3>
+              <div class="avatars-container">
+                <% posts = toi.followed_users_posts(current_user) %>
+                <% if posts.count < 2 %>
+                  <% posts.each do |post| %>
+                    <img class="avatar" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
+                    <span class="user-name"> @<%= post.user.username %></span>
+                  <% end %>
+                <% else %>
+                  <% posts.each_with_index do |post, index| %>
+                    <% if index < 4 %>
+                      <img class="avatar" style="z-index: <%= 1000 - index %>; margin-left: <%= index * -10 %>px;" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
+                    <% end %>
+                  <% end %>
+                  <% if posts.count > 4 %>
+                    <span class="more-avatars">+<%= posts.count - 4 %> others</span>
+                  <% end %>
                 <% end %>
-                   </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <img class="photo" src="https://www.originaltravel.co.uk/travel-blog/ShowPhoto/3521/0" alt="">
       </div>
-      <img class="photo" src="https://www.originaltravel.co.uk/travel-blog/ShowPhoto/3521/0" alt="">
-    </div>
+    <% end %>
   <% end %>
 </div>

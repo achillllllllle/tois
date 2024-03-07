@@ -20,9 +20,8 @@ User.create!(email: "test@test.com", password: "azerty", username: "testuser")
   User.create!(
     email: "#{Faker::Internet.email}",
     password: "123456",
-    username: "#{Faker::Name.name}",
-    permitted: [true,false].sample
-  )
+    username: "#{Faker::Name.first_name}",
+    permitted: [true,false].sample)
 end
 
 puts "#{User.count} users created successfully!"
@@ -1111,3 +1110,9 @@ end
 end
 
 puts "#{Post.count} posts created sucessfully!"
+
+User.all.each do |user|
+  Friend.create(follower: User.first, following: user)
+end
+
+puts "#{User.first.username} a plein de potes"

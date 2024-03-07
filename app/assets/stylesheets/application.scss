@@ -7,27 +7,58 @@
 @import "bootstrap";
 @import "font-awesome";
 
-// Your CSS partials
+// Components
 @import "components/index";
-@import "pages/index";
-@import 'pages/toi_show';
 @import "components/menu_bar";
 
-.avatar {
-  height: 20px;
-  width: 20px;
+//Pages
+@import "pages/index";
+@import "pages/toi_show";
+@import "pages/my_feed";
+@import "pages/new";
+
+
+.welcome-animation {
+  opacity: 0;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
-.photo {
-  width: 130px;
-  height: 130px;
-  border-radius: 30px;
-  object-fit: cover;
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.card {
-  background-color: $flashy-green;
-  margin-bottom: 15px;
-  padding: 20px;
-  border-radius: 50px;
+.page-transition {
+  animation: pageFadeIn 0.5s ease-out;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+ }
+
+.sizing-review {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+.form-control {
+  color: white!important;
 }

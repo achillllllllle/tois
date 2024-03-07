@@ -1,8 +1,8 @@
 .menu-bar {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  position: absolute;
-  z-index: 1;
+  z-index: 10000;
+  position: sticky;
 }
 
 .icon-menu-bar {
@@ -13,9 +13,12 @@
   color: $flashy-green;
   position: absolute;
   font-size: 60px;
-  left: 43%;
-  bottom: 3%;
+  left: 50%;
+  bottom: 50%;
   z-index: 7;
+  transform: translate(-50%, 5%);
+  border: solid 2px white;
+  border-radius: 50px;
 
   &:after {
     content: '';
@@ -29,4 +32,7 @@
     transform: translate(-50%, -50%);
     z-index: -1;
   }
+}
+.fullheight {
+  min-height: calc(100vh - 56px);
 }

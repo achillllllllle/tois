@@ -1,0 +1,52 @@
+.my-feed {
+
+  .avatar {
+    height: 30px;
+    width: 30px;
+  }
+
+  .photo {
+    width: 130px;
+    height: 130px;
+    border-radius: 30px;
+    object-fit: cover;
+  }
+
+  .card {
+    background-color: $flashy-green;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 50px;
+  }
+
+  .form-control {
+    background-color: white!important;
+  }
+
+  .avatars-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .bg-color-1 {
+    background-color: #40FA43; /* Vert */
+  }
+
+  .bg-color-2 {
+    background-color: #7B7BFF; /* Bleu */
+  }
+
+  .bg-color-3 {
+    background-color: #E0FA41; /* Jaune */
+  }
+  .user-name {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  a {
+    text-decoration: none!important;
+  }
+
+}
