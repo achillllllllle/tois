@@ -11,3 +11,24 @@
 @import "components/index";
 @import "pages/index";
 @import 'pages/toi_show';
+
+
+
+.avatar {
+  height: 20px;
+  width: 20px;
+}
+
+.photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+.card {
+  background-color: $flashy-green;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 50px;
+}
