@@ -23,7 +23,7 @@
   <body>
     <%= render "shared/flashes" %>
     <%= yield %>
-    <% if user_signed_in? && current_user&.permitted?%>
+    <% if user_signed_in? && current_user&.permitted? && !current_page?(root_path)%>
       <%= render "shared/menu_bar" %>
     <% end %>
   </body>

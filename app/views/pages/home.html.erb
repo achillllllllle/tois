@@ -1,11 +1,14 @@
-<div class="d-flex flex-column justify-content-center align-middle" style="height: 100vh;">
-  <% if current_user&.permitted?  %>
-    <div class="p-3 justify-content-center align-items-center bg-primary rounded text-white">
-      <i class="fa-solid fa-unlock fa-2xl me-2 animate__animated animate__rubberBand animate__infinite"> </i>
-      <h2 class="m-0">Welcome</h3>
-      <h3 class="fw-bold"><%= current_user.username %></h2>
-      <%= link_to "go",  root_path %>
+<div class="d-flex flex-column align-items-center justify-content-center align-middle" style="height: 100vh;">
+  <% if current_user&.permitted? %>
+    <div id="welcome-message" class="welcome-animation">
+      <h2 class="fa-2x">Welcome</h2>
+      <h3 class="fw-bold text-primary fa-3x"><%= current_user.username %></h3>
     </div>
+    <script>
+      setTimeout(function() {
+        window.location.href = '<%= my_feed_path %>';
+      }, 1500);
+    </script>
   <% else %>
     <div class="d-flex flex-column justify-content-center align-items-center p-3">
       <div class="d-flex justify-content-center align-items-center mb-4">
