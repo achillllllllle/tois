@@ -11,10 +11,11 @@
     border: 2px solid $flashy-green;
     background-color: white;
   }
-}
 
-// .simple-form-label {
-// }
+  &:not(:hover) {
+    border-color: white;
+  }
+}
 
 .simple-form-button {
   display: block;
