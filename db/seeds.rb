@@ -2,7 +2,7 @@ puts "Clearing existing data..."
 
 # Require
 require "open-uri"
-puts I18n.config
+
 
 # Destroy de toute les instances
 User.destroy_all()
@@ -688,7 +688,7 @@ def dynamic_content_for_toi(category_id)
   end
 end
 
-puts "Creating tois..."
+puts "Creating Tois, please it will be longer, Estimated waiting #{40 * 2 / 60} minutes. Only Spectacle and Cinema for now"
 
 def normalize_string(s)
   # Mettre en minuscule
@@ -702,10 +702,9 @@ end
 
 ITEMS.each do |name, infos|
   title_toi = infos[:title]
-  puts title_toi
 
   normalized_string = normalize_string(title_toi)
-  puts normalized_string
+
 
 
   cloudinary_image_url = "https://res.cloudinary.com/drrbvxo6s/image/upload/#{normalized_string}"
