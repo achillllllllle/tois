@@ -20,6 +20,7 @@
                 value_method: :title,
                 label: "TOI",
                 input_html: {
+
                   placeholder: "Sélectionne un titre",
                   data: {
                     post_form_target: 'selectInput'
@@ -30,16 +31,34 @@
     <div class="d-none" data-post-form-target="newToiForm">
       <p class="">Décris ton TOI</p>
       <%= f.simple_fields_for(:toi) do |ff| %>
-        <%= ff.input :description %>
-        <%= ff.association :category %>
-        <%= ff.input :location %>
+        <%= ff.input :description,
+                      label: "Description" %>
+        <%#= ff.association :category,
+                      label: "Catégorie" %>
+        <%= ff.association :category,
+                   collection: Category.all,
+                   label_method: :name,
+                   value_method: :id,
+                   label: "Catégorie" %>
+        <%= ff.input :trailer,
+                      label: "Trailer",
+                      input_html: {
+                        data: {
+                          post_form_target: 'trailerInput'
+                        }
+                      } %>
+        <%= ff.input :location,
+                      label: "Lieu" %>
+        <%= ff.input :photo,
+                      as: :file,
+                      label: "Image" %>
       <% end %>
     </div>
 
     <%# POST INPUTS %>
     <%= f.input :rating, label: "Note", collection: (1..5), include_blank: "Select Rating" %>
     <%= f.input :review, label: "Commentaire", input_html: { rows: 4 } %>
-    <%= f.input :photo, as: :file, label: "Images" %>
+    <%#= f.input :photo, as: :file, label: "Images" %>
 
     <%= f.button :submit, "Partager", class: "btn btn-success mt-3" %>
   <% end %>
