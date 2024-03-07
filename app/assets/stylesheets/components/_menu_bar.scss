@@ -31,3 +31,6 @@
     z-index: -1;
   }
 }
+.fullheight {
+  min-height: calc(100vh - 56px);
+}
