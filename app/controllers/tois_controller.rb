@@ -21,6 +21,6 @@ class ToisController < ApplicationController
   end
 
   def toi_params
-    params.require(:toi).permit(:title, :category_id, :location, :description, :trailer)
+    params.require(:toi).permit(:title, :category_id, :location, :description, :trailer, :photo)
   end
 end

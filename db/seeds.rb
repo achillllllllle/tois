@@ -1,5 +1,9 @@
 puts "Clearing existing data..."
 
+# Require
+require "open-uri"
+puts I18n.config
+
 # Destroy de toute les instances
 User.destroy_all()
 Category.destroy_all()
@@ -17,8 +21,7 @@ User.create!(email: "test@test.com", password: "azerty", username: "testuser")
     email: "#{Faker::Internet.email}",
     password: "123456",
     username: "#{Faker::Name.first_name}",
-    permitted: true
-  )
+    permitted: [true,false].sample)
 end
 
 puts "#{User.count} users created successfully!"
@@ -63,14 +66,6 @@ ITEMS = {
     artists: ["Idina Menzel", "Kristin Chenoweth", "Joel Grey"],
     category: Category.find_by(name: "Cinema")
   },
-  "Les Misérables" => {
-    title: "Les Misérables",
-    description: "Un récit épique de passion et de destruction dans la France du 19e siècle. 'Les Misérables' raconte l'histoire de Jean Valjean, un ancien condamné qui devient une force de bien dans le monde mais ne peut échapper à son passé criminel.",
-    trailer: "https://www.youtube.com/watch?v=YmvHzCLP6ug",
-    artists: ["Hugh Jackman", "Anne Hathaway", "Russell Crowe", "Amanda Seyfried"],
-    category: Category.find_by(name: "Cinema")
-
-  },
   "Le Roi Lion" => {
     title: "Le Roi Lion",
     description: "Une histoire vibrante et excitante de la savane africaine. 'Le Roi Lion' donne vie à l'histoire de Simba, un jeune prince lion qui se lance dans un voyage pour comprendre son destin royal. Des visuels époustouflants et des chansons encadrent ce conte intemporel de famille et de pardon.",
@@ -85,11 +80,11 @@ ITEMS = {
     artists: ["Blue Man Group Performers"],
     category: Category.find_by(name: "Cinema")
   },
-  "Le Livre de Mormon" => {
-    title: "Le Livre de Mormon",
-    description: "Une comédie musicale satirique qui suit deux missionnaires mormons alors qu'ils tentent de prêcher la foi aux habitants d'un village reculé de l'Ouganda. Le spectacle est connu pour ses paroles intelligentes, sa musique entraînante et sa prise humoristique sur les thèmes et croyances religieuses.",
-    trailer: "https://www.youtube.com/watch?v=OKkLV1zE8M0",
-    artists: ["Andrew Rannells", "Josh Gad"],
+    "La Famille Bélier" => {
+    title: "La Famille Bélier",
+    description: "Dans cette comédie dramatique touchante, Paula, une adolescente de 16 ans, est l'interprète indispensable à ses parents sourds au quotidien, surtout pour l'exploitation de la ferme familiale. Un jour, encouragée par son professeur de musique qui lui a découvert un don pour le chant, elle décide de préparer le concours de Radio France. Un choix de vie qui signifierait pour elle l'éloignement de sa famille et un passage inévitable à l'âge adulte.",
+    trailer: "https://www.youtube.com/watch?v=5ZNG3j4TGzk",
+    artists: ["Louane Emera", "Karin Viard", "François Damiens"],
     category: Category.find_by(name: "Cinema")
   },
   "Avatar" => {
@@ -148,26 +143,11 @@ ITEMS = {
     artists: ["Tom Hanks", "Matt Damon", "Tom Sizemore"],
     category: Category.find_by(name: "Cinema")
   },
-  "Les Aventuriers de l'Arche perdue" => {
-    title: "Les Aventuriers de l'Arche perdue",
-    description: "L'archéologue Indiana Jones est engagé par le gouvernement américain pour trouver l'Arche d'alliance avant qu'Adolf Hitler et les nazis ne puissent obtenir ses pouvoirs extraordinaires.",
-    trailer: "https://www.youtube.com/watch?v=XkkzKHCx154",
-    artists: ["Harrison Ford", "Karen Allen"],
-    category: Category.find_by(name: "Cinema")
-
-  },
   "Le Silence des agneaux" => {
     title: "Le Silence des agneaux",
     description: "Une jeune recrue du FBI doit solliciter l'aide d'un tueur en série cannibale incarcéré et manipulateur pour attraper un autre tueur en série, un fou qui écorche ses victimes.",
     trailer: "https://www.youtube.com/watch?v=W6Mm8Sbe__o",
     artists: ["Jodie Foster", "Anthony Hopkins", "Scott Glenn"],
-    category: Category.find_by(name: "Cinema")
-  },
-  "La Liste de Schindler" => {
-    title: "La Liste de Schindler",
-    description: "Dans la Pologne occupée par les Allemands pendant la Seconde Guerre mondiale, l'industriel Oskar Schindler devient progressivement préoccupé par sa main-d'œuvre juive après avoir été témoin de leur persécution par les nazis.",
-    trailer: "https://www.youtube.com/watch?v=gG22XNhtnoY",
-    artists: ["Liam Neeson", "Ben Kingsley", "Ralph Fiennes"],
     category: Category.find_by(name: "Cinema")
   },
   "Toy Story" => {
@@ -184,13 +164,15 @@ ITEMS = {
     artists: ["Anthony Perkins", "Janet Leigh", "Vera Miles"],
     category: Category.find_by(name: "Cinema")
   },
-  "Autant en emporte le vent" => {
-    title: "Autant en emporte le vent",
-    description: "Une femme manipulatrice et un homme voyou mènent une romance turbulente pendant la guerre civile américaine et la période de reconstruction.",
-    trailer: "https://www.youtube.com/watch?v=0X94oZgJis4",
-    artists: ["Clark Gable", "Vivien Leigh", "Leslie Howard", "Olivia de Havilland"],
+   "Les Évadés" => {
+    title: "Les Évadés",
+    description: "Ce film, basé sur une nouvelle de Stephen King, raconte l'histoire d'Andy Dufresne, un banquier injustement condamné à la prison à vie pour le meurtre de sa femme et de son amant. Malgré les épreuves, Andy garde espoir et affecte la vie de ses codétenus, notamment celle de Red, grâce à son esprit indomptable et son ingéniosité.",
+    trailer: "https://www.youtube.com/watch?v=6hB3S9bIaco",
+    artists: ["Tim Robbins", "Morgan Freeman"],
     category: Category.find_by(name: "Cinema")
   },
+
+
 
 
 
@@ -708,14 +690,37 @@ end
 
 puts "Creating tois..."
 
+def normalize_string(s)
+  # Mettre en minuscule
+  s.downcase!
+  # Supprimer les accents
+  s = I18n.transliterate(s)
+  # Supprimer les espaces, les points, et autres caractères spéciaux
+  s.gsub!(/[\s.!\'-]/, '')
+  s
+end
+
 ITEMS.each do |name, infos|
-  toi = Toi.create!(
-    title: infos[:title],
+  title_toi = infos[:title]
+  puts title_toi
+
+  normalized_string = normalize_string(title_toi)
+  puts normalized_string
+
+
+  cloudinary_image_url = "https://res.cloudinary.com/drrbvxo6s/image/upload/#{normalized_string}"
+
+  file = URI.open(cloudinary_image_url)
+
+  toi = Toi.new(
+    title: title_toi,
     category: infos[:category],
     location: Faker::Address.full_address,
     description: infos[:description],
     trailer: infos[:trailer]
   )
+  toi.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+  toi.save
 
   infos[:artists].each do |name|
     artist = Artist.create!(
