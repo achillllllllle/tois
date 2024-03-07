@@ -4,6 +4,7 @@ class Toi < ApplicationRecord
   has_many :bookmarks
   has_many :toi_artists, dependent: :destroy
   has_many :artists, through: :toi_artists
+  has_one_attached :photo
 
   validates :title, :category, :description, presence: true
   validates :trailer, presence: true, if: :cinema?

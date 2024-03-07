@@ -17,6 +17,8 @@
   bottom: 50%;
   z-index: 7;
   transform: translate(-50%, 5%);
+  border: solid 2px white;
+  border-radius: 50px;
 
   &:after {
     content: '';
