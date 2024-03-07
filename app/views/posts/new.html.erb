@@ -1,12 +1,13 @@
 <div class="container fullheight">
-  <div class="row">
-    <div class="col-md-6">
+
+  <div class="row ">
+    <div class="col-md-6 d-flex justify-content-between">
       <button type="button" class="btn btn-secondary">X</button>
-    </div>
-    <div class="col-md-6 text-right">
       <button type="button" class="btn btn-primary">Enregistrer</button>
     </div>
   </div>
+
+  <h1>Culture Heads</h1>
 
   <%= simple_form_for @post,
                       html: {
@@ -14,13 +15,14 @@
                           controller: 'post-form'
                         }
                       } do |f| %>
+
     <%= f.input :toi,
                 collection: Toi.all,
                 label_method: :title,
                 value_method: :title,
-                label: "TOI",
+                label: false,
                 input_html: {
-
+                  class: 'simple-form-input no-hover',
                   placeholder: "Sélectionne un titre",
                   data: {
                     post_form_target: 'selectInput'
@@ -29,38 +31,69 @@
 
     <%# TOI INPUTS %>
     <div class="d-none" data-post-form-target="newToiForm">
-      <p class="">Décris ton TOI</p>
       <%= f.simple_fields_for(:toi) do |ff| %>
         <%= ff.input :description,
-                      label: "Description" %>
-        <%#= ff.association :category,
-                      label: "Catégorie" %>
-        <%= ff.association :category,
-                   collection: Category.all,
-                   label_method: :name,
-                   value_method: :id,
-                   label: "Catégorie" %>
-        <%= ff.input :trailer,
-                      label: "Trailer",
+                      placeholder: "Description",
+                      label: false,
                       input_html: {
+                        class: 'simple-form-input'
+                      } %>
+        <%= ff.select :category_id,
+              options_from_collection_for_select(Category.all, :id, :name),
+              { include_blank: "Choisis ta catégorie" },
+              { class: 'simple-form-input' } %>
+        <%#= ff.association :category,
+                      collection: Category.all,
+                      label: false,
+                      placeholder: "Choisis ta catégorie",
+                      input_html: {
+                        class: 'simple-form-input'
+                      } %>
+        <%= ff.input :trailer,
+                      placeholder: "Trailer",
+                      label: false,
+                      input_html: {
+                        class: 'simple-form-input',
                         data: {
                           post_form_target: 'trailerInput'
                         }
                       } %>
         <%= ff.input :location,
-                      label: "Lieu" %>
+                      placeholder: "Lieu",
+                      label: false,
+                      input_html: {
+                        class: 'simple-form-input'
+                      } %>
         <%= ff.input :photo,
                       as: :file,
-                      label: "Image" %>
+                      placeholder: "Image",
+                      label: false,
+                      input_html: {
+                        class: 'simple-form-input'
+                      } %>
       <% end %>
     </div>
 
     <%# POST INPUTS %>
-    <%= f.input :rating, label: "Note", collection: (1..5), include_blank: "Select Rating" %>
-    <%= f.input :review, label: "Commentaire", input_html: { rows: 4 } %>
-    <%#= f.input :photo, as: :file, label: "Images" %>
+    <%= f.input :rating,
+                placeholder: "Note",
+                collection: (1..5),
+                include_blank: "Select Rating",
+                label: false,
+                input_html: {
+                  class: 'simple-form-input'
+                } %>
+    <%= f.input :review,
+                placeholder: "Commentaire",
+                label: false,
+                input_html: {
+                  rows: 4,
+                  class: 'simple-form-input'
+                } %>
 
-    <%= f.button :submit, "Partager", class: "btn btn-success mt-3" %>
+    <%= f.button :submit,
+                  "Partager",
+                  class: "btn btn-success mt-3 simple-form-button" %>
   <% end %>
 
 </div>

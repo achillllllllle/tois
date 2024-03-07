@@ -7,30 +7,15 @@
 @import "bootstrap";
 @import "font-awesome";
 
-// Your CSS partials
+// Components
 @import "components/index";
-@import "pages/index";
-@import 'pages/toi_show';
 @import "components/menu_bar";
 
-.avatar {
-  height: 20px;
-  width: 20px;
-}
-
-.photo {
-  width: 130px;
-  height: 130px;
-  border-radius: 30px;
-  object-fit: cover;
-}
-
-.card {
-  background-color: $flashy-green;
-  margin-bottom: 15px;
-  padding: 20px;
-  border-radius: 50px;
-}
+//Pages
+@import "pages/index";
+@import "pages/toi_show";
+@import "pages/my_feed";
+@import "pages/new";
 
 .fullheight {
   min-height: calc(100vh - 56px);
