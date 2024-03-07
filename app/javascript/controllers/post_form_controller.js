@@ -30,17 +30,17 @@ export default class extends Controller {
     //     // Pre-fill other fields as needed
     //   })
 
-    if (toi.category === "cinema") {
-      this.trailerInputTarget.classList.remove('d-none');
-    } else {
-      this.trailerInputTarget.classList.add('d-none');
-    }
+    // if (toi.category === "cinema") {
+    //   this.trailerInputTarget.classList.remove('d-none');
+    // } else {
+    //   this.trailerInputTarget.classList.add('d-none');
+    // }
 
-    if (toi.category === "spectacle") {
-      this.locationInputTarget.classList.remove('d-none');
-    } else {
-      this.locationInputTarget.classList.add('d-none');
-    }
+    // if (toi.category === "spectacle") {
+    //   this.locationInputTarget.classList.remove('d-none');
+    // } else {
+    //   this.locationInputTarget.classList.add('d-none');
+    // }
 
     return { value:toiName, text:toiName }
   }
