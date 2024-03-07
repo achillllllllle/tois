@@ -31,3 +31,7 @@
   padding: 20px;
   border-radius: 50px;
 }
+
+.fullheight {
+  min-height: calc(100vh - 56px);
+}
