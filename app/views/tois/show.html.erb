@@ -1,7 +1,12 @@
 <div class="fullheight">
-  <img src="https://i0.wp.com/nigoun.fr/wp-content/uploads/2022/04/placeholder.png?ssl=1" alt="placeholder seulement" class="img-show">
+  <div>
+    <img src="https://i0.wp.com/nigoun.fr/wp-content/uploads/2022/04/placeholder.png?ssl=1" alt="placeholder seulement" class="img-show">
+    <div class="card-img-overlay d-flex align-items-end">
+      <h5 class="card-title category px-4 py-2 rounded-pill bg-primary">#<%= @toi.category.name.downcase %> </h5>
+    </div>
+  </div>
   <div class="container">
-    <h1 class="p-2 fw-bold">Reviews</h1>
+    <h1 class="p-2 fw-bold mb-3">Reviews : <em><%= @toi.title %></em></h1>
     <% @posts.each do |post| %>
       <div class="card border border-primary bg-white border-4">
         <div class="infos d-flex justify-content-between w-100 ">
@@ -9,8 +14,8 @@
             <img class="avatar d-block" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="placeholder avatar" style="width:40px; height:40px">
             <h3 class="text-dark fw-bold"> @<%= post.user.username %> </h3>
           </div>
-          <div>
-            <h3 class="text-dark fw-bold"> <%= post.rating %>/10 </h3>
+          <div class="stars text-primary">
+            <%= post.starify(post.rating).html_safe %>
           </div>
         </div>
         <p class="sizing-review mb-auto"><%= post.review %></p>
