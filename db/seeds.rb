@@ -164,13 +164,6 @@ ITEMS = {
     artists: ["Anthony Perkins", "Janet Leigh", "Vera Miles"],
     category: Category.find_by(name: "Cinema")
   },
-   "Les Évadés" => {
-    title: "Les Évadés",
-    description: "Ce film, basé sur une nouvelle de Stephen King, raconte l'histoire d'Andy Dufresne, un banquier injustement condamné à la prison à vie pour le meurtre de sa femme et de son amant. Malgré les épreuves, Andy garde espoir et affecte la vie de ses codétenus, notamment celle de Red, grâce à son esprit indomptable et son ingéniosité.",
-    trailer: "https://www.youtube.com/watch?v=6hB3S9bIaco",
-    artists: ["Tim Robbins", "Morgan Freeman"],
-    category: Category.find_by(name: "Cinema")
-  },
 
 
 
@@ -688,7 +681,12 @@ def dynamic_content_for_toi(category_id)
   end
 end
 
-puts "Creating Tois, please it will be longer, Estimated waiting #{40 * 2 / 60} minutes. Only Spectacle and Cinema for now"
+
+puts "Creating Tois, please it will be longer, Estimated waiting #{ITEMS.length * 2 / 60} minutes..."
+
+
+
+
 
 def normalize_string(s)
   # Mettre en minuscule
@@ -696,15 +694,19 @@ def normalize_string(s)
   # Supprimer les accents
   s = I18n.transliterate(s)
   # Supprimer les espaces, les points, et autres caractères spéciaux
-  s.gsub!(/[\s.!\'-]/, '')
+  s.gsub!(/[\s.!&,\'-]/, '')
   s
 end
+compteur = 0
 
 ITEMS.each do |name, infos|
+  compteur += 1
   title_toi = infos[:title]
 
   normalized_string = normalize_string(title_toi)
-
+  if compteur == 40
+    puts "Still in progress: Estimated waiting #{40 * 2 / 60} minutes..."
+  end
 
 
   cloudinary_image_url = "https://res.cloudinary.com/drrbvxo6s/image/upload/#{normalized_string}"
@@ -1110,8 +1112,10 @@ end
 
 puts "#{Post.count} posts created sucessfully!"
 
+puts "Creating Friend..."
+
 User.all.each do |user|
   Friend.create(follower: User.first, following: user)
 end
 
-puts "#{User.first.username} a plein de potes"
+puts "#{Friend.count} friends created sucessfully!"
