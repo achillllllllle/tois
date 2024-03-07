@@ -54,3 +54,11 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
+
+body {
+  overscroll-behavior: none;
+}
+
+.form-control {
+  color: white!important;
+}
