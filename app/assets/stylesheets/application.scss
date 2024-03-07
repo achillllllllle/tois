@@ -35,3 +35,11 @@
 .fullheight {
   min-height: calc(100vh - 56px);
 }
+
+.sizing-review {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
