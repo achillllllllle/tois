@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     end
 
     if @post.save!
-      redirect_to post_path(@post)
+      redirect_to @post, notice: 'Ton post a bien été créé'
     else
       render :new, status: :unprocessable_entity
     end
