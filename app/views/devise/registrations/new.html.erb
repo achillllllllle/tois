@@ -1,4 +1,5 @@
-<h2>Sign up</h2>
+<div class="container p-4 text-center text-white">
+  <h1 class= "fa-5x fw-bold"> Hype Meter</h1>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -8,7 +9,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :username,  
+    <%= f.input :username,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "username" }%>
@@ -22,8 +23,9 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-success mb-5 simple-form-button fw-bold" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

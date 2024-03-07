@@ -17,9 +17,35 @@
 @import "pages/my_feed";
 @import "pages/new";
 
-.fullheight {
-  min-height: calc(100vh - 56px);
+
+.welcome-animation {
+  opacity: 0;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.page-transition {
+  animation: pageFadeIn 0.5s ease-out;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+ }
 
 .sizing-review {
   text-overflow: ellipsis;
@@ -36,4 +62,11 @@
 
 .ts-control {
   border: none !important;
+
+body {
+  overscroll-behavior: none;
+}
+
+.form-control {
+  color: white!important;
 }
