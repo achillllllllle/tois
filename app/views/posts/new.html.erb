@@ -7,7 +7,6 @@
     </div>
   </div>
 
-
   <%= simple_form_for @post,
                       html: {
                         data: {
@@ -20,11 +19,13 @@
                 label_method: :title,
                 value_method: :title,
                 label: false,
+                wrapper: false,
                 input_html: {
                   class: 'simple-form-input no-hover',
                   placeholder: "Sélectionne un titre",
                   data: {
-                    post_form_target: 'selectInput'
+                    post_form_target: 'selectInput',
+                    action: 'input->post-form#showToiInputs'
                   }
                 } %>
     <span id="toi-selected" style="display: none;">V</span>
@@ -38,7 +39,15 @@
                       input_html: {
                         class: 'simple-form-input'
                       } %>
-        <%= ff.select :category_id,
+        <%= ff.association :category,
+          prompt: "Choisis ta catégorie",
+          input_html: {
+            class: "simple-form-input",
+            data: {
+              action: 'input->post-form#showInputs'
+            }
+          } %>
+        <%#= ff.select :category_id,
               options_from_collection_for_select(Category.all, :id, :name),
               { include_blank: "Choisis ta catégorie" },
               { class: 'simple-form-input' } %>
@@ -52,6 +61,10 @@
         <%= ff.input :trailer,
                       placeholder: "Trailer",
                       label: false,
+                      wrapper_html: {
+                        class: "d-none",
+                        data: { post_form_target: "trailer"}
+                      },
                       input_html: {
                         class: 'simple-form-input',
                         data: {
@@ -61,6 +74,10 @@
         <%= ff.input :location,
                       placeholder: "Lieu",
                       label: false,
+                      wrapper_html: {
+                        class: "d-none",
+                        data: { post_form_target: "location"}
+                      },
                       input_html: {
                         class: 'simple-form-input'
                       } %>
@@ -94,6 +111,18 @@
     <%= f.button :submit,
                   "Partager",
                   class: "btn btn-success mt-3 simple-form-button" %>
+
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
   <% end %>
 
 </div>

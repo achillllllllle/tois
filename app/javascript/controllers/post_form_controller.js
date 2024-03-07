@@ -3,9 +3,10 @@ import TomSelect from "tom-select"
 
 // Connects to data-controller="post-form"
 export default class extends Controller {
-  static targets = ["selectInput", "newToiForm", "trailerInput", "locationInput"]
+  static targets = ["selectInput", "newToiForm", "trailerInput", "locationInput", "trailer", "location"]
 
   connect() {
+    this.toiNames = Array.from(this.selectInputTarget.options).map(opt => opt.value)
     this.buildSelect()
   }
 
@@ -46,10 +47,37 @@ export default class extends Controller {
   }
 
   itemSelected(value) {
-    console.log('selected', value);
+    // console.log('selected', value);
 
     // if (item.classList.contains("create")) {
     //   this.newToiFormTarget.classList.add("d-none");
     // }
+  }
+
+  showInputs(event) {
+    console.log(Array.from(event.currentTarget.options).find(opt => opt.selected).innerText);
+    if (Array.from(event.currentTarget.options).find(opt => opt.selected).innerText == "Cinema") {
+      this.trailerTarget.classList.remove('d-none')
+    } else {
+      this.trailerTarget.classList.add('d-none')
+    }
+    if (Array.from(event.currentTarget.options).find(opt => opt.selected).innerText == "Exposition" || Array.from(event.currentTarget.options).find(opt => opt.selected).innerText == "Spectacle") {
+      this.locationTarget.classList.remove('d-none')
+    } else {
+      this.locationTarget.classList.add('d-none')
+    }
+  }
+
+  showToiInputs(event) {
+    if (event.currentTarget.value == "") {
+      this.newToiFormTarget.classList.add('d-none')
+      return
+    }
+    const opt = this.toiNames.find(name => name == event.currentTarget.value)
+    if (opt) {
+      this.newToiFormTarget.classList.add('d-none')
+    } else {
+      this.newToiFormTarget.classList.remove('d-none')
+    }
   }
 }

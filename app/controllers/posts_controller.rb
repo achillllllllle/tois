@@ -16,13 +16,18 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    @toi = Toi.find_or_initialize_by(title: toi_params[:title])
+    @toi = Toi.find_or_initialize_by(title: toi_params[:title]) if toi_params
+    if @toi.nil?
+      flash[:alert] = "Impossible de sauvegarder la publication. Assurez-vous de remplir tous les champs requis."
+      render :new, status: :unprocessable_entity and return
+    end
+
     if @toi.new_record?
       if @toi.update(toi_params) && @toi.save
         @post.toi = @toi
       else
-        render :new, status: :unprocessable_entity
-        return
+        flash[:alert] = "Impossible de sauvegarder la publication. Assurez-vous de remplir tous les champs requis."
+        render :new, status: :unprocessable_entity and return
       end
     else
       @post.toi = @toi
@@ -31,6 +36,7 @@ class PostsController < ApplicationController
     if @post.save!
       redirect_to toi_path(@post.toi), notice: 'Ton post a bien été créé'
     else
+      flash[:alert] = "Impossible de sauvegarder la publication. Assurez-vous de remplir tous les champs requis."
       render :new, status: :unprocessable_entity
     end
   end
@@ -38,10 +44,16 @@ class PostsController < ApplicationController
   private
 
   def toi_params
+    return unless params.dig(:post, :toi_attributes)
+
     params[:post][:toi_attributes].permit!.to_h.merge({ title: params[:post][:toi] })
   end
 
   def post_params
-    params.require(:post).permit(:photo, :review, :rating, :user_id, :toi_id)
+    allowed_params = [:photo, :review, :rating, :user_id, :toi_id]
+    if params[:post].present? && params[:post].is_a?(Hash)
+      allowed_params << :additional_field if params[:post][:additional_field].present?
+    end
+    params.require(:post).permit(allowed_params)
   end
 end
