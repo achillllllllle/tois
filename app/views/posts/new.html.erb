@@ -31,10 +31,27 @@
     <div class="d-none" data-post-form-target="newToiForm">
       <p class="">Décris ton TOI</p>
       <%= f.simple_fields_for(:toi) do |ff| %>
-        <%= ff.input :description, label: "Description" %>
-        <%= ff.association :category, label: "Catégorie" %>
-        <%= ff.input :location, label: "Lieu" %>
-        <%= ff.input :photo, as: :file, label: "Image" %>
+        <%= ff.input :description,
+                      label: "Description" %>
+        <%#= ff.association :category,
+                      label: "Catégorie" %>
+        <%= ff.association :category,
+                   collection: Category.all,
+                   label_method: :name,
+                   value_method: :id,
+                   label: "Catégorie" %>
+        <%= ff.input :trailer,
+                      label: "Trailer",
+                      input_html: {
+                        data: {
+                          post_form_target: 'trailerInput'
+                        }
+                      } %>
+        <%= ff.input :location,
+                      label: "Lieu" %>
+        <%= ff.input :photo,
+                      as: :file,
+                      label: "Image" %>
       <% end %>
     </div>
 

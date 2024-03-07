@@ -3,7 +3,7 @@ import TomSelect from "tom-select"
 
 // Connects to data-controller="post-form"
 export default class extends Controller {
-  static targets = ["selectInput", "newToiForm"]
+  static targets = ["selectInput", "newToiForm", "trailerInput", "locationInput"]
 
   connect() {
     this.buildSelect()
@@ -29,6 +29,18 @@ export default class extends Controller {
     //     this.newToiFormTarget.querySelector('[name="field_description"]').value = data.field_description;
     //     // Pre-fill other fields as needed
     //   })
+
+    if (toi.category === "cinema") {
+      this.trailerInputTarget.classList.remove('d-none');
+    } else {
+      this.trailerInputTarget.classList.add('d-none');
+    }
+
+    if (toi.category === "spectacle") {
+      this.locationInputTarget.classList.remove('d-none');
+    } else {
+      this.locationInputTarget.classList.add('d-none');
+    }
 
     return { value:toiName, text:toiName }
   }
