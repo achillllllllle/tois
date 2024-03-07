@@ -1,13 +1,12 @@
 <div class="container fullheight">
 
-  <div class="row ">
+  <div class="row">
     <div class="col-md-6 d-flex justify-content-between">
-      <button type="button" class="btn btn-secondary">X</button>
-      <button type="button" class="btn btn-primary">Enregistrer</button>
+    <h1>Culture Heads</h1>
+      <button type="button" class="btn btn-secondary">+</button>
     </div>
   </div>
 
-  <h1>Culture Heads</h1>
 
   <%= simple_form_for @post,
                       html: {
@@ -28,6 +27,7 @@
                     post_form_target: 'selectInput'
                   }
                 } %>
+    <span id="toi-selected" style="display: none;">V</span>
 
     <%# TOI INPUTS %>
     <div class="d-none" data-post-form-target="newToiForm">
