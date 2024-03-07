@@ -14,9 +14,9 @@ Artist.destroy_all()
 
 puts "Creating users..."
 
-User.create!(email: "test@test.com", password: "azerty", username: "testuser")
+User.create!(email: "test@test.com", password: "azerty", username: "testuser", permitted: true)
 
-24.times do ||
+24.times do
   User.create!(
     email: "#{Faker::Internet.email}",
     password: "123456",
