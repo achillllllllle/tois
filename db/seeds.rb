@@ -1,9 +1,5 @@
 puts "Clearing existing data..."
 
-
-
-
-
 # Destroy de toute les instances
 User.destroy_all()
 Category.destroy_all()
@@ -14,7 +10,7 @@ Artist.destroy_all()
 
 puts "Creating users..."
 
-User.create!(email: "test@test.com", password:"azerty", username:"testuser")
+User.create!(email: "test@test.com", password: "azerty", username: "testuser")
 
 24.times do ||
   User.create!(
@@ -649,7 +645,6 @@ ITEMS = {
   }
 }
 
-
 def dynamic_content_for_toi(category_id)
   category = Category.find(category_id)
 
@@ -677,7 +672,7 @@ def dynamic_content_for_toi(category_id)
   exposition_trailer = ITEMS[exposition_book][:trailer]
   exposition_name = ITEMS[exposition_book][:artists]
 
- case category.name
+  case category.name
   when "Cinema"
     {
       title: cinema_film,

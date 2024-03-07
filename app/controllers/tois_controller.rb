@@ -9,6 +9,11 @@ class ToisController < ApplicationController
     @posts = @toi.followed_users_posts(current_user)
   end
 
+  def find_toi
+    toi = Toi.find_by(name: params[:name])
+    render json: toi
+  end
+
   private
 
   def set_toi
