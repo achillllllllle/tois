@@ -1,6 +1,6 @@
 <div class="d-flex flex-column align-items-center justify-content-center align-middle">
   <% if current_user&.permitted? %>
-    <div id="welcome-message" class="welcome-animation mt-6" style="padding-top: 140px;">
+    <div id="welcome-message" class="welcome-animation mt-6" style="margin-top: 60%;">
       <h2 class="fa-2x">Welcome</h2>
       <h3 class="fw-bold text-primary fa-3x"><%= current_user.username %></h3>
     </div>
@@ -10,7 +10,7 @@
       }, 1500);
     </script>
   <% else %>
-    <div class="d-flex flex-column justify-content-center align-items-center p-3">
+    <div class="d-flex flex-column justify-content-center align-items-center p-3" style="margin-top: 60%;">
       <div class="d-flex justify-content-center align-items-center mb-4">
         <i class="text-white fa-solid fa-lock fa-2xl me-2 animate__animated animate__headShake animate__infinite"></i>
         <h3 class="m-0 fw-bold">You're locked!</h3>
