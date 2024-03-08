@@ -3,11 +3,12 @@ import TomSelect from "tom-select"
 
 // Connects to data-controller="post-form"
 export default class extends Controller {
-  static targets = ["selectInput", "newToiForm", "trailerInput", "locationInput", "trailer", "location"]
+  static targets = ["selectInput", "newToiForm", "trailer", "location", "label", "input"]
 
   connect() {
     this.toiNames = Array.from(this.selectInputTarget.options).map(opt => opt.value)
     this.buildSelect()
+    this.inputTarget.addEventListener("change", this.updateLabel.bind(this));
   }
 
   buildSelect() {
@@ -52,5 +53,10 @@ export default class extends Controller {
     } else {
       this.newToiFormTarget.classList.remove('d-none')
     }
+  }
+
+  updateLabel(event) {
+    const fileName = event.target.value.split("\\").pop();
+    this.labelTarget.innerHTML = `<i class="fa-solid fa-camera"></i> ${fileName}`;
   }
 }
