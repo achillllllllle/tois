@@ -37,6 +37,7 @@ class PostsController < ApplicationController
       @post.rating = @post.rating * 2
       @post.save
       current_user.permitted = true
+      current_user.save
       redirect_to toi_path(@post.toi), notice: 'Ton post a bien été créé'
     else
       flash[:alert] = "Infos manquantes..."
