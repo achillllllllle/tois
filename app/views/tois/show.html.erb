@@ -11,7 +11,7 @@
       <div class="card border border-primary bg-white border-4">
         <div class="infos d-flex justify-content-between w-100 ">
           <div class="d-flex align-items-end">
-          <%= cl_image_tag @user.photo.key, class: "avatar"  %>
+          <%= cl_image_tag post.user.photo.key, class: "avatar"  %>
             <h3 class="text-dark fw-bold"> @<%= post.user.username %> </h3>
           </div>
           <div class="stars text-primary">
