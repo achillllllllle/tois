@@ -1,35 +1,49 @@
-<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-white footer-height menu-bar">
-  <%= link_to new_post_path do %>
-    <i class="fa-solid fa-circle-plus plus-menu-bar"></i>
-  <% end %>
-  <div class="container-fluid d-flex justifiy-content-around mx-2">
-    <%= link_to my_feed_path do %>
-      <div class="flex-grow-1 text-center p-2 ">
-        <i class="fa-solid fa-house text-white fa-xl icon-menu-bar"></i>
-      </div>
-    <% end %>
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-white footer-height menu-bar custom-navbar-height">
+  <div class="container-fluid d-flex justify-content-between align-items-center mx-2">
+    <!-- Partie gauche -->
+    <div class="d-flex">
+      <%= link_to my_feed_path do %>
+        <div class="text-center p-2">
+          <i class="fa-solid fa-house text-white fa-2x icon-menu-bar"></i>
+        </div>
+      <% end %>
 
-    <%= link_to tois_path do %>
-      <div class="flex-grow-1 text-center p-2">
-          <i class="fa-solid fa-magnifying-glass text-white fa-xl icon-menu-bar"></i>
-      </div>
-    <% end %>
+      <!-- Espace vide -->
+      <div class="p-3"></div>
 
-    <div class="flex-grow-auto text-center p-2">
-      <i class=""></i>
+      <%= link_to tois_path do %>
+        <div class="text-center p-2">
+          <i class="fa-solid fa-magnifying-glass text-white fa-2x icon-menu-bar"></i>
+        </div>
+      <% end %>
     </div>
 
-    <%= link_to bookmarks_path do %>
-      <div class="flex-grow-1 text-center p-2">
-          <i class="fa-solid fa-bookmark text-white fa-xl icon-menu-bar"></i>
-      </div>
-    <% end %>
+    <!-- Partie centrale -->
+    <div class="text-center">
+      <%= link_to new_post_path do %>
+        <i class="fa-solid fa-circle-plus plus-menu-bar fa-3x"></i>
+      <% end %>
+    </div>
 
-    <%= link_to user_path(current_user) do %>
-      <div class="flex-grow-1 text-center p-2">
-          <i class="fa-solid fa-user text-white fa-xl icon-menu-bar"></i>
+    <!-- Partie droite -->
+    <div class="d-flex">
+      <%= link_to bookmarks_path do %>
+        <div class="text-center p-2">
+          <i class="fa-solid fa-bookmark text-white fa-2x icon-menu-bar"></i>
+        </div>
+      <% end %>
+
+      <!-- Espace vide -->
+      <div class="p-3"></div>
+
+      <div class="text-center p-2">
+        <%= link_to user_path(current_user) do %>
+          <div class="avatar-circle">
+            <i class="fa-solid fa-user text-white fa-2x icon-menu-bar"></i>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </nav>
 <div class="footer-height"></div>
