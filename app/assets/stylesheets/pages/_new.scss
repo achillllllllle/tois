@@ -52,4 +52,7 @@
   .form-control, .form-select, .ts-control input, .ts-dropdown-content {
     font-size: large;
   }
+  [data-star-rating] {
+    z-index: 1;
+  }
 }
