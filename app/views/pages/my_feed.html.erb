@@ -1,7 +1,13 @@
 <div class="container my-feed fullheight">
-  <div class="heading">
-    <h1 class="fa-7x fw-bold">My feed</h1>
+  <div class="logo">
+    <h1>Culture Heads</h1>
   </div>
+
+  <div class="feed-title">
+    <h1>My</h1>
+    <h1>feed<i class="fa-solid fa-play play-logo"></i></h1>
+  </div>
+
   <% @tois.each_with_index do |toi, index| %>
     <%= link_to toi_path(toi) do %>
       <div class="card flex-row justify-content-between <%= "bg-color-#{(index % 3) + 1}" %>">

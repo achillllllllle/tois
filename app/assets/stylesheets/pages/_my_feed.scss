@@ -1,9 +1,10 @@
 .my-feed {
 
-  h1 {
-    line-height: 95px;
-    
+  .logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
+
   .avatar {
     height: 30px;
     width: 30px;
@@ -54,10 +55,23 @@
     vertical-align: middle;
   }
 
+  .feed-title {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    h1 {
+      font-size: 85px;
+      font-weight: bold;
+      line-height: 60px;
+      .play-logo {
+        font-size: 60px;
+        margin-left: 20px;
+      }
+    }
+  }
+
   a {
     text-decoration: none !important;
   }
-
 
   h2, p {
     color: black;
