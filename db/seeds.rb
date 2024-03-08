@@ -12,16 +12,35 @@ Post.destroy_all()
 ToiArtist.destroy_all()
 Artist.destroy_all()
 
-puts "Creating users..."
 
-User.create!(email: "test@test.com", password: "azerty", username: "testuser", permitted: true)
+# User.create!(email: "test@test.com", password: "azerty", username: "testuser", permitted: true)
 
-24.times do
-  User.create!(
+user_name = ["oscar", "antoine", "sacha", "constance", "alexandre", "ahmed", "fares", "victoria", "sofiane", "ophelie", "samuel", "kim", "theophile", "guillaume", "anouar", "zena", "wilfried", "isaiah", "coralie", "clemence", "nicolas", "clothilde", "gabrielle", "pierre"]
+
+
+puts "Creating users, Estimated waiting #{user_name.length * 2} secondes..."
+
+user_name.each do |name|
+
+
+  cloudinary_image_url_avatar = "https://res.cloudinary.com/drrbvxo6s/image/upload/#{name}"
+  puts cloudinary_image_url_avatar
+
+  avatar = URI.open(cloudinary_image_url_avatar)
+
+
+  user_photo = User.new(
     email: "#{Faker::Internet.email}",
     password: "123456",
-    username: "#{Faker::Name.first_name}",
-    permitted: [true,false].sample)
+    username: name,
+    permitted: [true,false].sample
+    )
+
+  user_photo.photo.attach(io: avatar, filename: "nes.png", content_type: "image/jpg")
+  user_photo.save
+
+
+
 end
 
 puts "#{User.count} users created successfully!"
