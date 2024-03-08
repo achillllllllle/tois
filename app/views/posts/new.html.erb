@@ -70,13 +70,19 @@
                       input_html: {
                         class: 'simple-form-input'
                       } %>
-        <%= ff.input :photo,
+        <%#= ff.input :photo,
                       as: :file,
                       placeholder: "Image",
                       label: false,
                       input_html: {
                         class: 'simple-form-input'
                       } %>
+        <div class="mb-3 d-flex justify-content-center">
+          <label for="photo-upload" class="custom-file-upload" data-post-form-target="label">
+            <i class="fa-solid fa-camera"></i> Choisis une photo
+          </label>
+          <%= f.file_field :photo, class: "simple-form-input d-none", id: "photo-upload", data: { post_form_target: 'input' } %>
+        </div>
       <% end %>
     </div>
 
