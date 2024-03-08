@@ -93,14 +93,17 @@
                 include_blank: "Donne une note",
                 label: false,
                 input_html: {
-                  class: 'simple-form-input'
+                  class: 'simple-form-input',
+                  data: {
+                    controller: "star-rating",
+                  }
                 } %>
     <%= f.input :review,
                 placeholder: "Commentaire",
                 label: false,
                 input_html: {
                   rows: 4,
-                  class: 'simple-form-input'
+                  class: 'simple-form-input',
                 } %>
 
     <%= f.button :submit,
