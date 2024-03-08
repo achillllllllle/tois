@@ -5,8 +5,8 @@ require "open-uri"
 
 
 # Destroy de toute les instances
-User.destroy_all()
 Friend.destroy_all()
+User.destroy_all()
 Category.destroy_all()
 Toi.destroy_all()
 Post.destroy_all()
