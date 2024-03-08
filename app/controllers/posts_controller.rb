@@ -23,7 +23,6 @@ class PostsController < ApplicationController
     end
 
     if @toi.new_record?
-      raise
       if @toi.update(toi_params) && @toi.save
         @post.toi = @toi
       else
