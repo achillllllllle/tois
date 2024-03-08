@@ -24,7 +24,7 @@ user_name.each do |name|
 
 
   cloudinary_image_url_avatar = "https://res.cloudinary.com/drrbvxo6s/image/upload/#{name}"
-  puts cloudinary_image_url_avatar
+
 
   avatar = URI.open(cloudinary_image_url_avatar)
 
