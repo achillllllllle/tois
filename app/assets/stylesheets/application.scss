@@ -57,10 +57,10 @@
   -webkit-box-orient: vertical;
 }
 
-body {
-  overscroll-behavior: none;
+.sign-in .form-control {
+  color: white !important;
 }
 
-.form-control {
-  color: white !important;
+html {
+  overscroll-behavior: none!important;
 }

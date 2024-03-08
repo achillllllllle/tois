@@ -5,32 +5,17 @@
   <% @tois.each_with_index do |toi, index| %>
     <%= link_to toi_path(toi) do %>
       <div class="card flex-row justify-content-between <%= "bg-color-#{(index % 3) + 1}" %>">
-        <div class="infos d-flex p-1">
-          <div class="">
+        <div class="p-1">
+          <div class="infos d-flex mb-2">
+            <img class="avatar d-block me-2" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="placeholder avatar" style="width:40px; height:40px">
             <div>
-              <h3 class="text-dark fw-bold"><%= toi.title %></h3>
-              <div class="avatars-container">
-                <% posts = toi.followed_users_posts(current_user) %>
-                <% if posts.count < 2 %>
-                  <% posts.each do |post| %>
-                    <img class="avatar" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
-                    <span class="user-name"> @<%= post.user.username %></span>
-                  <% end %>
-                <% else %>
-                  <% posts.each_with_index do |post, index| %>
-                    <% if index < 4 %>
-                      <img class="avatar" style="z-index: <%= 1000 - index %>; margin-left: <%= index * -10 %>px;" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
-                    <% end %>
-                  <% end %>
-                  <% if posts.count > 4 %>
-                    <span class="more-avatars">+<%= posts.count - 4 %> others</span>
-                  <% end %>
-                <% end %>
-              </div>
+              <h2 class="fw-bold"><%= toi.title  %></h2>
+              <p class="user">@<%= toi.posts.last.user.username %></p>
             </div>
           </div>
+        <p><%= toi.posts.last.review  %></p>
         </div>
-        <img class="photo" src="https://www.originaltravel.co.uk/travel-blog/ShowPhoto/3521/0" alt="">
+      <%= cl_image_tag toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
       </div>
     <% end %>
   <% end %>
