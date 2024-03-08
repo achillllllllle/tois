@@ -5,8 +5,8 @@ require "open-uri"
 
 
 # Destroy de toute les instances
-Friend.destroy_all()
 User.destroy_all()
+Friend.destroy_all()
 Category.destroy_all()
 Toi.destroy_all()
 Post.destroy_all()
@@ -1100,11 +1100,7 @@ critiques = {
 }
 
 def post_function(rating, toi_title, critiques)
-  base_critique = critiques[toi_title] || [
-  "Une réalisation époustouflante qui redéfinit le genre. À voir absolument !",
-  "Une proposition intéressante, bien que certains aspects mériteraient d'être peaufinés.",
-  "Malgré quelques efforts notables, le résultat final peine à convaincre."
-]
+  base_critique = critiques[toi_title] || ["Default critique positive", "Default critique neutral", "Default critique negative"]
 
   critique = case rating
              when 0..2

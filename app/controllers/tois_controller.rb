@@ -7,7 +7,6 @@ class ToisController < ApplicationController
 
   def show
     @posts = @toi.followed_users_posts(current_user)
-    @user = User.first
   end
 
   def find_toi

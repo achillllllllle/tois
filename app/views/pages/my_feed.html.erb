@@ -10,10 +10,10 @@
 
   <% @tois.each_with_index do |toi, index| %>
     <%= link_to toi_path(toi) do %>
-      <div id="avatar-size" class="card flex-row justify-content-between <%= "bg-color-#{(index % 3) + 1}" %>">
+      <div class="card flex-row justify-content-between <%= "bg-color-#{(index % 3) + 1}" %>">
         <div class="p-1">
           <div class="infos d-flex mb-2">
-          <%= cl_image_tag  toi.posts.last.user.photo.key, class: "avatar"  %>
+            <img class="avatar d-block me-2" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="placeholder avatar" style="width:40px; height:40px">
             <div>
               <h2 class="fw-bold"><%= toi.title  %></h2>
               <p class="user">@<%= toi.posts.last.user.username %></p>
