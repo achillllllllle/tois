@@ -59,10 +59,12 @@
   padding-left: 0.5em;
 }
 
-body {
-  overscroll-behavior: none;
-}
-
-.form-control {
+.sign-in .form-control {
   color: white !important;
 }
+
+html {
+  overscroll-behavior: none!important;
+}
+
+

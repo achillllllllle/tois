@@ -1,23 +1,25 @@
-.is-valid {
+.form-new {
+
+ .is-valid {
   --bs-form-select-bg-icon: "" !important;
   padding-right: 0.875rem !important;
-}
+  }
 
-.ts-control {
+  .ts-control {
   border: none !important;
-}
+  }
 
-.container.fullheight {
+  .container.fullheight {
   margin-top: 30px;
   margin-bottom: 40px;
-}
+  }
 
-h1, .h1 {
+  h1, .h1 {
   font-size: 25px;
   margin-bottom: 2rem;
-}
+  }
 
-.btn-secondary {
+  .btn-secondary {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -37,12 +39,17 @@ h1, .h1 {
     background-color: lightgray;
     border: none;
   }
-}
+  }
 
-.custom-file-upload {
+  .custom-file-upload {
   color: white;
   background-color: #303030;
   padding: 10px 15px;
   border-radius: 10px;
   cursor: pointer;
+  }
+
+  .form-control, .form-select, .ts-control input, .ts-dropdown-content {
+    font-size: large;
+  }
 }

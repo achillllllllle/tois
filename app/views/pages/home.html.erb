@@ -1,6 +1,6 @@
-<div class="d-flex flex-column align-items-center justify-content-center align-middle" style="height: 100vh; background-image: url('C:\Users\Utilisateur\Pictures\figma\bgfullscreen.jpg')">
+<div class="d-flex flex-column align-items-center justify-content-center align-middle">
   <% if current_user&.permitted? %>
-    <div id="welcome-message" class="welcome-animation">
+    <div id="welcome-message" class="welcome-animation mt-6" style="padding-top: 140px;">
       <h2 class="fa-2x">Welcome</h2>
       <h3 class="fw-bold text-primary fa-3x"><%= current_user.username %></h3>
     </div>

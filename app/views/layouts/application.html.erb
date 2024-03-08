@@ -2,8 +2,7 @@
 <html>
   <head>
     <title>Tois</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=5, minimal-ui">    <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -15,12 +14,14 @@
     <%= render 'shared/ios_pwa_links' %>
 
     <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="https://ga.jspm.io/npm:star-rating.js@4.3.0/dist/star-rating.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   </head>
-
-  <body>
+  <% if current_page?(root_path) %>
+    <body style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/drrbvxo6s/image/upload/v1709898890/jcpr5ewa4jcxpnuwqn6n.jpg')">
+  <% else %>
+    <body>
+  <% end %>
     <%= render "shared/flashes" %>
     <div class="page-transition">
     <%= yield %>
