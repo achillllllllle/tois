@@ -1,16 +1,38 @@
-.title {
-  h1 {
-    font-size: 5rem;
-    font-weight: bold;
-    line-height: 25px;
+.my-bookmarks {
+
+  // .title {
+  //   h1 {
+  //     font-size: 5rem;
+  //     font-weight: bold;
+  //     line-height: 25px;
+  //   }
+
+  //   h1.smaller {
+  //     font-size: 4rem;
+  //   }
+  // }
+
+  // .icon-save {
+  //   font-size: 50px;
+  //   margin-left: 40px;
+  // }
+
+  .logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
-  h1.smaller {
-    font-size: 4rem;
+  .bookmark-title {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    h1 {
+      font-size: 85px;
+      font-weight: bold;
+      line-height: 80px;
+      .save-logo {
+        font-size: 60px;
+        margin-left: 20px;
+      }
+    }
   }
-}
-
-.icon-save {
-  font-size: 50px;
-  margin-left: 40px;
 }
