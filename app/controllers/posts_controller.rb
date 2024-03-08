@@ -34,6 +34,8 @@ class PostsController < ApplicationController
     end
 
     if @post.save!
+      @post.rating = @post.rating * 2
+      @post.save
       current_user.permitted = true
       redirect_to toi_path(@post.toi), notice: 'Ton post a bien été créé'
     else
