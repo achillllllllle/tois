@@ -20,7 +20,7 @@
   }
 
   .form-control {
-    background-color: white!important;
+    background-color: white !important;
   }
 
   .avatars-container {
@@ -30,23 +30,31 @@
   }
 
   .bg-color-1 {
-    background-color: #40FA43; /* Vert */
+    background-color: #40FA43;
+    /* Vert */
   }
 
   .bg-color-2 {
-    background-color: #7B7BFF; /* Bleu */
+    background-color: #7B7BFF;
+    /* Bleu */
   }
 
   .bg-color-3 {
-    background-color: #E0FA41; /* Jaune */
+    background-color: #E0FA41;
+    /* Jaune */
   }
+
   .user-name {
     display: inline-block;
     margin-left: 10px;
     vertical-align: middle;
   }
+
   a {
-    text-decoration: none!important;
+    text-decoration: none !important;
   }
 
+  h1 {
+    line-height: 95px;
+  }
 }
