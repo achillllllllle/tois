@@ -1,6 +1,6 @@
 .menu-bar {
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
   z-index: 10000;
   position: sticky;
 }
@@ -12,7 +12,7 @@
 .plus-menu-bar {
   color: $flashy-green;
   position: absolute;
-  font-size: 60px;
+  font-size: 70px;
   left: 50%;
   bottom: 50%;
   z-index: 7;
@@ -33,6 +33,7 @@
     z-index: -1;
   }
 }
+
 .fullheight {
   min-height: calc(100vh - 56px);
 }
