@@ -1,6 +1,6 @@
 <div class="fullheight">
   <div>
-    <img src="https://i0.wp.com/nigoun.fr/wp-content/uploads/2022/04/placeholder.png?ssl=1" alt="placeholder seulement" class="img-show">
+    <%= cl_image_tag @toi.photo.key, height: 300, crop: :fill, class: "img-show" %>
     <div class="card-img-overlay d-flex align-items-end">
       <h5 class="card-title category px-4 py-2 rounded-pill bg-primary">#<%= @toi.category.name.downcase %> </h5>
     </div>
