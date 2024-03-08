@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @toi = Toi.find_or_initialize_by(title: toi_params[:title]) if toi_params
     if @toi.nil?
-      flash[:alert] = "Impossible de sauvegarder la publication. Assurez-vous de remplir tous les champs requis."
+      flash[:alert] = "Infos manquantes..."
       render :new, status: :unprocessable_entity and return
     end
 
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
       if @toi.update(toi_params) && @toi.save
         @post.toi = @toi
       else
-        flash[:alert] = "Impossible de sauvegarder la publication. Assurez-vous de remplir tous les champs requis."
+        flash[:alert] = "Infos manquantes..."
         render :new, status: :unprocessable_entity and return
       end
     else
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     if @post.save!
       redirect_to toi_path(@post.toi), notice: 'Ton post a bien été créé'
     else
-      flash[:alert] = "Impossible de sauvegarder la publication. Assurez-vous de remplir tous les champs requis."
+      flash[:alert] = "Infos manquantes..."
       render :new, status: :unprocessable_entity
     end
   end
