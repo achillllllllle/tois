@@ -16,7 +16,7 @@
     background-color: $flashy-green;
     margin-bottom: 15px;
     padding: 15px;
-    border-radius: 50px;
+    border-radius: 40px;
   }
 
   .form-control {
@@ -54,7 +54,28 @@
     text-decoration: none !important;
   }
 
-  h1 {
-    line-height: 95px;
+
+  h2, p {
+    color: black;
+    margin-bottom: 0px;
+  }
+
+  .user {
+    font-size: 13px;
+  }
+
+  h2 {
+    font-size: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 185px;
+  }
+
+  .img-toi {
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    border-radius: 25%;
   }
 }
