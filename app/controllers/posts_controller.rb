@@ -50,11 +50,11 @@ class PostsController < ApplicationController
   def toi_params
     return unless params.dig(:post, :toi_attributes)
 
-    params[:post][:toi_attributes].permit!.to_h.merge({ title: params[:post][:toi] })
+    params[:post][:toi_attributes].permit!.to_h.merge({ title: params[:post][:toi], photo: params[:post][:photo]  })
   end
 
   def post_params
-    allowed_params = [:photo, :review, :rating, :user_id, :toi_id]
+    allowed_params = [:review, :rating, :user_id, :toi_id]
     if params[:post].present? && params[:post].is_a?(Hash)
       allowed_params << :additional_field if params[:post][:additional_field].present?
     end
