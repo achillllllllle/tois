@@ -30,6 +30,7 @@ user_name.each do |name|
   avatar = URI.open(cloudinary_image_url_avatar)
 
 
+
   user_photo = User.new(
     email: "#{Faker::Internet.email}",
     password: "123456",
@@ -722,16 +723,15 @@ compteur = 0
 ITEMS.each do |name, infos|
   compteur += 1
   title_toi = infos[:title]
+  formatted_string = normalize_string(title_toi)
 
-  normalized_string = normalize_string(title_toi)
+
+
+
+
   if compteur == 40
     puts "Still in progress: Estimated waiting #{40 * 2 / 60} minutes..."
   end
-
-
-  cloudinary_image_url = "https://res.cloudinary.com/drrbvxo6s/image/upload/#{normalized_string}"
-
-  file = URI.open(cloudinary_image_url)
 
   toi = Toi.new(
     title: title_toi,
@@ -739,8 +739,18 @@ ITEMS.each do |name, infos|
     location: Faker::Address.full_address,
     description: infos[:description],
     trailer: infos[:trailer]
-  )
+    )
+
+
+  cloudinary_image_url = "https://res.cloudinary.com/drrbvxo6s/image/upload/#{formatted_string}"
+
+  file = URI.open(cloudinary_image_url)
+
+
+
   toi.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+  toi.save
+  toi.title = name
   toi.save
 
   infos[:artists].each do |name|
@@ -1096,15 +1106,140 @@ critiques = {
   "Un thriller dystopique captivant qui explore les thèmes de l'identité, du choix et de la résistance dans une société divisée en factions basées sur les vertus humaines.",
   "Avec son intrigue riche et son univers bien construit, 'Divergente' entraîne les spectateurs dans une aventure pleine de suspense et d'action, portée par des performances solides et un développement de personnage convaincant.",
   "Inspirant et haletant, bien que certains éléments de l'histoire puissent sembler familiers aux amateurs du genre dystopique, 'Divergente' se distingue par sa réflexion sur le courage et l'individualité."
-]
+],
+"Sleep No More" => [
+  "Une expérience théâtrale immersive et unique qui brouille les frontières entre spectacle et public, plongeant les spectateurs dans une atmosphère sombre inspirée de Macbeth.",
+  "Cette production audacieuse invite les spectateurs à explorer librement les espaces mystérieux, découvrant des scènes théâtrales intenses et des performances interactives au détour des couloirs.",
+  "Envoûtant et mystérieux, bien que certains participants puissent souhaiter une orientation plus claire dans le labyrinthe narratif complexe de l'expérience."
+],
+"Le Parrain" => [
+  "Un chef-d'œuvre cinématographique intemporel qui plonge les spectateurs dans l'univers impitoyable de la mafia italo-américaine à travers l'ascension de la famille Corleone.",
+  "Ce film épique, réalisé par Francis Ford Coppola, explore les thèmes de la loyauté, du pouvoir et de la corruption, avec des performances légendaires qui ont marqué l'histoire du cinéma.",
+  "Captivant et profondément émouvant, bien que certains critiques puissent désirer une représentation plus nuancée des figures féminines dans le récit."
+],
+"Les Nymphéas de Monet : La Magie de l'Eau et de la Lumière" => [
+  "Une plongée fascinante dans l'un des chefs-d'œuvre les plus emblématiques de Claude Monet, où l'eau et la lumière fusionnent pour créer une expérience visuelle sans pareille.",
+  "Cette exposition dévoile l'obsession de Monet pour capturer les nuances changeantes de la lumière sur l'étang de son jardin à Giverny, offrant une immersion profonde dans son processus artistique.",
+  "Envoûtante et poétique, bien que certains visiteurs puissent rechercher une contextualisation plus approfondie de l'impact de ces œuvres sur l'art moderne."
+],
+"Vermeer : L'Âge d'Or de l'Art Hollandais" => [
+  "Une exploration intime de l'œuvre de Johannes Vermeer, mettant en lumière sa maîtrise exceptionnelle de la lumière et du détail qui définit l'âge d'or de l'art hollandais.",
+  "L'exposition offre une rare occasion de voir de près certaines des peintures les plus célèbres de Vermeer, révélant les techniques subtiles et la précision émotionnelle de l'artiste.",
+  "Captivante et éducative, bien que certains visiteurs puissent désirer une analyse plus poussée des influences et de l'héritage de Vermeer dans l'histoire de l'art."
+],
+"Les Évadés" => [
+  "Une épopée captivante de résilience et d'amitié au sein des murs oppressants de la prison de Shawshank, où deux hommes, liés par l'espoir et l'ingéniosité, défient leur destin.",
+  "Ce récit explore la force intérieure et la quête de liberté face à l'injustice, à travers les yeux d'Andy Dufresne, un banquier injustement condamné, et de Red, le fixeur de la prison.",
+  "Profondément émouvant et inspirant, bien que certains lecteurs puissent rechercher une exploration plus approfondie des personnages secondaires et du contexte social de l'époque."
+],
+"Les Jeux de la Faim" => [
+  "Une aventure dystopique haletante où courage, survie et rébellion se mêlent dans l'arène impitoyable des Jeux de la Faim, un combat télévisé à mort entre jeunes issus des différents districts.",
+  "Ce roman suit le parcours de Katniss Everdeen, une jeune fille du District 12, qui se porte volontaire pour participer aux jeux à la place de sa petite sœur, déclenchant une série d'événements qui remettront en question le pouvoir tyrannique du Capitole.",
+  "Captivant et réfléchi, bien que certains lecteurs puissent désirer une exploration plus détaillée des dynamiques politiques et des répercussions psychologiques sur les participants des jeux."
+],
+"Magritte : Ceci n'Est Pas une Pipe" => [
+  "Une immersion profonde dans l'univers surréaliste de René Magritte, où le célèbre tableau 'La trahison des images' défie notre perception de la réalité et de l'art.",
+  "Cette exploration détaille comment Magritte utilise des objets quotidiens, les transformant par l'art pour questionner l'observateur sur la nature de la représentation et la réalité.",
+  "Intrigant et provocateur, bien que certains amateurs d'art puissent désirer une analyse plus approfondie des influences philosophiques et culturelles derrière l'œuvre de Magritte."
+],
+"Le Seigneur des Anneaux: La Communauté de l'Anneau" => [
+  "Une aventure épique à travers la Terre du Milieu, où Frodon Sacquet, un jeune hobbit, se voit confier une quête périlleuse : détruire l'Anneau Unique pour mettre fin au règne de Sauron.",
+  "Accompagné par la Communauté, composée de hobbits, d'hommes, d'un magicien, d'un nain et d'un elfe, Frodon doit traverser des terres hostiles, peuplées de créatures maléfiques et de dangers imprévus.",
+  "Captivant et richement détaillé, bien que certains lecteurs puissent rechercher une exploration plus profonde des nombreux personnages secondaires et de leurs histoires personnelles."
+],
+"Turner : Peintures de Lumière" => [
+  "Une exploration éblouissante de l'œuvre de J.M.W. Turner, maître incontesté de la lumière, dont les peintures révolutionnaires ont redéfini les frontières de l'art paysager et maritime.",
+  "Cet aperçu met en lumière comment Turner a capturé l'essence éphémère de la lumière et de l'atmosphère, fusionnant ciel et mer dans des toiles vibrantes d'émotion et de mouvement.",
+  "Fascinant et innovant, bien que certains amateurs d'art puissent désirer une exploration plus approfondie des techniques et des influences qui ont façonné l'approche unique de Turner."
+],
+"Raphaël : Le Seigneur des Arts" => [
+  "Une exploration captivante de la vie et de l'œuvre de Raphaël, l'un des maîtres de la Renaissance, dont les peintures et fresques définissent encore aujourd'hui l'idéal de la beauté artistique.",
+  "Ce récit met en lumière le talent exceptionnel de Raphaël pour la composition, la couleur et la forme, illustrant comment son œuvre a influencé l'art et la culture bien au-delà de son époque.",
+  "Enrichissant et inspirant, bien que certains amateurs d'art puissent désirer une analyse plus approfondie des techniques spécifiques de Raphaël et de son impact sur ses contemporains et les générations futures."
+],
+"Mamma Mia! - Comédie Musicale" => [
+  "Une explosion joyeuse de musique et de danse, ancrée dans les hits intemporels d'ABBA, qui raconte l'histoire touchante de famille, d'amitié et d'amour sur une île grecque idyllique.",
+  "L'intrigue se tisse autour de Sophie, qui, à la veille de son mariage, invite secrètement trois hommes du passé de sa mère, espérant découvrir l'identité de son père et l'avoir à ses côtés pour son grand jour.",
+  "Entraînante et émouvante, bien que certains spectateurs puissent désirer une exploration plus approfondie des relations et des conflits internes des personnages."
+],
+"Le Silence des Agneaux" => [
+  "Un thriller psychologique haletant qui suit Clarice Starling, une jeune recrue du FBI, dans sa quête pour capturer un tueur en série, avec l'aide d'Hannibal Lecter, un brillant psychiatre devenu cannibale.",
+  "Ce récit plonge le lecteur dans une atmosphère sombre et tendue, où le danger et la manipulation psychologique se cachent à chaque page, testant les limites de l'esprit humain et de la moralité.",
+  "Captivant et profondément perturbant, bien que certains lecteurs puissent désirer une exploration plus approfondie des dynamiques psychologiques entre les personnages principaux."
+],
+"Phantom of the Opera à Broadway" => [
+  "Une expérience théâtrale envoûtante qui transporte le public dans les profondeurs mystérieuses de l'Opéra de Paris, où un fantôme masqué mène une existence solitaire et nourrit une passion obsessionnelle pour une jeune soprano talentueuse.",
+  "Cette production légendaire mêle amour, jalousie, et musique spectaculaire, offrant des performances vocales puissantes, des décors somptueux et une mise en scène à couper le souffle qui a captivé les spectateurs du monde entier.",
+  "Magique et mémorable, bien que certains spectateurs puissent rechercher une exploration plus profonde des émotions et du passé mystérieux du Fantôme."
+],
+"Harry Potter à l'école des sorciers" => [
+  "Une aventure magique qui commence lorsque Harry Potter, un jeune orphelin, découvre qu'il est en fait un sorcier et est invité à étudier à l'école de sorcellerie de Poudlard.",
+  "Au fil de sa première année à Poudlard, Harry se lie d'amitié avec Ron Weasley et Hermione Granger, apprend les bases de la magie et découvre la vérité sur la mort de ses parents et le mystérieux Lord Voldemort.",
+  "Enchantant et plein de merveilles, bien que certains lecteurs puissent chercher une exploration plus profonde des arrière-plans et des motivations des personnages secondaires."
+],
+"Ne tirez pas sur l'oiseau moqueur" => [
+  "Un roman profondément émouvant qui explore les thèmes de l'innocence, de la justice et de la moralité à travers les yeux de Scout Finch, une jeune fille grandissant dans l'Alabama des années 1930.",
+  "L'histoire se concentre sur le procès d'un homme noir accusé à tort de viol, défendu par Atticus Finch, le père de Scout, qui se bat contre les préjugés raciaux ancrés dans sa communauté.",
+  "Puissant et provocateur, bien que certains lecteurs puissent rechercher une exploration plus approfondie des perspectives des personnages secondaires et de l'impact de l'événement sur la communauté dans son ensemble."
+],
+"Les Misérables - Comédie Musicale" => [
+  "Une épopée musicale bouleversante qui narre les destins croisés de personnages emblématiques dans la France du 19e siècle, sur fond de lutte pour la justice et la rédemption.",
+  "Cette adaptation magistrale du roman de Victor Hugo plonge le spectateur au cœur des révoltes populaires, à travers les yeux de Jean Valjean, un ancien forçat en quête de salut, confronté à l'implacable inspecteur Javert.",
+  "Puissante et émouvante, bien que certains spectateurs puissent désirer une exploration plus approfondie des nombreux personnages secondaires et de leurs histoires personnelles."
+],
+"Le Cirque Invisible" => [
+  "Une expérience théâtrale et circassienne unique, où Jean-Baptiste Thierrée et Victoria Chaplin transforment la scène en un monde de rêves et d'illusions, mêlant magie, acrobaties et poésie visuelle.",
+  "Ce spectacle enchanteur invite les spectateurs à plonger dans l'imaginaire, avec des numéros qui défient la réalité, des costumes métamorphoses et une mise en scène où le merveilleux côtoie le fantastique.",
+  "Captivant et mystérieux, bien que certains spectateurs puissent désirer une trame narrative plus claire au milieu de cette féérie visuelle et acrobatique."
+],
+"La Famille Bélier" => [
+  "Une comédie dramatique touchante qui raconte l'histoire de Paula, une adolescente dotée d'une voix exceptionnelle, la seule entendante dans une famille de sourds, confrontée au dilemme de poursuivre ses rêves musicaux ou de rester auprès de sa famille.",
+  "Le film explore avec humour et sensibilité les dynamiques familiales uniques des Bélier, tout en abordant des thèmes universels tels que l'indépendance, l'identité et le passage à l'âge adulte.",
+  "Émouvant et inspirant, bien que certains spectateurs puissent rechercher une exploration plus profonde des perspectives des personnages sourds au-delà des interactions familiales."
+],
+"Holiday on Ice" => [
+  "Un spectacle sur glace époustouflant qui combine des performances de patinage artistique de haut niveau avec des costumes éblouissants, des décors impressionnants et une musique captivante, offrant une expérience visuelle et émotionnelle inégalée.",
+  "Cette production emmène les spectateurs dans un voyage féerique à travers différents thèmes et histoires, où chaque numéro de patinage est conçu pour émerveiller et captiver, grâce à l'agilité et l'expression artistique des patineurs.",
+  "Enchantant et visuellement spectaculaire, bien que certains spectateurs puissent désirer une trame narrative plus continue, le charme du spectacle réside dans la diversité des performances et la beauté du patinage sur glace."
+],
+"Michel-Ange : Amour et Mort" => [
+  "Une exploration profonde et révélatrice de la vie de Michel-Ange, l'un des plus grands artistes de la Renaissance, dont l'œuvre a transcendé le temps, mais dont la vie personnelle était emplie de conflits, de passion et de dévotion.",
+  "Ce documentaire plonge dans les luttes intérieures de Michel-Ange, entre son dévouement presque divin à son art et les tumultes de ses relations personnelles, offrant un aperçu intime de son processus créatif et de sa quête incessante de perfection.",
+  "Fascinant et émouvant, bien que certains spectateurs puissent désirer une analyse plus approfondie des influences politiques et culturelles de l'époque sur son œuvre."
+],
+"L'Âge de Rembrandt" => [
+  "Une plongée captivante dans le Siècle d'Or hollandais, une période de prospérité et de renouveau artistique, où Rembrandt émerge comme une figure centrale, révolutionnant l'art du portrait et du clair-obscur.",
+  "Ce documentaire explore l'impact profond de Rembrandt sur l'art de son époque, mettant en lumière sa capacité unique à capturer l'essence humaine avec une intensité émotionnelle et une profondeur psychologique inégalées.",
+  "Instructif et inspirant, bien que certains amateurs d'art puissent rechercher une exploration plus approfondie des techniques spécifiques de Rembrandt et de leur influence sur les générations futures d'artistes."
+],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 def post_function(rating, toi_title, critiques)
   base_critique = critiques[toi_title] || [
-  "Une réalisation époustouflante qui redéfinit le genre. À voir absolument !",
-  "Une proposition intéressante, bien que certains aspects mériteraient d'être peaufinés.",
-  "Malgré quelques efforts notables, le résultat final peine à convaincre."
-]
+    "Une réalisation époustouflante qui redéfinit le genre. À voir absolument !",
+    "Une proposition intéressante, bien que certains aspects mériteraient d'être peaufinés.",
+    "Malgré quelques efforts notables, le résultat final peine à convaincre."
+  ]
+
 
   critique = case rating
              when 0..2
@@ -1120,7 +1255,7 @@ def post_function(rating, toi_title, critiques)
   return critique
 end
 
-24.times do ||
+200.times do ||
   user = User.order('RANDOM()').first
   toi = Toi.order('RANDOM()').first
   toi_title = toi.title
@@ -1132,6 +1267,7 @@ end
     user_id: user.id,
     toi_id: toi.id
   )
+
 end
 
 puts "#{Post.count} posts created sucessfully!"
