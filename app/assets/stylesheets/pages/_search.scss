@@ -1,17 +1,41 @@
-.page-title {
-  margin-bottom: 0px;
-}
-.bg-color-1 {
-  background-color: #40FA43;
-  /* Vert */
-}
+.search-page {
+  .page-title {
+    margin-bottom: 0px;
+  }
+  .bg-color-1 {
+    background-color: #40FA43;
+  }
 
-.bg-color-2 {
-  background-color: #7B7BFF;
-  /* Bleu */
-}
+  .bg-color-2 {
+    background-color: #7B7BFF;
+  }
 
-.bg-color-3 {
-  background-color: #E0FA41;
-  /* Jaune */
+  .bg-color-3 {
+    background-color: #E0FA41;
+  }
+  .avatar {
+    height: 100px;
+    width: 100px;
+    margin-right: 20px;
+  }
+  p {
+    margin-bottom: 0px;
+
+  }
+
+  .img-toi {
+    max-height: 200px;
+    width: 100%;
+    border-radius: 40px;
+  }
+  h1 {
+    font-size: 55px;
+  }
+  h2 {
+    margin-bottom: 0px;
+  }
+
+  a {
+    text-decoration:none;
+  }
 }

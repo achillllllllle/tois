@@ -1,5 +1,13 @@
 <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-transparent footer-height menu-bar custom-navbar-height top-bar">
-  <div class="container-fluid d-flex justify-content-end  align-items-center mt-2">
+  <div class="container-fluid d-flex  align-items-center mt-2">
+
+      <div class="d-flex">
+      <%= link_to my_feed_path do %>
+        <div class="text-center bg-white rounded-circle p-2 me-2">
+          <i class="fa-solid fa-arrow-left text-white fa-2x icon-menu-bar"></i>
+        </div>
+      <% end %>
+      </div>
     <!-- Partie gauche -->
     <div class="d-flex">
       <%= link_to my_feed_path do %>

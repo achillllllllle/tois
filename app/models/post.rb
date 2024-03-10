@@ -10,7 +10,6 @@ class Post < ApplicationRecord
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
 
   accepts_nested_attributes_for :toi
-
   def starify(rating)
     stars = ''
     full_stars = rating / 2
