@@ -1,11 +1,31 @@
-<div class="container fullheight">
+<div class="container fullheight profile-page">
   <div class="logo">
     <h1>Culture Heads</h1>
   </div>
 
-  <div class="page-title">
-    <h1>Mon</h1>
-    <h1>profil<i class="fa-solid fa-user icon-logo"></i></h1>
+<div class="d-flex">
+  <div class="avatar">
+    <%= cl_image_tag current_user.photo.key, class: "avatar"  %>
   </div>
-
+  <div class="infos">
+    <h2 class="fw-bold">@<%= current_user.username %></h2>
+    <p class="text-white"> <strong><%= current_user.followings.count %></strong>suivis</p>
+    <p class="text-white"> <strong><%= current_user.followed_users.count %></strong> followers </p>
+  </div>
 </div>
+
+<h1 class="p-2 fw-bold mt-3">Reviews </h1>
+<% current_user.posts.each do |post| %>
+  <div class="card border border-primary bg-white border-4">
+    <div class="infos justify-content-between w-100 ">
+      <%= cl_image_tag post.toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
+      <div class="d-flex align-items-baseline justify-content-between">
+        <h3 class="text-black fw-bold"><%= post.toi.title  %></h3>
+        <div class="stars text-primary">
+          <%= post.starify(post.rating).html_safe %>
+        </div>
+      </div>
+    </div>
+    <p class="sizing-review mb-auto"><%= post.review %></p>
+  </div>
+<% end %>
