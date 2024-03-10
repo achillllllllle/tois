@@ -1,3 +1,13 @@
-<div class="container fullheight">
-  <h1>SEARCH </h1>
+<div class="container fullheight search-page">
+
+  <div class="my-5 page-title">
+    <h1>Explore<i class="fa-solid fa-play icon-logo"></i></h1>
+  </div>
+
+  <% Category.all.each_with_index do |cat, index| %>
+      <div id="avatar-size" class="card flex-row justify-content-between <%= "bg-color-#{(index % 3) + 1}" %>">
+              <h2 class="fw-bold text-black"><%= cat.name  %></h2>
+      </div>
+  <% end %>
+
 </div>

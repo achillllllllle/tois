@@ -22,7 +22,10 @@
   <% else %>
     <body>
   <% end %>
-    <%= render "shared/flashes" %>
+    <% if user_signed_in? && current_user&.permitted? && !current_page?(root_path)%>
+      <%= render "shared/flashes" %>
+      <%= render "shared/top_bar" %>
+    <% end %>
     <div class="page-transition">
     <%= yield %>
     </div>
