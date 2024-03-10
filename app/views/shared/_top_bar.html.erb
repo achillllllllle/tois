@@ -1,0 +1,17 @@
+<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-transparent footer-height menu-bar custom-navbar-height top-bar">
+  <div class="container-fluid d-flex justify-content-end  align-items-center mt-2">
+    <!-- Partie gauche -->
+    <div class="d-flex">
+      <%= link_to my_feed_path do %>
+        <div class="text-center bg-white rounded-circle p-2 me-2">
+          <i class="fa-solid fa-bell text-white fa-2x icon-menu-bar"></i>
+        </div>
+      <% end %>
+
+      <%= link_to tois_path do %>
+        <div class="text-center bg-white rounded-circle  p-2">
+          <i class="fa-solid fa-bars  text-white fa-2x icon-menu-bar"></i>
+        </div>
+      <% end %>
+  </div>
+  </nav>
