@@ -5,23 +5,52 @@
     <h1>feed<i class="fa-solid fa-play icon-logo"></i></h1>
   </div>
 
-  <% @tois.each_with_index do |toi, index| %>
+  <h3 class="text-white mb-2"> Postés cette semaine :</h2>
+  <% @posts_this_week.each do |toi, posts| %>
+
     <%= link_to toi_path(toi) do %>
-      <div id="avatar-size" class="card flex-row justify-content-between <%= "bg-color-#{(index % 3) + 1}" %>">
+      <div id="avatar-size" class="card flex-row justify-content-between <%= cycle('bg-color-1', 'bg-color-2', 'bg-color-3') %>">
         <div class="p-1">
           <div class="infos mb-2">
               <h2 class="fw-bold"><%= toi.title  %></h2>
+              <% posts.each do |post| %>
             <div class="d-flex">
-              <%= cl_image_tag  toi.posts.last.user.photo.key, class: "avatar"  %>
+              <%= cl_image_tag  post.user.photo.key, class: "avatar"  %>
               <div>
-                <p class="user">@<%= toi.posts.last.user.username %></p>
-                <%= toi.posts.first.starify(toi.posts.last.rating).html_safe %>
+                <p class="user">@<%= post.user.username %></p>
+                <%= post.starify(post.rating).html_safe %>
               </div>
             </div>
+            <% end %>
           </div>
         </div>
       <%= cl_image_tag toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
       </div>
     <% end %>
   <% end %>
+
+  <h3 class="text-white mb-2"> Il y a un peu plus longtemps...</h2>
+  <% @posts_previous_weeks.each do |toi, posts| %>
+
+    <%= link_to toi_path(toi) do %>
+      <div id="avatar-size" class="card flex-row justify-content-between <%= cycle('bg-color-1', 'bg-color-2', 'bg-color-3') %>">
+        <div class="p-1">
+          <div class="infos mb-2">
+              <h2 class="fw-bold"><%= toi.title  %></h2>
+              <% posts.each do |post| %>
+            <div class="d-flex">
+              <%= cl_image_tag  post.user.photo.key, class: "avatar"  %>
+              <div>
+                <p class="user">@<%= post.user.username %></p>
+                <%= post.starify(post.rating).html_safe %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <%= cl_image_tag toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
