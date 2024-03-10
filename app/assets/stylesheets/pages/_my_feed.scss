@@ -1,7 +1,7 @@
 .my-feed {
   .avatar {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
   }
 
   .photo {
@@ -14,7 +14,7 @@
   .card {
     background-color: $flashy-green;
     margin-bottom: 15px;
-    padding: 15px;
+    padding: 12px;
     border-radius: 40px;
   }
 
@@ -56,15 +56,15 @@
   }
 
   .user {
-    font-size: 13px;
+    font-size: 18px;
   }
 
   h2 {
     font-size: 24px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 185px;
+    max-width: 220px;
+    max-height: 3.7rem;
   }
 
   .img-toi {

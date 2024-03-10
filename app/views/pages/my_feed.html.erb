@@ -9,14 +9,16 @@
     <%= link_to toi_path(toi) do %>
       <div id="avatar-size" class="card flex-row justify-content-between <%= "bg-color-#{(index % 3) + 1}" %>">
         <div class="p-1">
-          <div class="infos d-flex mb-2">
-          <%= cl_image_tag  toi.posts.last.user.photo.key, class: "avatar"  %>
-            <div>
+          <div class="infos mb-2">
               <h2 class="fw-bold"><%= toi.title  %></h2>
-              <p class="user">@<%= toi.posts.last.user.username %></p>
+            <div class="d-flex">
+              <%= cl_image_tag  toi.posts.last.user.photo.key, class: "avatar"  %>
+              <div>
+                <p class="user">@<%= toi.posts.last.user.username %></p>
+                <%= toi.posts.first.starify(toi.posts.last.rating).html_safe %>
+              </div>
             </div>
           </div>
-        <p><%= toi.posts.last.review  %></p>
         </div>
       <%= cl_image_tag toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
       </div>
