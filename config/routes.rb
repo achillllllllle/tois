@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :update] do
+    member do
+      patch :follow
+      patch :unfollow
+    end
+  end
 
   root to: "pages#home"
 
@@ -12,7 +17,7 @@ Rails.application.routes.draw do
     resources :bookmarks, only: %i[create]
   end
 
-  resources :bookmarks, only: %i[index delete]
+  resources :bookmarks, only: %i[index destroy]
 
   resources :posts, only: %i[new create]
 end
