@@ -1,30 +1,65 @@
 <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-transparent footer-height menu-bar custom-navbar-height top-bar">
   <div class="container-fluid d-flex  align-items-center mt-2">
 
+    <!-- Retour page précedente -->
       <div class="d-flex">
-      <%= link_to my_feed_path do %>
-        <div class="text-center bg-white rounded-circle p-2 me-2" onclick="history.back()">
+      <%= link_to :back do %>
+        <div class="text-center bg-white rounded-circle p-2 me-2 ">
           <i class="fa-solid fa-arrow-left text-white fa-2x icon-menu-bar"></i>
         </div>
       <% end %>
       </div>
-    <!-- Partie gauche -->
-    <div class="d-flex">
-      <%= link_to my_feed_path do %>
-        <div class="text-center bg-white rounded-circle p-2 me-2">
-          <i class="fa-solid fa-bell text-white fa-2x icon-menu-bar"></i>
-        </div>
-      <% end %>
 
-      <div class="dropdown-center">
-        <button class="text-center bg-white rounded-circle  p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+    <div class="d-flex">
+    <!-- Paramètres user -->
+      <div class="dropdown-center rounded-4 me-2">
+        <button class="text-center bg-white rounded-circle account p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-bars  text-white fa-2x icon-menu-bar"></i>
         </button>
-        <ul class="dropdown-menu dropdown-menu-end bg-white mt-2">
+        <ul class="dropdown-menu dropdown-menu-end bg-white mt-2 rounded-4">
           <li><%= button_to 'Se déconnecter', destroy_user_session_path, method: :delete , class: 'dropdown-item' %></li>
+          <li><%= button_to 'Depermit', user_path(current_user), method: :patch , class: 'dropdown-item' %></li>
         </ul>
       </div>
 
+    <!-- Notifications-->
+
+      <div class="dropdown-center">
+        <button class="text-center bg-white rounded-circle  p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-bars  fa-solid fa-bell text-white fa-2x icon-menu-bar"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end bg-white mt-2 rounded-4 p-2" style="width: max-content">
+
+            <!-- Oscar: notif new follower-->
+          <li class="notif-followed border-bottom">
+            <div class="d-flex">
+              <div class="me-2">
+                <img src="https://via.placeholder.com/20" alt="user" class="rounded-circle">
+              </div>
+              <div class="d-flex">
+                <strong><p class="me-1" >Username </p></strong>
+                <p class="me-1"> te suis désormais ! </p>
+              </div>
+            </div>
+          </li>
+
+          <!-- Oscar: notif new post -->
+          <li class="notif-new-post border-bottom">
+            <div class="d-flex">
+              <div class="me-2">
+                <img src="https://via.placeholder.com/20" alt="user" class="rounded-circle">
+              </div>
+              <div class="d-flex">
+                <strong><p class="me-1">Username</p></strong>
+                <p class="me-1">a donné son avis sur</p>
+                <strong><p class="me-1">Nom du toi</p></strong>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+      </div>
 
   </div>
   </nav>

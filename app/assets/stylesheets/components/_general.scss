@@ -19,6 +19,7 @@
   animation: pageFadeIn 0.5s ease-out;
 }
 
+
 @keyframes pageFadeIn {
   from {
     opacity: 0;
@@ -51,3 +52,13 @@ html {
 #resize-button .row {
   flex-direction: column-reverse;
 }
+#suivi{
+  display: inline;
+}
+
+
+// #personalize {
+//   display: inline;
+//   color: white;
+//   border-radius: 10px;
+// }
