@@ -7,13 +7,12 @@
 
       <div class="bookmark-wrapper px-4 py-2" data-controller="bookmark" data-action="click->bookmark#toggle">
         <% if current_user.bookmarks.find_by(toi: @toi)&.saved %>
-          <%= link_to bookmark_path(@toi.bookmarks.find_by(toi: @toi)),
+          <%= link_to bookmark_path(current_user.bookmarks.find_by(toi: @toi)),
                       method: :delete,
                       data: {
                         action: "click->bookmark#toggle",
                         controller: "bookmark",
                         turbo_method: "delete"
-                        # action: "click->bookmark#destroy"
                       } do %>
             <i class="fas fa-bookmark fs-3" data-bookmark-target="icon"></i>
           <% end %>
@@ -23,7 +22,6 @@
                         action: "click->bookmark#toggle",
                         controller: "bookmark",
                         turbo_method: "post"
-                        # action: "click->bookmark#create"
                       } do %>
             <i class="far fa-bookmark fs-3" data-bookmark-target="icon"></i>
           <% end %>
@@ -31,9 +29,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <div class="container position-relative">
     <h1 class="p-2 fw-bold mb-3">Avis pour : <em><%= @toi.title %></em></h1>
