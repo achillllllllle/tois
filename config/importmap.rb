@@ -9,3 +9,4 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "tom-select", to: "https://ga.jspm.io/npm:tom-select@2.3.1/dist/js/tom-select.complete.js" # @2.3.1
 pin "star-rating.js" # @4.3.0
+pin "barba.js" # @1.0.0
