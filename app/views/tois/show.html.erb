@@ -13,7 +13,6 @@
                         action: "click->bookmark#toggle",
                         controller: "bookmark",
                         turbo_method: "delete"
-                        # action: "click->bookmark#destroy"
                       } do %>
             <i class="fas fa-bookmark fs-3" data-bookmark-target="icon"></i>
           <% end %>
@@ -23,7 +22,6 @@
                         action: "click->bookmark#toggle",
                         controller: "bookmark",
                         turbo_method: "post"
-                        # action: "click->bookmark#create"
                       } do %>
             <i class="far fa-bookmark fs-3" data-bookmark-target="icon"></i>
           <% end %>
@@ -31,9 +29,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <div class="container position-relative">
     <h1 class="p-2 fw-bold mb-3">Avis pour : <em><%= @toi.title %></em></h1>

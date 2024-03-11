@@ -1,24 +1,34 @@
-<div class="container fullheight">
+<div class="container bookmarks fullheight">
 
   <div class="my-5 page-title">
     <h2>Mes favoris<i class="fa-solid fa-eye icon-logo"></i></h2>
   </div>
 
-  <div class="row">
-    <% @bookmarks.each do |bookmark| %>
-      <div class="col-md-4">
-        <%= link_to toi_path(bookmark.toi) do %>
-          <div class="card border-primary mb-4">
-            <div class="card-body">
-              <%= cl_image_tag bookmark.toi.photo.key, class: "card-img-top img-fluid" %>
-              <h5 class="card-title"><%= bookmark.toi.title %></h5>
-              <p class="card-text"><%= bookmark.toi.description %></p>
+ <% @categories.each do |category| %>
+    <div class="category-section">
+      <h3><%= category.name %></h3>
+      <div class="row">
+        <% category_bookmarks = @bookmarks.select { |bookmark| bookmark.toi.category_id == category.id } %>
+        <% if category_bookmarks.any? %>
+          <% category_bookmarks.each do |bookmark| %>
+            <div class="col-md-4">
+              <%= link_to toi_path(bookmark.toi) do %>
+                <div class="card border-primary mb-4 <%= cycle('bg-color-1', 'bg-color-2', 'bg-color-3') %>">
+                  <div class="card-body">
+                    <%= cl_image_tag bookmark.toi.photo.key, class: "card-img-top img-fluid toi-img" %>
+                    <h4 class="card-title no-decoration fw-bold"><%= bookmark.toi.title %></h4>
+                    <p class="card-text text-resume no-decoration"><%= bookmark.toi.description %></p>
+                  </div>
+                </div>
+              <% end %>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <p>Aucun favori pour cette catégorie.</p>
+          <p>Explorez et sauvegardez plus de Tois !</p>
         <% end %>
       </div>
-    <% end %>
-  </div>
-
+    </div>
+  <% end %>
 
 </div>

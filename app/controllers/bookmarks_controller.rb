@@ -3,6 +3,7 @@ class BookmarksController < ApplicationController
 
   def index
     @bookmarks = current_user.bookmarks.where(saved: true).order(created_at: :desc)
+    @categories = Category.joins(:tois).distinct
   end
 
   def create
@@ -23,11 +24,17 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark = current_user.bookmarks.find_by(toi_id: params[:toi_id])
-    @bookmark.destroy! if @bookmark
+    # @bookmark.destroy! if @bookmark
 
     respond_to do |format|
-      # format.html { redirect_to toi_path, alert: 'Unsaved' }
-      format.json { render json: { saved: false } }
+    #   # format.html { redirect_to toi_path, alert: 'Unsaved' }
+    #   format.json { render json: { saved: false } }
+      if @bookmark.destroy
+        render json: { saved: false }
+      else
+        render json: { saved: true }, status: :unprocessable_entity
+      end
     end
+
   end
 end

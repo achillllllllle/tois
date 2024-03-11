@@ -44,5 +44,4 @@ export default class extends Controller {
   csrfToken() {
     return document.querySelector('meta[name="csrf-token"]').getAttribute('content')
   }
-
 }
