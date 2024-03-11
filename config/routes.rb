@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :update] do
+    member do
+      patch :follow
+      patch :unfollow
+    end
+  end
 
   root to: "pages#home"
 
