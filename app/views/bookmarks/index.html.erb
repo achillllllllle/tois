@@ -4,4 +4,21 @@
     <h2>Mes favoris<i class="fa-solid fa-eye icon-logo"></i></h2>
   </div>
 
+  <div class="row">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="col-md-4">
+        <%= link_to toi_path(bookmark.toi) do %>
+          <div class="card border-primary mb-4">
+            <div class="card-body">
+              <%= cl_image_tag bookmark.toi.photo.key, class: "card-img-top img-fluid" %>
+              <h5 class="card-title"><%= bookmark.toi.title %></h5>
+              <p class="card-text"><%= bookmark.toi.description %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+
 </div>

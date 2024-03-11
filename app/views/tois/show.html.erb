@@ -1,11 +1,41 @@
 <div class="fullheight toi-show">
-  <div>
+
+  <div class="toi position-relative">
     <%= cl_image_tag @toi.photo.key, crop: :fill, class: "img-show" %>
-    <div class="card-img-overlay d-flex align-items-end">
+    <div class="position-absolute start-0 end-0 bottom-0 mb-4 d-flex justify-content-between">
       <h5 class="card-title category px-4 py-2 rounded-pill bg-primary">#<%= @toi.category.name.downcase %> </h5>
+
+      <div class="bookmark-wrapper px-4 py-2" data-controller="bookmark" data-action="click->bookmark#toggle">
+        <% if current_user.bookmarks.find_by(toi: @toi)&.saved %>
+          <%= link_to bookmark_path(@toi.bookmarks.find_by(toi: @toi)),
+                      method: :delete,
+                      data: {
+                        action: "click->bookmark#toggle",
+                        controller: "bookmark",
+                        turbo_method: "delete"
+                        # action: "click->bookmark#destroy"
+                      } do %>
+            <i class="fas fa-bookmark fs-3" data-bookmark-target="icon"></i>
+          <% end %>
+        <% else %>
+          <%= link_to toi_bookmarks_path(@toi),
+                      data: {
+                        action: "click->bookmark#toggle",
+                        controller: "bookmark",
+                        turbo_method: "post"
+                        # action: "click->bookmark#create"
+                      } do %>
+            <i class="far fa-bookmark fs-3" data-bookmark-target="icon"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="container">
+
+
+
+
+  <div class="container position-relative">
     <h1 class="p-2 fw-bold mb-3">Avis pour : <em><%= @toi.title %></em></h1>
     <% @posts.each do |post| %>
       <%= link_to user_path(post.user) do %>
@@ -22,6 +52,6 @@
           <p class="sizing-review mb-auto"><%= post.review %></p>
         </div>
       <% end %>
-  <% end %>
+    <% end %>
   </div>
 </div>

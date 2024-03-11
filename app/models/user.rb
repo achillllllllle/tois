@@ -4,8 +4,10 @@ class User < ApplicationRecord
   # has_many :followers, class_name: "Friend", foreign_key: "follower_id"
   # has_many :followed_users, though: :followers, source: :following
   has_many :followings, class_name: "Friend", foreign_key: "following_id"
+  has_many :following_users, -> { distinct }, through: :followings, source: :follower
   has_many :bookmarks
   has_one_attached :photo
+  has_many :notifications, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
