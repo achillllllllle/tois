@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_06_145606) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_11_103031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_145606) do
     t.index ["following_id"], name: "index_friends_on_following_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "review"
     t.integer "rating"
@@ -123,6 +133,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_145606) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "friends", "users", column: "follower_id"
   add_foreign_key "friends", "users", column: "following_id"
+  add_foreign_key "notifications", "posts"
+  add_foreign_key "notifications", "users"
   add_foreign_key "posts", "tois"
   add_foreign_key "posts", "users"
   add_foreign_key "toi_artists", "artists"
