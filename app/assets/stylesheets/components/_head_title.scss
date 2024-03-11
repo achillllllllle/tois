@@ -6,12 +6,23 @@
 .page-title {
   margin-top: 30px;
   margin-bottom: 50px;
+
   h1 {
     font-size: 85px;
     font-weight: bold;
     line-height: 80px;
     .icon-logo {
       font-size: 60px;
+      margin-left: 20px;
+    }
+  }
+
+  h2 {
+    font-size: 55px;
+    font-weight: bold;
+    line-height: 55px;
+    .icon-logo {
+      font-size: 40px;
       margin-left: 20px;
     }
   }
