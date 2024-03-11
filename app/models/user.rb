@@ -4,8 +4,10 @@ class User < ApplicationRecord
   # has_many :followers, class_name: "Friend", foreign_key: "follower_id"
   # has_many :followed_users, though: :followers, source: :following
   has_many :followings, class_name: "Friend", foreign_key: "following_id"
+  has_many :following_users, -> { distinct }, through: :followings, source: :follower
   has_many :bookmarks
   has_one_attached :photo
+  has_many :notifications, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -19,5 +21,8 @@ class User < ApplicationRecord
 
   def followed_users_tois
     Toi.joins(:posts).where(posts: { user_id: followed_users.pluck(:id) }).distinct
+  end
+  def follow?(other_user)
+    friends.where(following_id: other_user.id).exists?
   end
 end
