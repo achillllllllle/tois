@@ -16,6 +16,8 @@
         </button>
       </div>
     </form>
+    <%=average = 0 %>
+
 
     <% @tois.each_with_index do |toi, index| %>
       <%= link_to toi_path(toi) do %>
@@ -27,8 +29,21 @@
             <% if toi.posts.last %>
               <div class="d-flex flex-row justify-content-between">
                 <strong><%= toi.posts.count %> avis</strong>
-                <div class="stars text-primary">
-                  <p><strong><%= toi.posts.average(:rating).to_f.round(1)/2 %>/5</strong></p>
+                <div id="color-star" class="stars text-primary">
+                  <p>
+                  <strong>
+
+                      <% Post.where(toi_id: toi.id).each do |note| %>
+                        <% average += note.rating %>
+                      <% end %>
+                      <%= average / Post.where(toi_id: toi.id).length%>/10</strong></p>
+                      <%=toi.starify_average(current_user).html_safe %>
+                      <% average = 0 %>
+
+
+
+
+
                 </div>
               </div>
             <% end %>
