@@ -11,34 +11,30 @@
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="view-transition" content="same-origin" />
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
 
     <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
     <link rel="stylesheet" href="https://ga.jspm.io/npm:star-rating.js@4.3.0/dist/star-rating.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script src="https://unpkg.com/swup@4"></script>
   </head>
   <% if current_page?(root_path) %>
-    <body  id="swup" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/drrbvxo6s/image/upload/v1709898890/jcpr5ewa4jcxpnuwqn6n.jpg')">
+    <body style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/drrbvxo6s/image/upload/v1709898890/jcpr5ewa4jcxpnuwqn6n.jpg')" >
   <% else %>
-    <body>
+    <body class="<%= controller_name %>-<%= action_name %>">
   <% end %>
+
     <% if user_signed_in? && current_user&.permitted? && !current_page?(root_path)%>
       <%= render "shared/flashes" %>
       <%= render "shared/top_bar" %>
     <% end %>
 
-  <div id="swup" class="transition-fade">
-    <%= yield %>
-  </div>
-
-    <script>
-      const swup = new Swup();
-    </script>
+      <%= yield %>
 
     <% if user_signed_in? && current_user&.permitted? && !current_page?(root_path)%>
       <%= render "shared/menu_bar" %>
     <% end %>
+
   </body>
 </html>
