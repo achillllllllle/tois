@@ -2,8 +2,29 @@ class BookmarksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @bookmarks = current_user.bookmarks.where(saved: true).order(created_at: :desc)
+    @bookmarks = current_user.bookmarks.where(saved: true)
+                                        .order(created_at: :desc)
+
     @categories = Category.joins(:tois).distinct
+    @bookmarks_by_category = {}
+
+    @categories.each do |category|
+      category_bookmarks = current_user.bookmarks.where(saved: true)
+                                                  .joins(:toi)
+                                                  .where(tois: { category_id: category.id })
+                                                  .order(created_at: :desc)
+      @bookmarks_by_category[category] = category_bookmarks.map(&:toi)
+      # @bookmarks_by_category[category] = category_bookmarks.map do |bookmark|
+      #   bookmark.toi
+      # end
+    end
+
+    if params[:category_id].present?
+      @bookmarks = current_user.bookmarks.where(saved: true)
+                                          .joins(:toi)
+                                          .where(tois: { category_id: params[:category_id] })
+                                          .order(created_at: :desc)
+    end
   end
 
   def create
@@ -23,16 +44,18 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = current_user.bookmarks.find_by(toi_id: params[:toi_id])
+    @bookmark = current_user.bookmarks.find_by(id: params[:id])
     # @bookmark.destroy! if @bookmark
 
     respond_to do |format|
-    #   # format.html { redirect_to toi_path, alert: 'Unsaved' }
-    #   format.json { render json: { saved: false } }
-      if @bookmark.destroy
-        render json: { saved: false }
-      else
-        render json: { saved: true }, status: :unprocessable_entity
+      # format.html { redirect_to toi_path(), alert: 'Unsaved' }
+      # format.json { render json: { saved: false } }
+      format.json do
+        if @bookmark.destroy
+          render json: { saved: false }
+        else
+          render json: { saved: true }, status: :unprocessable_entity
+        end
       end
     end
 

@@ -1,47 +1,36 @@
-// import { Controller } from "@hotwired/stimulus"
+import { Controller } from '@hotwired/stimulus';
 
-// // Connects to data-controller="category-filter"
-// export default class extends Controller {
+export default class extends Controller {
+  static targets = ['categoryContainer'];
 
-//   static targets = ['categorySection'];
+  connect() {
+    console.log('hello');
+  }
 
-//   connect() {
-//     this.categorySections.forEach((section) => {
-//       section.setAttribute('data-category-id', section.dataset.categoryId);
-//     });
-//   }
+  filter(event) {
+    const selectedCategoryId  = event.currentTarget.dataset.categoryId;
+    const categorySections = this.categoryContainerTarget.querySelectorAll('.category-section');
 
-//   filter(event) {
-//     const selectedCategoryId = event.target.dataset.categoryId;
-//     const clearFilterBtn = document.getElementById('clear-filter-btn');
+    categorySections.forEach((categorySection) => {
+      const categoryId = categorySection.dataset.categoryId;
 
-//     this.categorySections.forEach((section) => {
-//       const categoryId = section.dataset.categoryId;
+      if (selectedCategoryId === '' || selectedCategoryId === categoryId) {
+        categorySection.style.display = 'block';
+      } else {
+        categorySection.style.display = 'none';
+      }
+    });
 
-//       if (selectedCategoryId === '' || selectedCategoryId === categoryId) {
-//         section.style.display = 'block';
-//       } else {
-//         section.style.display = 'none';
-//       }
-//     });
+    // Mettre à jour l'état des boutons
+    const buttons = event.target.closest('.btn-group').querySelectorAll('.category-btn');
+    buttons.forEach((btn) => {
+      btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+  }
 
-//     // Mettre à jour l'état du bouton "Toutes les catégories"
-//     const allCategoriesBtn = document.querySelector('button[data-category-id=""]');
-//     allCategoriesBtn.classList.remove('active');
-
-//     // Mettre à jour l'état du bouton sélectionné
-//     event.target.classList.add('active');
-
-//     // Afficher ou masquer la croix de suppression du filtre
-//     if (selectedCategoryId !== '') {
-//       clearFilterBtn.classList.remove('d-none');
-//     } else {
-//       clearFilterBtn.classList.add('d-none');
-//     }
-//   }
-
-//   clearFilter() {
-//     const allCategoriesBtn = document.querySelector('button[data-category-id=""]');
-//     allCategoriesBtn.click();
-//   }
-// }
+  clearFilter() {
+    const allCategoriesBtn = document.querySelector('button[data-category-id=""]');
+    allCategoriesBtn.click();
+  }
+}

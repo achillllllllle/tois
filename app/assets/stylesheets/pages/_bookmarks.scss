@@ -71,4 +71,24 @@
   .bg-color-3 {
     background-color: #E0FA41;
   }
+
+  .category-btn {
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: gray;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: #40FA43;
+      color: black;
+    }
+  }
+
+  .clear-filter-btn {
+    margin-left: 5px;
+    cursor: pointer;
+  }
 }
