@@ -1,28 +1,30 @@
 <div class="container fullheight profile-page">
 
-<div class="mt-5 d-flex">
-  <div class="avatar">
-    <%= cl_image_tag @user.photo.key, class: "avatar"  %>
+  <div class="mt-5 d-flex">
+    <div class="avatar">
+      <%= cl_image_tag @user.photo.key, class: "avatar"  %>
+    </div>
+    <div class="infos">
+      <h2 class="fw-bold">@<%= @user.username %></h2>
+      <p class="text-white"> <strong><%= @user.followings.count %></strong> suivi(e)s</p>
+      <p class="text-white"> <strong><%= @user.followed_users.count %></strong> followers </p>
+    </div>
   </div>
-  <div class="infos">
-    <h2 class="fw-bold">@<%= @user.username %></h2>
-    <p class="text-white"> <strong><%= @user.followings.count %></strong> suivi(e)s</p>
-    <p class="text-white"> <strong><%= @user.followed_users.count %></strong> followers </p>
-  </div>
-</div>
 
-<h1 class="p-2 fw-bold mt-3"><%= @user.posts.count%> Avis</h1>
-<% @user.posts.each do |post| %>
-  <div class="card border border-primary bg-white border-4">
-    <div class="infos justify-content-between w-100 ">
-      <%= cl_image_tag post.toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
-      <div class="d-flex align-items-baseline justify-content-between">
-        <h3 class="text-black fw-bold"><%= post.toi.title  %></h3>
-        <div class="stars text-primary">
-          <%= post.starify(post.rating).html_safe %>
+  <h1 class="p-2 fw-bold mt-3"><%= @user.posts.count%> Avis</h1>
+  <% @user.posts.each do |post| %>
+    <div class="card border border-primary bg-white border-4">
+      <div class="infos justify-content-between w-100 ">
+        <%= cl_image_tag post.toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
+        <div class="d-flex align-items-baseline justify-content-between">
+          <h3 class="text-black fw-bold"><%= post.toi.title  %></h3>
+          <div class="stars text-primary">
+            <%= post.starify(post.rating).html_safe %>
+          </div>
         </div>
       </div>
+      <p class="sizing-review mb-auto"><%= post.review %>w</p>
     </div>
-    <p class="sizing-review mb-auto"><%= post.review %>w</p>
-  </div>
-<% end %>
+  <% end %>
+
+</div>
