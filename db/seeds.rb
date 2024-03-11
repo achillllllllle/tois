@@ -1276,6 +1276,7 @@ puts "Creating Friend..."
 
 User.all.each do |user|
   Friend.create(follower: User.first, following: user)
+  Friend.create(follower: user, following: User.first)
 end
 
 puts "#{Friend.count} friends created sucessfully!"
