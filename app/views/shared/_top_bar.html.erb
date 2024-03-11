@@ -22,6 +22,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-end bg-white mt-2">
           <li><%= button_to 'Se déconnecter', destroy_user_session_path, method: :delete , class: 'dropdown-item' %></li>
+          <li><%= button_to 'Depermit', user_path(current_user), method: :patch , class: 'dropdown-item' %></li>
         </ul>
       </div>
 
