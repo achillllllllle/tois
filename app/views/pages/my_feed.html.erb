@@ -4,34 +4,35 @@
     <h1>My<br>feed<i class="fa-solid fa-play icon-logo"></i></h1>
   </div>
 
-  <h3 class="text-white mb-2"> Postés cette semaine :</h3>
-  <% @posts_this_week.each do |toi, posts| %>
-    <% most_recent_post = posts.first %>
+  <% if @posts_this_week.size > 0 %>
+    <h3 class="text-white mb-2"> Postés cette semaine :</h3>
+    <% @posts_this_week.each do |toi, posts| %>
+      <% most_recent_post = posts.first %>
 
-    <%= link_to toi_path(toi) do %>
-      <div id="avatar-size" class="card flex-row justify-content-between <%= cycle('bg-color-1', 'bg-color-2', 'bg-color-3') %>">
-        <div class="p-1">
-          <div class="infos mb-2">
-              <h2 class="fw-bold"><%= toi.title  %></h2>
-              <div class="d-flex">
-                <%= cl_image_tag  most_recent_post.user.photo.key, class: "avatar"  %>
-                <div>
-                  <p class="user">@<%= most_recent_post.user.username %></p>
-                  <%= most_recent_post.starify(most_recent_post.rating).html_safe %>
+      <%= link_to toi_path(toi) do %>
+        <div id="avatar-size" class="card flex-row justify-content-between <%= cycle('bg-color-1', 'bg-color-2', 'bg-color-3') %>">
+          <div class="p-1">
+            <div class="infos mb-2">
+                <h2 class="fw-bold"><%= toi.title  %></h2>
+                <div class="d-flex">
+                  <%= cl_image_tag  most_recent_post.user.photo.key, class: "avatar"  %>
+                  <div>
+                    <p class="user">@<%= most_recent_post.user.username %></p>
+                    <%= most_recent_post.starify(most_recent_post.rating).html_safe %>
+                  </div>
                 </div>
-              </div>
-              <% if posts.size > 1 %>
-                <div class="fw-bold">
-                  <%= pluralize(posts.size - 1, '+ autres avis') %>
-                </div>
-              <% end %>
+                <% if posts.size > 1 %>
+                  <div class="fw-bold">
+                    <%= pluralize(posts.size - 1, '+ autres avis') %>
+                  </div>
+                <% end %>
+            </div>
           </div>
+          <%= cl_image_tag toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
         </div>
-        <%= cl_image_tag toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
-
 
   <h3 class="text-white mb-2"> Il y a un peu plus longtemps...</h2>
   <% @posts_previous_weeks.each do |toi, posts| %>
