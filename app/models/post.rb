@@ -14,11 +14,11 @@ class Post < ApplicationRecord
     stars = ''
     full_stars = rating / 2
     half_star = rating % 2
-    half_star.to_i.times do
-      stars += "<i class='fa-solid fa-star-half-stroke fa-flip-horizontal'></i>"
-    end
     full_stars.to_i.times do
       stars += "<i class='fa-solid fa-star'></i>"
+    end
+    half_star.to_i.times do
+      stars += "<i class='fa-solid fa-star-half-stroke'></i>"
     end
     stars
   end
