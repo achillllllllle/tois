@@ -24,42 +24,7 @@
       </div>
 
     <!-- Notifications-->
-
-      <div class="dropdown-center">
-        <button class="text-center bg-white rounded-circle  p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-bars  fa-solid fa-bell text-white fa-2x icon-menu-bar"></i>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end bg-white mt-2 rounded-4 p-2" style="width: max-content">
-
-            <!-- Oscar: notif new follower-->
-          <li class="notif-followed border-bottom">
-            <div class="d-flex">
-              <div class="me-2">
-                <img src="https://via.placeholder.com/20" alt="user" class="rounded-circle">
-              </div>
-              <div class="d-flex">
-                <strong><p class="me-1" >Username </p></strong>
-                <p class="me-1"> te suis désormais ! </p>
-              </div>
-            </div>
-          </li>
-
-          <!-- Oscar: notif new post -->
-          <li class="notif-new-post border-bottom">
-            <div class="d-flex">
-              <div class="me-2">
-                <img src="https://via.placeholder.com/20" alt="user" class="rounded-circle">
-              </div>
-              <div class="d-flex">
-                <strong><p class="me-1">Username</p></strong>
-                <p class="me-1">a donné son avis sur</p>
-                <strong><p class="me-1">Nom du toi</p></strong>
-              </div>
-            </div>
-
-          </li>
-        </ul>
-      </div>
-
+      <%= render "shared/notifications" %>
+    </div>
   </div>
-  </nav>
+</nav>

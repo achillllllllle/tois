@@ -32,6 +32,8 @@ class Post < ApplicationRecord
 
   def notify
     user.following_users.each do |friend|
+      next if friend == user
+      
       friend.notifications.create(post: self)
     end
   end

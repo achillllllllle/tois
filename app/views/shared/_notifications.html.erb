@@ -1,0 +1,25 @@
+<div class="dropdown-center" data-controller="read-notifications" data-action="show.bs.dropdown->read-notifications#read" data-read-notifications-path-value="<%= read_notifications_user_path(current_user) %>" >
+  <button class="text-center bg-white rounded-circle  p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-bars  fa-solid fa-bell text-white fa-2x icon-menu-bar position-relative">
+            <% if current_user.notifications.count > 0 %>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cpt-notif"> <%= current_user.notifications.count %> </span>
+            <% end %>
+          </i>
+  </button>
+    <ul class="dropdown-menu dropdown-menu-end bg-white mt-2 rounded-4 p-2 <%= "d-none" unless current_user.notifications.present? %>" style="width: max-content">
+      <% current_user.notifications.each do |notif| %>
+        <li class="notif-followed border-bottom">
+            <div class="d-flex">
+              <div class="avatar">
+                <%= cl_image_tag notif.post.user.photo.key, class: "avatar"  %>
+              </div>
+              <div class="d-flex">
+                <strong><p class="me-1" ><%= notif.post.user.username %></p></strong>
+                <p class="me-1">a publié sur</p>
+                <strong><p class="me-1"><%= notif.post.toi.title %></p></strong>
+              </div>
+            </div>
+        </li>
+      <% end %>
+    </ul>
+</div>
