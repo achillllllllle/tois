@@ -22,4 +22,7 @@ class User < ApplicationRecord
   def followed_users_tois
     Toi.joins(:posts).where(posts: { user_id: followed_users.pluck(:id) }).distinct
   end
+  def follow?(other_user)
+    friends.where(following_id: other_user.id).exists?
+  end
 end
