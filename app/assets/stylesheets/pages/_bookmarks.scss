@@ -84,11 +84,12 @@
         background-color: rgba(255, 255, 255, 0.8);
         padding: 5px;
         border-radius: 5px;
-        font-size: 12px; /* Taille de police souhaitée */
+        font-size: 15px; /* Taille de police souhaitée */
         color: #7B7BFF; /* Couleur du texte */
         max-width: 150px;
         white-space: nowrap;
         text-overflow: ellipsis;
+        font-weight: bold;
       }
 
       .bookmark-img {
