@@ -18,7 +18,7 @@ class BookmarksController < ApplicationController
       #   bookmark.toi
       # end
     end
-    
+
     if params[:category_id].present?
       @bookmarks = current_user.bookmarks.where(saved: true)
                                           .joins(:toi)
@@ -36,6 +36,7 @@ class BookmarksController < ApplicationController
       if @bookmark.save
         format.html { redirect_to toi_path(@toi) }
         format.json { render json: { saved: true } }
+        # format.js { render js: "document.dispatchEvent(new Event('last-saved-tois:update'));" }
       else
         format.html { redirect_to toi_path(@toi), alert: 'Unsaved' }
         format.json { render json: { success: false }, status: :unprocessable_entity }

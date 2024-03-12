@@ -1,7 +1,8 @@
 class Toi < ApplicationRecord
   belongs_to :category
   has_many :posts
-  has_many :bookmarks
+  has_many :bookmarks, foreign_key: "toi_id"
+  has_many :users, through: :bookmarks
   has_many :toi_artists, dependent: :destroy
   has_many :artists, through: :toi_artists
   has_one_attached :photo
@@ -31,7 +32,7 @@ class Toi < ApplicationRecord
     avg_rating = 0
     followed_users_posts(user).each do |post|
       avg_rating += post.rating
-      
+
     end
     avg_rating /= followed_users_posts(user).count
     stars = ''

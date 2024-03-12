@@ -1,21 +1,99 @@
 .profile-page {
-  .avatar {
-    height: 100px;
-    width: 100px;
-    margin-right: 20px;
-  }
-  p {
-    margin-bottom: 0px;
 
+  h1 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 30px;
   }
+
+  h6 {
+    font-size: 20px;
+    color: #889090;
+    margin-bottom: 20px;
+  }
+
+  .small-icon {
+    font-size: 20px;
+    margin-left: 5px;
+  }
+
+  .personal-infos {
+    align-items: center;
+
+    .avatar {
+      height: 100px;
+      width: 100px;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+
+    .infos h2 {
+      font-size: 40px;
+    }
+  }
+
+  .last-savings {
+    margin-top: 20px;
+
+
+    .saved-tois {
+      width: 125px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .card-title {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 12px;
+      color: #7B7BFF;
+      max-width: 150px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
 
   .img-toi {
-    max-height: 200px;
+    max-height: 300px;
+    height: 300px;
+    object-fit: cover;
     width: 100%;
-    border-radius: 40px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
   }
 
   h3 {
     max-width: 235px;
+  }
+
+  .card {
+    background-color: white;
+    margin-bottom: 1.25rem;
+    border-radius: 40px;
+    border: none;
+    padding: 0px;
+
+
+    .reviews-info-profile {
+      padding-top: 15px;
+      padding-right: 20px;
+      padding-left: 20px;
+      padding-bottom: 20px;
+
+      .stars {
+        margin-top: 0px;
+      }
+
+      .sizing-review {
+        margin-bottom: 0px;
+        padding-left: 0px;
+      }
+    }
   }
 }
