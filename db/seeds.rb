@@ -1243,7 +1243,7 @@ def post_function(rating, toi_title, critiques)
 
 
   critique = case rating
-             when 0..2
+             when 1..2
                "Décevant. #{base_critique[2]}"
              when 3..6
                "Moyen. #{base_critique[1]}"
@@ -1260,7 +1260,7 @@ end
   user = User.order('RANDOM()').first
   toi = Toi.order('RANDOM()').first
   toi_title = toi.title
-  rating = rand(0..10)
+  rating = rand(1..10)
 
   Post.create!(
     rating: rating,

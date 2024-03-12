@@ -37,3 +37,9 @@
 .fullheight {
   min-height: calc(100vh - 56px);
 }
+
+.avatar-circle {
+  border-radius: 50%;
+  width: 40px;
+  border: solid 2px #40FA43;
+}

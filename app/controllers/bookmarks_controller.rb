@@ -18,7 +18,7 @@ class BookmarksController < ApplicationController
       #   bookmark.toi
       # end
     end
-
+    
     if params[:category_id].present?
       @bookmarks = current_user.bookmarks.where(saved: true)
                                           .joins(:toi)

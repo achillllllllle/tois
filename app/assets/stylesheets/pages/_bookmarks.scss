@@ -1,14 +1,12 @@
 .bookmarks {
 
+  padding-bottom: 80px;
+
   h3 {
     font-family: "Inria Sans", "Helvetica", "sans-serif";
     font-size: 24px;
+    font-weight: bold;
     line-height: 55px;
-  }
-
-  h4 {
-    font-family: "Inria Sans", "Helvetica", "sans-serif";
-    font-size: 24px;
   }
 
   .text-resume {
@@ -19,38 +17,9 @@
     text-overflow: ellipsis;
   }
 
-  .no-decoration {
-    text-decoration: none;
+  .btn-group {
+    margin-bottom: 30px
   }
-
-  .toi-img {
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-
-  .fas.fa-bookmark {
-    color: #40FA43;
-  }
-
-  .far.fa-bookmark {
-    color: gray;
-  }
-
-  .page-title {
-    margin-bottom: 0px;
-  }
-
-  // .bg-color-1 {
-  //   background-color: #40FA43;
-  // }
-
-  // .bg-color-2 {
-  //   background-color: #7B7BFF;
-  // }
-
-  // .bg-color-3 {
-  //   background-color: #E0FA41;
-  // }
 
   .category-btn {
     display: inline-block;
@@ -64,12 +33,12 @@
       background-color: #40FA43;
       color: black;
     }
-  }
 
-  // .clear-filter-btn {
-  //   margin-left: 5px;
-  //   cursor: pointer;
-  // }
+    &.active {
+      background-color: #40FA43;
+      color: black;
+    }
+  }
 
   .white-text {
     color: white;
@@ -83,21 +52,34 @@
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
-      padding: 0 10px;
+      overflow: scroll;
+      scrollbar-color: #E0FA41 #7B7BFF;
+      scrollbar-width: thin;
 
       .bookmark-item {
         flex-shrink: 0;
         width: calc(50% - 10px);
-        margin-right: 10px;
+        margin-right: 18px;
+        margin-bottom: 10px;
       }
     }
 
+    .grid-view {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
     .bookmark-img-wrapper {
-      width: 200px;
-      height: 200px;
+      width: 195px;
+      height: 195px;
       border-radius: 20px;
       overflow: hidden;
-
+      // width: 20%;
+      // height: auto;
+      // max-width: 100%;
+      // border-radius: 20px;
+      // overflow: hidden;
       .bookmark-img {
         width: 100%;
         height: 100%;
@@ -109,31 +91,8 @@
       transition: opacity 0.5s ease-in-out;
     }
 
-    .grid-view {
-      display: flex;
-      flex-wrap: wrap;
-
-      .bookmark-item {
-        width: calc(50% - 10px); // 50% de la largeur moins la marge de droite
-        margin-right: 10px;
-        margin-bottom: 10px;
-      }
-    }
-
-    .category-btn {
-      display: inline-block;
-      margin-right: 10px;
-      border-radius: 20px;
-      padding: 5px 10px;
-      background-color: gray;
-      color: white;
-      transition: background-color 0.3s, color 0.3s;
-
-      &:hover {
-        background-color: #40FA43;
-        color: black;
-      }
+    a {
+      color: #7B7BFF;
     }
   }
-
 }
