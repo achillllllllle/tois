@@ -1,0 +1,12 @@
+<li class="notif-followed border-bottom">
+    <div class="d-flex">
+      <div class="avatar">
+        <%= cl_image_tag post.user.photo.key, class: "avatar"  %>
+      </div>
+      <div class="d-flex">
+        <strong><p class="me-1" ><%= post.user.username %></p></strong>
+        <p class="me-1">a publié sur</p>
+        <strong><p class="me-1"><%= post.toi.title %></p></strong>
+      </div>
+    </div>
+</li>
