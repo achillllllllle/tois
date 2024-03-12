@@ -1,0 +1,11 @@
+<li class="notif-followed border-bottom">
+    <div class="d-flex">
+      <div class="avatar">
+        <%= cl_image_tag user.photo.key, class: "avatar"  %>
+      </div>
+      <div class="d-flex">
+        <strong><p class="me-1" ><%= user.username %></p></strong>
+        <p class="me-1">t'a suivi.</p>
+      </div>
+    </div>
+</li>

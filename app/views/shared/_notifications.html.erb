@@ -4,9 +4,15 @@
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cpt-notif <%= "d-none" unless user.unread_notifications.count > 0 %>" data-notification-subscription-target="cpt"> <%= user.unread_notifications.count %> </span>
           </i>
   </button>
-    <ul class="dropdown-menu dropdown-menu-end bg-white mt-2 rounded-4 p-2 <%= "d-none" unless user.notifications.present? %>" style="width: max-content" data-notification-subscription-target="notifContainer">
+    <ul class="dropdown-menu dropdown-menu-end bg-white mt-2 rounded-4 p-2" style="width: max-content" data-notification-subscription-target="notifContainer">
+      <strong><p class="me-1 mb-0 <%= "d-none" if user.unread_notifications.present? %>" data-notification-subscription-target="noNotif">Pas de notifications</p></strong>
       <% user.unread_notifications.each do |notif| %>
-        <%= render "shared/post_notification", post: notif.post %>
+        <% if notif.post %>
+          <%= render "shared/post_notification", post: notif.post %>
+        <% end %>
+        <% if notif.friend %>
+          <%= render "shared/friend_notification", user: notif.friend.follower %>
+        <% end %>
       <% end %>
     </ul>
 </div>
