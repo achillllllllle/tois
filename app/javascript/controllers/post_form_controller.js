@@ -14,7 +14,15 @@ export default class extends Controller {
   buildSelect() {
     const options = {
       create: this.createEvent.bind(this),
-      onChange: this.itemSelected.bind(this)
+      onChange: this.itemSelected.bind(this),
+      render: {
+        option_create: function(data, escape) {
+          return '<div class="create">Ajouter <strong>' + escape(data.input) + '</strong>&hellip;</div>';
+        },
+        no_results:function(data,escape){
+          return '<div class="no-results">Pas de résultats pour "'+escape(data.input)+'"</div>';
+        },
+      }
     }
     new TomSelect(this.selectInputTarget, options)
   }

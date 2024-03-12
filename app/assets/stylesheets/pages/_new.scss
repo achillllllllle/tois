@@ -68,4 +68,7 @@
   [data-star-rating] .gl-star-rating--stars[aria-label]::after {
     display: none;
   }
+  .ts-dropdown, .ts-control, .ts-control input {
+    font-size: 20px;
+  }
 }
