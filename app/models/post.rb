@@ -13,7 +13,7 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :toi
 
-  after_create :notify
+  after_create :notify_post
 
   def starify(rating)
     stars = ''
@@ -35,7 +35,7 @@ class Post < ApplicationRecord
 
   private
 
-  def notify
+  def notify_post
     user.following_users.each do |friend|
       next if friend == user
 
