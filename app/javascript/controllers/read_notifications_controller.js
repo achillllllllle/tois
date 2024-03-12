@@ -5,20 +5,22 @@ export default class extends Controller {
   static values = { path: String }
 
   connect() {
-    console.log(this.pathValue);
+    this.element.addEventListener('hidden.bs.dropdown', () =>{
+      this.element.outerHTML = this.notifHtml
+     })
   }
 
   read(event) {
-    event.preventDefault()
-    console.log(this.pathValue.action)
     fetch(this.pathValue, {
       method: "PATCH",
-      headers: { "Accept": "application/json" },
-      body: { read: true }
+      headers: {
+        "Accept": "application/json",
+        "X-CSRF-Token": document.querySelector("meta[name=csrf-token]").content,
+      }
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        this.notifHtml = data.html;
       });
   }
 }
