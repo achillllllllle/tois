@@ -59,6 +59,9 @@ html {
   color: black !important;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
 
 // #personalize {
 //   display: inline;
