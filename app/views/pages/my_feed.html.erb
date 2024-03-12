@@ -6,11 +6,13 @@
 
   <% if @posts_this_week.size > 0 %>
     <h3 class="text-white mb-2"> Postés cette semaine :</h3>
+   <div >
     <% @posts_this_week.each do |toi, posts| %>
       <% most_recent_post = posts.first %>
 
       <%= link_to toi_path(toi) do %>
-        <div id="avatar-size" class="card flex-row justify-content-between <%= cycle('bg-color-1', 'bg-color-2', 'bg-color-3') %>">
+        <div id="avatar-size" class="card flex-row justify-content-between <%= toi.category.name.downcase %>">
+
           <div class="p-1">
             <div class="infos mb-2">
                 <h2 class="fw-bold"><%= toi.title  %></h2>
@@ -32,6 +34,7 @@
         </div>
       <% end %>
     <% end %>
+   </div>
   <% end %>
 
   <h3 class="text-white mb-2"> Il y a un peu plus longtemps...</h2>

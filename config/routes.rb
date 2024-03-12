@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :users, only: [:show, :update] do
     member do
+      patch :read_notifications, to: "users#read_notifications"
       patch :follow
       patch :unfollow
     end
