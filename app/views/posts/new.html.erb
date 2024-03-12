@@ -1,8 +1,4 @@
-<div class="container fullheight form-new" id="resize-button" data-controller="step-form">
-
-  <div class= "row">
-   <h1 style="text-align:center; margin-top: 15px"> Share with us your cultural experience <h1>
-  </div>
+<div class="container d-flex flex-column form-new fullheight justify-content-center" id="resize-button" data-controller="step-form">
 
   <%= simple_form_for @post,
                       html: {
@@ -12,7 +8,7 @@
                       } do |f| %>
 
     <%# ETAPE 1 : JE SELECTIONNE UN TOI %>
-  <section class="form-step-1" data-step-form-target="step1">
+  <section class="form-step-1 d-none" data-step-form-target="step1">
     <%= f.input :toi,
                 collection: Toi.all,
                 label_method: :title,
@@ -84,13 +80,27 @@
         </div>
       <% end %>
     </div>
-    <button class="btn-next" data-action="click->step-form#next" data-step-form-target="nextButton">
-      <i class="fw-bold text-white fa-solid fa-arrow-right"></i>
+    <button class="btn-next float-end" data-action="click->step-form#next" data-step-form-target="nextButton">
+      <i class="fw-bold text-primary fa-solid fa-arrow-right"></i>
     </button>
   </section>
 
-  <section class="form-step-2" data-step-form-target="step2">
+  <section class="form-step-2 d-none" data-step-form-target="step2">
       <%# ETAPE 2 : UN RATING, UN COMMENTAIRE %>
+
+    <%= f.input :review,
+                placeholder: "Commentaire",
+                label: false,
+                input_html: {
+                  rows: 4,
+                  class: 'simple-form-input',
+                } %>
+
+    <%# <%= f.button :submit,
+                  "Partager",
+                  class: "btn btn-success mt-3 simple-form-button"%>
+
+  <div class="d-flex justify-content-between align-items-center">
     <%= f.input :rating,
                 placeholder: "Note",
                 collection: (1..5),
@@ -102,17 +112,12 @@
                     controller: "star-rating",
                   }
                 } %>
-    <%= f.input :review,
-                placeholder: "Commentaire",
-                label: false,
-                input_html: {
-                  rows: 4,
-                  class: 'simple-form-input',
-                } %>
+    <button type="submit" class="btn-next p-0 float-end">
+      <i class="fw-bold text-primary fa-solid fa-check"></i>
+    </button>
+  </div>
 
-    <%= f.button :submit,
-                  "Partager",
-                  class: "btn btn-success mt-3 simple-form-button" %>
+
   </section>
 
 

@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets = [ "step1", "step2", "nextButton"]
 
   connect() {
-    this.hideSteps()
     this.showStep(this.step1Target)
   }
 

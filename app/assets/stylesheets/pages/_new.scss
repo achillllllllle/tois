@@ -64,4 +64,8 @@
   .btn-next i {
     font-size: 40px;
   }
+
+  [data-star-rating] .gl-star-rating--stars[aria-label]::after {
+    display: none;
+  }
 }
