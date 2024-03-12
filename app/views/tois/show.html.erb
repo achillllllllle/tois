@@ -1,9 +1,10 @@
 <div class="fullheight toi-show">
 
+
   <div class="toi position-relative">
     <%= cl_image_tag @toi.photo.key, crop: :fill, class: "img-show" %>
     <div class="position-absolute start-0 end-0 bottom-0 mb-4 d-flex justify-content-between">
-      <h5 class="card-title category px-4 py-2 rounded-pill bg-primary">#<%= @toi.category.name.downcase %> </h5>
+      <h5 class="card-title category px-4 py-2 rounded-pill <%= @toi.category.name.downcase %>">#<%= @toi.category.name.downcase %> </h5>
 
       <div class="bookmark-wrapper px-4 py-2" data-controller="bookmark" data-action="click->bookmark#toggle">
         <% if current_user.bookmarks.find_by(toi: @toi)&.saved %>
@@ -23,7 +24,7 @@
                         controller: "bookmark",
                         turbo_method: "post"
                       } do %>
-            <i class="far fa-bookmark fs-3" data-bookmark-target="icon"></i>
+            <i class="far fa-bookmark fs-3 <%= @toi.category.name.downcase %>-color" data-bookmark-target="icon"></i>
           <% end %>
         <% end %>
       </div>
@@ -34,13 +35,13 @@
     <h1 class="p-2 fw-bold mb-3">Avis pour : <em><%= @toi.title %></em></h1>
     <% @posts.each do |post| %>
       <%= link_to user_path(post.user) do %>
-        <div class="card border border-primary bg-white border-4">
+        <div class="card border <%= @toi.category.name.downcase%>-border  bg-white">
           <div class="infos d-flex justify-content-between w-100 ">
             <div class="d-flex align-items-end">
             <%= cl_image_tag post.user.photo.key, class: "avatar"  %>
               <h3 class="text-dark fw-bold"> @<%= post.user.username %> </h3>
             </div>
-            <div class="stars text-primary">
+            <div class="stars text-primary color-star">
               <%= post.starify(post.rating).html_safe %>
             </div>
           </div>
