@@ -3,8 +3,8 @@
 
     <!-- Retour page précedente -->
       <div class="d-flex">
-      <%= link_to my_feed_path do %>
-        <div class="text-center bg-white rounded-circle p-2 me-2">
+      <%= link_to :back do %>
+        <div class="text-center bg-white rounded-circle p-2 me-2 ">
           <i class="fa-solid fa-arrow-left text-white fa-2x icon-menu-bar"></i>
         </div>
       <% end %>
@@ -14,7 +14,7 @@
     <div class="d-flex">
     <!-- Paramètres user -->
       <div class="dropdown-center rounded-4 me-2">
-        <button class="text-center bg-white rounded-circle  p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="text-center bg-white rounded-circle account p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-bars  text-white fa-2x icon-menu-bar"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-end bg-white mt-2 rounded-4">

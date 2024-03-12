@@ -1,7 +1,45 @@
-<div class="container fullheight">
+<div class="container bookmarks fullheight" data-controller="category-filter">
 
   <div class="my-5 page-title">
     <h2>Mes favoris<i class="fa-solid fa-eye icon-logo"></i></h2>
   </div>
 
+  <div class="btn-group" role="group" aria-label="Category filters">
+    <div class="category-btn btn btn-secondary active" data-action="click->category-filter#filter" data-category-id="">
+      All
+    </div>
+    <% @categories.each do |category| %>
+      <div class="category-btn btn btn-secondary" data-action="click->category-filter#filter" data-category-id="<%= category.id %>">
+        <%= category.name %>
+      </div>
+    <% end %>
+  </div>
+
+  <div data-category-filter-target="categoryContainer">
+    <% @bookmarks_by_category.each do |category, bookmarks| %>
+      <div class="category-section" data-category-id="<%= category.id %>">
+        <h3><%= category.name %></h3>
+        <div class="row">
+          <% if bookmarks.any? %>
+            <% bookmarks.each do |bookmark| %>
+              <div class="col-md-4">
+                <%= link_to toi_path(bookmark) do %>
+                  <div class="card border-primary mb-4 <%= cycle('bg-color-1', 'bg-color-2', 'bg-color-3') %>">
+                    <div class="card-body">
+                      <%= cl_image_tag bookmark.photo.key, class: "card-img-top img-fluid toi-img" %>
+                      <h4 class="card-title no-decoration fw-bold"><%= bookmark.title %></h4>
+                      <p class="card-text text-resume no-decoration"><%= bookmark.description %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% else %>
+            <p>Aucun favori pour cette catégorie.</p>
+            <p>Explorez et sauvegardez plus de Tois !</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

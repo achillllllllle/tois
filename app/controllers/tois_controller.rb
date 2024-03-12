@@ -2,11 +2,20 @@ class ToisController < ApplicationController
   before_action :set_toi, only: [:show]
 
   def index
+    @tois = Toi.all.order(created_at: :desc)
+
+
+
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
-      @tois = @category.tois
-    else
-      @tois = Toi.all
+      @tois = @tois.where(category: @category)
+      
+
+    end
+
+    if params[:query].present?
+      query = params[:query]
+      @tois = @tois.where("LOWER(title) LIKE ?", "%#{query.downcase}%")
     end
   end
 

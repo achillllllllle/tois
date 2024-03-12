@@ -1,4 +1,4 @@
-.my-bookmarks {
+.bookmarks {
   .logo {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -7,14 +7,88 @@
   .bookmark-title {
     margin-top: 30px;
     margin-bottom: 50px;
+
     h1 {
       font-size: 55px;
       font-weight: bold;
       line-height: 80px;
+
       .save-logo {
         font-size: 60px;
         margin-left: 20px;
       }
     }
+  }
+
+  h3 {
+    font-family: "Inria Sans", "Helvetica", "sans-serif";
+    font-size: 24px;
+    line-height: 55px;
+  }
+
+  h4 {
+    font-family: "Inria Sans", "Helvetica", "sans-serif";
+    font-size: 24px;
+  }
+
+  .text-resume {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .no-decoration {
+    text-decoration: none;
+  }
+
+  .toi-img {
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .fas.fa-bookmark {
+    color: #40FA43;
+  }
+
+  .far.fa-bookmark {
+    color: gray;
+  }
+
+  .page-title {
+    margin-bottom: 0px;
+  }
+
+  .bg-color-1 {
+    background-color: #40FA43;
+  }
+
+  .bg-color-2 {
+    background-color: #7B7BFF;
+  }
+
+  .bg-color-3 {
+    background-color: #E0FA41;
+  }
+
+  .category-btn {
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: gray;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: #40FA43;
+      color: black;
+    }
+  }
+
+  .clear-filter-btn {
+    margin-left: 5px;
+    cursor: pointer;
   }
 }

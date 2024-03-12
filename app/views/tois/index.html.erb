@@ -5,6 +5,20 @@
       <h1><%= @category.name %><i class="fa-solid fa-bolt icon-logo"></i></h1>
     </div>
 
+  <form novalidate="novalidate" class="simple_form search" action="<%= tois_path %>" accept-charset="UTF-8" method="get">
+    <% if params[:category_id].present? %>
+      <input type="hidden" name="category_id" value="<%= params[:category_id] %>" />
+    <% end %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="query" id="search_query" placeholder="Rechercher par mot-clé" />
+        <button type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </form>
+    <%=average = 0 %>
+
+
     <% @tois.each_with_index do |toi, index| %>
       <%= link_to toi_path(toi) do %>
         <div id="avatar-size" class="card <%= "bg-color-#{(index % 3) + 1}" %>">
@@ -15,8 +29,21 @@
             <% if toi.posts.last %>
               <div class="d-flex flex-row justify-content-between">
                 <strong><%= toi.posts.count %> avis</strong>
-                <div class="stars text-primary">
-                  <p><strong><%= toi.posts.average(:rating).to_f.round(1)/2 %>/5</strong></p>
+                <div id="color-star" class="stars text-primary">
+                  <p>
+                  <strong>
+
+                      <% Post.where(toi_id: toi.id).each do |note| %>
+                        <% average += note.rating %>
+                      <% end %>
+                      <%= average / Post.where(toi_id: toi.id).length%>/10</strong></p>
+                      <%=toi.starify_average(current_user).html_safe %>
+                      <% average = 0 %>
+
+
+
+
+
                 </div>
               </div>
             <% end %>

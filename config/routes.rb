@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :update] do
     member do
+<<<<<<< HEAD
       patch :read_notifications, to: "users#read_notifications"
+=======
+      patch :follow
+      patch :unfollow
+>>>>>>> master
     end
   end
 
@@ -16,7 +21,7 @@ Rails.application.routes.draw do
     resources :bookmarks, only: %i[create]
   end
 
-  resources :bookmarks, only: %i[index delete]
+  resources :bookmarks, only: %i[index destroy]
 
   resources :posts, only: %i[new create]
 end

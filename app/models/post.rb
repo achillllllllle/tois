@@ -18,12 +18,17 @@ class Post < ApplicationRecord
   def starify(rating)
     stars = ''
     full_stars = rating / 2
+
     half_star = rating % 2
     full_stars.to_i.times do
       stars += "<i class='fa-solid fa-star'></i>"
+
     end
     half_star.to_i.times do
       stars += "<i class='fa-solid fa-star-half-stroke'></i>"
+    end
+    (((10-rating)-(10-rating)%2)/2).times do
+      stars += "<i class='fa-regular fa-star'></i>"
     end
     stars
   end
