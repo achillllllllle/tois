@@ -31,6 +31,7 @@ class Toi < ApplicationRecord
     avg_rating = 0
     followed_users_posts(user).each do |post|
       avg_rating += post.rating
+      
     end
     avg_rating /= followed_users_posts(user).count
     stars = ''
