@@ -4,13 +4,9 @@ class ToisController < ApplicationController
   def index
     @tois = Toi.all.order(created_at: :desc)
 
-
-
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
       @tois = @tois.where(category: @category)
-      
-
     end
 
     if params[:query].present?
@@ -20,9 +16,8 @@ class ToisController < ApplicationController
   end
 
   def show
-    @posts = @toi.followed_users_posts(current_user)
+    @posts = @toi.followed_users_posts(current_user).order(created_at: :desc)
     @user = User.first
-
   end
 
   def find_toi

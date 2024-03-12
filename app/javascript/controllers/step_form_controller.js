@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   next() {
-    console.log('click next');
     event.preventDefault()
     this.hideSteps()
     this.showStep(this.step2Target)
