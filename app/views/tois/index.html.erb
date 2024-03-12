@@ -1,8 +1,8 @@
-<div class="container fullheight search-page">
+<div id="explore-color" class="container fullheight search-page">
 
   <% if params[:category_id].present? %>
     <div class="my-4 page-title">
-      <h1><%= @category.name %><i class="fa-solid fa-bolt icon-logo"></i></h1>
+      <h1 class="<%= @category.name.downcase %>-color"><%= @category.name %><i class="fa-solid fa-bolt icon-logo"></i></h1>
     </div>
 
   <form novalidate="novalidate" class="simple_form search" action="<%= tois_path %>" accept-charset="UTF-8" method="get">
@@ -21,7 +21,7 @@
 
     <% @tois.each_with_index do |toi, index| %>
       <%= link_to toi_path(toi) do %>
-        <div id="avatar-size" class="card <%= "bg-color-#{(index % 3) + 1}" %>">
+        <div id="avatar-size" class="card <%= @category.name.downcase %>-border">
           <div class="p-1">
             <%= cl_image_tag toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
             <h2 class="fw-bold"><%= toi.title %></h2>
@@ -57,7 +57,7 @@
     <h1>Explore<i class="fa-solid fa-bolt icon-logo"></i></h1>
   </div>
     <% Category.all.each_with_index do |cat, index| %>
-      <div id="avatar-size" class="card <%= "bg-color-#{(index % 3) + 1}" %>">
+       <div id="avatar-size" class="card <%= cat.name.downcase %>">
         <%= link_to cat.name, tois_path(category_id: cat.id), class: 'fw-bold text-black h3' %>
       </div>
     <% end %>
