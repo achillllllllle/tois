@@ -1,24 +1,4 @@
 .bookmarks {
-  .logo {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  .bookmark-title {
-    margin-top: 30px;
-    margin-bottom: 50px;
-
-    h1 {
-      font-size: 55px;
-      font-weight: bold;
-      line-height: 80px;
-
-      .save-logo {
-        font-size: 60px;
-        margin-left: 20px;
-      }
-    }
-  }
 
   h3 {
     font-family: "Inria Sans", "Helvetica", "sans-serif";
@@ -60,17 +40,17 @@
     margin-bottom: 0px;
   }
 
-  .bg-color-1 {
-    background-color: #40FA43;
-  }
+  // .bg-color-1 {
+  //   background-color: #40FA43;
+  // }
 
-  .bg-color-2 {
-    background-color: #7B7BFF;
-  }
+  // .bg-color-2 {
+  //   background-color: #7B7BFF;
+  // }
 
-  .bg-color-3 {
-    background-color: #E0FA41;
-  }
+  // .bg-color-3 {
+  //   background-color: #E0FA41;
+  // }
 
   .category-btn {
     display: inline-block;
@@ -87,8 +67,74 @@
     }
   }
 
-  .clear-filter-btn {
-    margin-left: 5px;
-    cursor: pointer;
+  // .clear-filter-btn {
+  //   margin-left: 5px;
+  //   cursor: pointer;
+  // }
+
+  .white-text {
+    color: white;
   }
+
+  .bookmarks-container {
+    overflow-x: auto;
+    white-space: nowrap;
+
+    .bookmarks-list {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 0 10px;
+
+      .bookmark-item {
+        flex-shrink: 0;
+        width: calc(50% - 10px);
+        margin-right: 10px;
+      }
+    }
+
+    .bookmark-img-wrapper {
+      width: 200px;
+      height: 200px;
+      border-radius: 20px;
+      overflow: hidden;
+
+      .bookmark-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .category-section {
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .grid-view {
+      display: flex;
+      flex-wrap: wrap;
+
+      .bookmark-item {
+        width: calc(50% - 10px); // 50% de la largeur moins la marge de droite
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .category-btn {
+      display: inline-block;
+      margin-right: 10px;
+      border-radius: 20px;
+      padding: 5px 10px;
+      background-color: gray;
+      color: white;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: #40FA43;
+        color: black;
+      }
+    }
+  }
+
 }
