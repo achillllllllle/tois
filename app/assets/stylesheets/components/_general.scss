@@ -78,8 +78,11 @@ html {
   border-width: 2px;
   border-radius: 15px;
 }
-// #personalize {
-//   display: inline;
-//   color: white;
-//   border-radius: 10px;
-// }
+
+button {
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+button:active {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  transform: translate(2px, 2px);
+}
