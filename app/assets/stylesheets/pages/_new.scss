@@ -55,4 +55,13 @@
   [data-star-rating] {
     z-index: 1;
   }
+
+  .btn-next {
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+  }
+  .btn-next i {
+    font-size: 40px;
+  }
 }
