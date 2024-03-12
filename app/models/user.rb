@@ -18,11 +18,21 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   validates :email, :username, uniqueness: true
   validates :email, :username, presence: true
+  after_create -> { selfriend }
 
   def followed_users_tois
     Toi.joins(:posts).where(posts: { user_id: followed_users.pluck(:id) }).distinct
   end
+
   def follow?(other_user)
     friends.where(following_id: other_user.id).exists?
+  end
+
+  def selfriend
+    Friend.create(follower: self, following: self)
+  end
+
+  def unread_notifications
+    self.notifications.where(read: false)
   end
 end

@@ -37,7 +37,13 @@ class Post < ApplicationRecord
 
   def notify
     user.following_users.each do |friend|
-      friend.notifications.create(post: self)
+      next if friend == user
+
+      notif = friend.notifications.create(post: self)
+      NotificationChannel.broadcast_to(
+        friend,
+        ApplicationController.new.render_to_string(partial: "shared/post_notification", locals: { post: notif.post })
+      )
     end
   end
 end
