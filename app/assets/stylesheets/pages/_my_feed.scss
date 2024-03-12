@@ -1,7 +1,14 @@
 .my-feed {
+
+  padding-bottom: 80px;
+
   .avatar {
     height: 40px;
     width: 40px;
+  }
+
+  .part {
+    padding-bottom: 50px;
   }
 
   .photo {
@@ -13,9 +20,35 @@
 
   .card {
     background-color: $flashy-green;
-    margin-bottom: 15px;
+    margin-bottom: 1.25rem;
     padding: 12px;
     border-radius: 40px;
+    align-items: center;
+    max-height: 10rem;
+    height: 10rem;
+
+    .max-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .infos {
+      margin-left: 3px;
+
+      .other-reviews {
+        font-size: 15px;
+      }
+    }
+  }
+
+
+  .img-toi {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 25%;
+    margin-right: 5px;
   }
 
   .form-control {
@@ -39,7 +72,7 @@
   .spectacle {
     background-color: #E0FA41;
   }
-  
+
   .exposition {
     background-color:#7B7BFF;
   }
@@ -47,6 +80,18 @@
 
   .bg-color-4 {
     background-color: #FFA8FF;
+  }
+
+
+  .user-rating {
+    line-height: 20px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    .user {
+      font-size: 15px;
+      color: #343a40;
+    }
   }
 
   .user-name {
@@ -64,10 +109,6 @@
     margin-bottom: 0px;
   }
 
-  .user {
-    font-size: 18px;
-  }
-
   h2 {
     font-size: 24px;
     overflow: hidden;
@@ -76,10 +117,8 @@
     max-height: 3.7rem;
   }
 
-  .img-toi {
-    width: 95px;
-    height: 95px;
-    object-fit: cover;
-    border-radius: 25%;
+  h3 {
+    font-weight: bold;
+    padding-bottom: 1rem;
   }
 }

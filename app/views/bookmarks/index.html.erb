@@ -33,6 +33,7 @@
                 <%= link_to toi_path(bookmark) do %>
                   <div class="bookmark-img-wrapper">
                     <%= cl_image_tag bookmark.photo.key, class: "bookmark-img" %>
+                    <h5 class="bookmark-title"><%= bookmark.title %></h5>
                   </div>
                 <% end %>
               </div>
