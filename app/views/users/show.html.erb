@@ -1,40 +1,64 @@
-<div class="container fullheight profile-page">
+<div class="container profile-page fullheight">
 
-
-  <div class="mt-5 d-flex">
+  <div class="personal-infos mt-5 d-flex">
     <div class="avatar">
       <%= cl_image_tag @user.photo.key, class: "avatar"  %>
     </div>
 
+    <div class="infos">
+      <h2 class="fw-bold">@<%= @user.username %></h2>
 
-   <div class="infos">
-    <h2 class="fw-bold">@<%= @user.username %></h2>
+      <p  class="text-white " id="suivi"> <strong><%= @user.followed_users.count-1 %></strong> suivi(e)s</p>
 
-    <p  class="text-white " id="suivi"> <strong><%= @user.followed_users.count-1 %></strong> suivi(e)s</p>
-    <% if current_user != @user %>
-      <% if current_user.follow?(@user) %>
-        <%=  button_to "Ne plus suivre", unfollow_user_path, method: :patch, form: { class: "ta-classe-form" }, class: "ta-classe-css"%>
-      <% else %>
-        <%= button_to "Suivre", follow_user_path, method:  :patch, form: { class: "ta-classe-form" }, class: "ta-classe-css" %>
+      <% if current_user != @user %>
+        <% if current_user.follow?(@user) %>
+          <%=  button_to "Ne plus suivre", unfollow_user_path, method: :patch, form: { class: "ta-classe-form" }, class: "ta-classe-css"%>
+        <% else %>
+          <%= button_to "Suivre", follow_user_path, method:  :patch, form: { class: "ta-classe-form" }, class: "ta-classe-css" %>
+        <% end %>
       <% end %>
-    <% end %>
-    <p class="text-white "> <strong><%= @user.followings.count-1 %></strong> followers </p>
-   </div>
-   </div>
 
-  <h1 class="p-2 fw-bold mt-3"><%= @user.posts.count%> Avis</h1>
+      <p class="text-white "> <strong><%= @user.followings.count-1 %></strong> followers </p>
+
+    </div>
+  </div>
+
+  <h1>Tes derniers <i class="fa-solid fa-bookmark small-icon"></i></h1>
+
+  <div class="last-savings">
+    <div class="d-flex justify-content-between">
+      <% @user.saved_tois.order(created_at: :desc).limit(3).each do |saved_toi| %>
+        <div class="card">
+          <%= link_to toi_path(saved_toi) do %>
+            <div class="position-relative">
+              <%= cl_image_tag saved_toi.photo.key, height: 300, crop: :fill, class: "card-img-top saved-tois" %>
+              <div class="position-absolute bottom-0 end-0 p-2">
+                <h5 class="card-title m-0"><%= saved_toi.title %></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <h1>Tes avis <i class="fa-solid fa-star small-icon"></i></h1>
+  <h6 class="reviews-number"><%= @user.posts.count%> avis</h6>
+
   <% @user.posts.each do |post| %>
-    <div class="card border border-primary bg-white border-4">
+    <div class="card">
       <div class="infos justify-content-between w-100 ">
         <%= cl_image_tag post.toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
-        <div class="d-flex align-items-baseline justify-content-between">
-          <h3 class="text-black fw-bold"><%= post.toi.title  %></h3>
+        <div class="reviews-info-profile">
           <div class="stars text-primary">
             <%= post.starify(post.rating).html_safe %>
           </div>
+          <div class="d-flex align-items-baseline justify-content-between">
+            <h3 class="text-black"><%= post.toi.title  %></h3>
+          </div>
+          <p class="sizing-review"><%= post.review %>w</p>
         </div>
       </div>
-      <p class="sizing-review mb-auto"><%= post.review %>w</p>
     </div>
   <% end %>
 

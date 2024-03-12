@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :followings, class_name: "Friend", foreign_key: "following_id"
   has_many :following_users, -> { distinct }, through: :followings, source: :follower
   has_many :bookmarks
+  has_many :saved_tois, through: :bookmarks, source: :toi
   has_one_attached :photo
   has_many :notifications, dependent: :destroy
 
