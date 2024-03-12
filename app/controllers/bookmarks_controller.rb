@@ -34,24 +34,24 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
       if @bookmark.save
-        # format.html { redirect_to @toi, notice: 'Saved' }
+        format.html { redirect_to toi_path(@toi) }
         format.json { render json: { saved: true } }
       else
-        # format.html { redirect_to @toi, alert: 'Unsaved' }
+        format.html { redirect_to toi_path(@toi), alert: 'Unsaved' }
         format.json { render json: { success: false }, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @bookmark = current_user.bookmarks.find_by(id: params[:id])
-    # @bookmark.destroy! if @bookmark
+    @bookmark = current_user.bookmarks.find(params[:id])
+    @bookmark.destroy!
 
     respond_to do |format|
-      # format.html { redirect_to toi_path(), alert: 'Unsaved' }
-      # format.json { render json: { saved: false } }
+      format.html { redirect_to toi_path(@bookmark.toi) }
+
       format.json do
-        if @bookmark.destroy
+        if @bookmark.destroyed?
           render json: { saved: false }
         else
           render json: { saved: true }, status: :unprocessable_entity
