@@ -56,11 +56,21 @@
   <div class="my-5 page-title">
     <h1>Explore<i class="fa-solid fa-bolt icon-logo"></i></h1>
   </div>
-    <% Category.all.each_with_index do |cat, index| %>
-       <div id="avatar-size" class="card <%= cat.name.downcase %>">
-        <%= link_to cat.name, tois_path(category_id: cat.id), class: 'fw-bold text-black h3' %>
-      </div>
+<% category_icons = {
+  'cinema' => 'fa-film',
+  'spectacle' => 'fa-masks-theater',
+  'litterature' => 'fa-book',
+  'exposition' => 'fa-building-columns'
+} %>
+
+<% Category.all.each do |cat| %>
+  <div id="avatar-size" class="card p-3 <%= cat.name.downcase %>">
+    <%= link_to tois_path(category_id: cat.id), class: 'fw-bold text-black h3 d-flex' do %>
+      <i class="fa-solid <%= category_icons[cat.name.downcase] %> fa-2x ms-2"></i>
+      <h2 class="fw-bold text-black m-2"><%= cat.name %></h2>
     <% end %>
+  </div>
+<% end %>
   <% end %>
 
 </div>
