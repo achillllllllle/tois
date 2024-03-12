@@ -1,8 +1,11 @@
 .bookmarks {
 
+  padding-bottom: 80px;
+
   h3 {
     font-family: "Inria Sans", "Helvetica", "sans-serif";
     font-size: 24px;
+    font-weight: bold;
     line-height: 55px;
   }
 
@@ -14,20 +17,8 @@
     text-overflow: ellipsis;
   }
 
-  .litterature {
-    background-color: #40FA43;
-  }
-
-  .cinema {
-    background-color: #FFA8FF;
-  }
-
-  .spectacle {
-    background-color: #E0FA41;
-  }
-
-  .exposition {
-    background-color: #E67E22;
+  .btn-group {
+    margin-bottom: 30px
   }
 
   .category-btn {
@@ -68,7 +59,7 @@
       .bookmark-item {
         flex-shrink: 0;
         width: calc(50% - 10px);
-        margin-right: 10px;
+        margin-right: 18px;
         margin-bottom: 10px;
       }
     }
@@ -76,6 +67,7 @@
     .grid-view {
       display: flex;
       flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .bookmark-img-wrapper {
@@ -98,7 +90,7 @@
     .category-section {
       transition: opacity 0.5s ease-in-out;
     }
-    
+
     a {
       color: #7B7BFF;
     }
