@@ -1,8 +1,18 @@
 <div id="explore-color" class="container fullheight search-page">
 
   <% if params[:category_id].present? %>
-    <div class="my-4 page-title">
-      <h1 class="<%= @category.name.downcase %>-color"><%= @category.name %><i class="fa-solid fa-bolt icon-logo"></i></h1>
+
+    <% category_icons = {
+    'cinema' => 'fa-film',
+    'spectacle' => 'fa-masks-theater',
+    'litterature' => 'fa-book',
+    'exposition' => 'fa-building-columns'
+    } %>
+
+    <div class="mt-4 page-title d-flex align-items-center">
+      <i class="fa-solid <%= category_icons[@category.name.downcase] %> fa-3x me-2 <%= @category.name.downcase %>-color"></i>
+      <h1 class="<%= @category.name.downcase %>-color"><%= @category.name %>
+      </h1>
     </div>
 
   <form novalidate="novalidate" class="simple_form search" action="<%= tois_path %>" accept-charset="UTF-8" method="get">
