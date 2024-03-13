@@ -3,9 +3,7 @@
   padding-bottom: 80px;
 
   h3 {
-    font-family: "Inria Sans", "Helvetica", "sans-serif";
     font-size: 24px;
-    font-weight: bold;
     line-height: 55px;
   }
 
@@ -84,12 +82,11 @@
         background-color: rgba(255, 255, 255, 0.8);
         padding: 5px;
         border-radius: 5px;
-        font-size: 15px; /* Taille de police souhaitée */
-        color: #7B7BFF; /* Couleur du texte */
+        font-size: 12px;
+        color: #7B7BFF;
         max-width: 150px;
         white-space: nowrap;
         text-overflow: ellipsis;
-        font-weight: bold;
       }
 
       .bookmark-img {

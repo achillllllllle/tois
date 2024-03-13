@@ -25,12 +25,6 @@ class UsersController < ApplicationController
     render json: { html: render_to_string(partial: "shared/notifications", locals: { user: current_user }, formats: :html) }
   end
 
-  # def last_saved_tois
-  #   @user = User.find(params[:id])
-  #   @last_saved_tois = @user.saved_tois.order(created_at: :desc).limit(3)
-  #   render json: @last_saved_tois
-  # end
-
   private
 
   def set_user

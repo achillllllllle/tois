@@ -3,15 +3,15 @@
   <% if params[:category_id].present? %>
 
     <% category_icons = {
-    'cinema' => 'fa-film',
-    'spectacle' => 'fa-masks-theater',
-    'litterature' => 'fa-book',
-    'exposition' => 'fa-building-columns'
+      'cinema' => 'fa-film',
+      'spectacle' => 'fa-masks-theater',
+      'litterature' => 'fa-book',
+      'exposition' => 'fa-building-columns'
     } %>
 
     <div class="mt-4 page-title d-flex align-items-center">
       <i class="fa-solid <%= category_icons[@category.name.downcase] %> fa-3x me-2 <%= @category.name.downcase %>-color"></i>
-      <h1 class="<%= @category.name.downcase %>-color"><%= @category.name %>
+      <h1 class="<%= @category.name.downcase %>-color m-0 align-self-center"><%= @category.name %>
       </h1>
     </div>
 
@@ -28,59 +28,61 @@
     </form>
     <%=average = 0 %>
 
-
     <% @tois.each_with_index do |toi, index| %>
       <%= link_to toi_path(toi) do %>
         <div id="avatar-size" class="card <%= @category.name.downcase %>-border">
-          <div class="p-1">
+
+          <div class="category-toi">
             <%= cl_image_tag toi.photo.key, height: 300, crop: :fill, class: "img-toi" %>
-            <h2 class="fw-bold"><%= toi.title %></h2>
 
-            <% if toi.posts.last %>
-              <div class="d-flex flex-row justify-content-between">
-                <strong><%= toi.posts.count %> avis</strong>
-                <div class="stars text-primary color-star">
-                  <p>
-                  <strong>
+            <div class="toi-infos">
 
-                      <% Post.where(toi_id: toi.id).each do |note| %>
-                        <% average += note.rating %>
-                      <% end %>
-                      <%= (average / Post.where(toi_id: toi.id).length).fdiv(2).round(1)%>/5</strong></p>
-                      <%=toi.starify_average(current_user).html_safe %>
-                      <% average = 0 %>
+              <% if toi.posts.last %>
+                <div class="d-flex flex-row justify-content-between">
+                  <div class="stars text-primary color-star">
+                    <%=toi.starify_average(current_user).html_safe %>
 
-
-
-
-
+                      <%# Post.where(toi_id: toi.id).each do |note| %>
+                        <%# average += note.rating %>
+                      <%# end %>
+                      <%# = (average / Post.where(toi_id: toi.id).length).fdiv(2).round(1)/5</strong></p> %>
+                      <%#=toi.starify_average(current_user).html_safe %>
+                      <%# average = 0 %>
+                  </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+
+              <h2><%= toi.title %></h2>
+              <strong><%= toi.posts.count %> avis</strong>
+            </div>
+
           </div>
         </div>
       <% end %>
     <% end %>
 
   <% else %>
-  <div class="my-5 page-title">
-    <h1>Explore<i class="fa-solid fa-bolt icon-logo"></i></h1>
-  </div>
-<% category_icons = {
-  'cinema' => 'fa-film',
-  'spectacle' => 'fa-masks-theater',
-  'litterature' => 'fa-book',
-  'exposition' => 'fa-building-columns'
-} %>
 
-<% Category.all.each do |cat| %>
-  <div id="avatar-size" class="card p-3 <%= cat.name.downcase %>">
-    <%= link_to tois_path(category_id: cat.id), class: 'fw-bold text-black h3 m-0 d-flex align-items-center' do %>
-      <i class="fa-solid <%= category_icons[cat.name.downcase] %> fs-1 ms-2"></i>
-      <h2 class="fw-bold text-black m-2"><%= cat.name %></h2>
+    <div class="my-5 page-title">
+      <h1>Explore<i class="fa-solid fa-bolt icon-logo"></i></h1>
+    </div>
+
+    <% category_icons = {
+      'cinema' => 'fa-film',
+      'spectacle' => 'fa-masks-theater',
+      'litterature' => 'fa-book',
+      'exposition' => 'fa-building-columns'
+    } %>
+
+    <% Category.all.each do |cat| %>
+      <div id="avatar-size" class="category-card p-3 <%= cat.name.downcase %>">
+        <%= link_to tois_path(category_id: cat.id), class: 'fw-bold text-black h3 d-flex' do %>
+          <i class="fa-solid <%= category_icons[cat.name.downcase] %> fa-2x ms-2"></i>
+          <h2><%= cat.name %></h2>
+        <% end %>
+      </div>
+  
     <% end %>
-  </div>
-<% end %>
-  <% end %>
 
+  <% end %>
 </div>

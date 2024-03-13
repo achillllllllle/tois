@@ -1,8 +1,9 @@
 .card {
-  background-color: $flashy-green;
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 50px;
+  background-color: #272727;
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 40px;
+  color: white;
 }
 
 .img-show {
@@ -12,6 +13,10 @@
   object-fit: cover;
 }
 
+.infos {
+  // margin-bottom: 1rem;
+}
+
 .category {
   position: relative;
   bottom: 67%;
@@ -19,5 +24,7 @@
 }
 
 .stars {
-  margin-top: 7px;
+  color: white !important;
+//   margin-top: 7px;
+//   margin-right: 3px;
 }
