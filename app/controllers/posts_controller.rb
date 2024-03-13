@@ -49,7 +49,6 @@ class PostsController < ApplicationController
 
   def toi_params
     return unless params.dig(:post, :toi_attributes)
-    raise
     params[:post][:toi_attributes].permit!.to_h.merge({ title: params[:post][:toi], photo: params[:post][:photo]  })
   end
 
