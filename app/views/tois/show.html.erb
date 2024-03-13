@@ -45,6 +45,12 @@
               </div>
             </div>
             <div class="stars text-primary color-star">
+              <!--<span class="global-rating">
+                <% Post.where(toi_id: @toi.id).each do |note| %>
+                  <% average += note.rating %>
+                <% end %>
+                <%= (average / Post.where(toi_id: toi.id).length).fdiv(2).round(1)/5 %>
+              </span>-->
               <%= post.starify(post.rating).html_safe %>
             </div>
           </div>
