@@ -15,7 +15,7 @@
                         controller: "bookmark",
                         turbo_method: "delete"
                       } do %>
-            <i class="fas fa-bookmark fs-3" data-bookmark-target="icon"></i>
+            <i class="fas fa-bookmark fs-3   <%= @toi.category.name.downcase %>-color" data-bookmark-target="icon"></i>
           <% end %>
         <% else %>
           <%= link_to toi_bookmarks_path(@toi),
