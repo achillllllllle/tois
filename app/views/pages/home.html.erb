@@ -4,11 +4,13 @@
       <h2 class="fa-2x">Welcome</h2>
       <h3 class="fw-bold text-primary fa-3x"><%= current_user.username %></h3>
     </div>
-    <script>
-      setTimeout(function() {
-        window.location.href = '<%= my_feed_path %>';
-      }, 1500);
-    </script>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = '<%= my_feed_path %>';
+    }, 1500);
+  </script>
+
   <% else %>
     <div class="d-flex flex-column justify-content-center align-items-center p-3" style="margin-top: 60%;">
       <div class="d-flex justify-content-center align-items-center mb-4">

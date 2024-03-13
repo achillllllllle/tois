@@ -21,6 +21,8 @@
           <%= button_to "Suivre", follow_user_path, method:  :patch, form: { class: "ta-classe-form" }, class: "ta-classe-css btn btn-primary mt-3" %>
         <% end %>
       <% end %>
+
+      <p class="text-white "> <strong><%= @user.followings.count - 1 %></strong> followers </p>
     </div>
   </div>
 
