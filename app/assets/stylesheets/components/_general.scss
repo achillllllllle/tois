@@ -36,7 +36,7 @@
   -webkit-line-clamp: 3;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  padding-left: 0.5em;
+  padding-left: 0.25em;
 }
 
 .sign-in .form-control {
@@ -46,15 +46,19 @@
 html {
   overscroll-behavior: none!important;
 }
+
 .gl-star-rating--stars[aria-label]::after {
   content: "Choose a rating" !important;
 }
+
 #resize-button .row {
   flex-direction: column-reverse;
 }
+
 #suivi{
   display: inline;
 }
+
 .color-star{
   color: black !important;
 }

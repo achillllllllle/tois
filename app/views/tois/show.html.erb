@@ -31,15 +31,18 @@
     </div>
   </div>
 
-  <div class="container position-relative">
-    <h1 class="p-2 fw-bold mb-3">Avis pour : <em><%= @toi.title %></em></h1>
+  <div class="container container-position position-relative">
+    <h1 class="p-2 mb-3"><%= @toi.title %></h1>
     <% @posts.each do |post| %>
       <%= link_to user_path(post.user) do %>
-        <div class="card border <%= @toi.category.name.downcase%>-border  bg-white">
-          <div class="infos d-flex justify-content-between w-100 ">
-            <div class="d-flex align-items-end">
-            <%= cl_image_tag post.user.photo.key, class: "avatar"  %>
-              <h3 class="text-dark fw-bold"> @<%= post.user.username %> </h3>
+        <div class="card <%= @toi.category.name.downcase%>-border ">
+          <div class="infos d-flex justify-content-between align-items-center w-100 ">
+            <div class="d-flex align-items-center">
+              <%= cl_image_tag post.user.photo.key, class: "avatar"  %>
+              <div class="user-created-post">
+                <h3> @<%= post.user.username %> </h3>
+                <p class="date mb-0">Posté le <%= post.created_at.strftime("%d %B %Y") %></p> <!-- Affichage de la date -->
+              </div>
             </div>
             <div class="stars text-primary color-star">
               <%= post.starify(post.rating).html_safe %>

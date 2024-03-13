@@ -31,17 +31,22 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
+      font-weight: 600;
+      color: black;
+      margin-bottom: 3px;
     }
 
     .infos {
-      margin-left: 3px;
+      margin-left: 1rem;
+      color: black;
 
       .other-reviews {
         font-size: 15px;
+        color: black
       }
     }
   }
-
 
   .img-toi {
     width: 110px;
@@ -49,10 +54,6 @@
     object-fit: cover;
     border-radius: 25%;
     margin-right: 5px;
-  }
-
-  .form-control {
-    background-color: white !important;
   }
 
   .avatars-container {
@@ -81,7 +82,6 @@
   .bg-color-4 {
     background-color: #FFA8FF;
   }
-
 
   .user-rating {
     line-height: 20px;
@@ -118,7 +118,7 @@
   }
 
   h3 {
-    font-weight: bold;
+    padding-left: 1rem;
     padding-bottom: 1rem;
   }
 }
