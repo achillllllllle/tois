@@ -77,11 +77,11 @@
     <% Category.all.each do |cat| %>
       <div id="avatar-size" class="category-card p-3 <%= cat.name.downcase %>">
         <%= link_to tois_path(category_id: cat.id), class: 'fw-bold text-black h3 d-flex' do %>
-          <i class="fa-solid <%= category_icons[cat.name.downcase] %> fa-2x ms-2"></i>
-          <h2><%= cat.name %></h2>
+          <i class="fa-solid <%= category_icons[cat.name.downcase] %> fa-2x ms-2 category-icon-box"></i>
+          <h2 class="category-title"><%= cat.name %></h2>
         <% end %>
       </div>
-  
+
     <% end %>
 
   <% end %>
