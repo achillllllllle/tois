@@ -13,6 +13,9 @@ class PagesController < ApplicationController
       posts_previous_weeks = []
 
       toi.followed_users_posts(current_user).sort_by(&:created_at).reverse.each do |post|
+        # Vérifier que le post n'a pas été créé par le current_user
+        next if post.user == current_user
+
         if post.created_at.beginning_of_week == Date.current.beginning_of_week
           posts_this_week << post
         else
