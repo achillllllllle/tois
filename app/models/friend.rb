@@ -11,6 +11,8 @@ class Friend < ApplicationRecord
 
   def notify_friend
     friend = following
+    return if friend == follower
+
     notif = friend.notifications.create(friend: self)
     NotificationChannel.broadcast_to(
       friend,

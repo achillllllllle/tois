@@ -1,6 +1,6 @@
 class Toi < ApplicationRecord
   belongs_to :category
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :bookmarks, foreign_key: "toi_id"
   has_many :users, through: :bookmarks
   has_many :toi_artists, dependent: :destroy
