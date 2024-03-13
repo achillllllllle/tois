@@ -8,7 +8,7 @@
     <div class="infos">
       <h2 class="fw-bold">@<%= @user.username %></h2>
 
-      <p  class="text-white " id="suivi"> <strong><%= @user.followed_users.count-1 %></strong> suivi(e)s</p>
+      <p  class="text-white " id="suivi"> <strong><%= @user.followed_users.count - 1 %></strong> suivi(e)s</p>
 
       <% if current_user != @user %>
         <% if current_user.follow?(@user) %>
@@ -18,7 +18,7 @@
         <% end %>
       <% end %>
 
-      <p class="text-white "> <strong><%= @user.followings.count-1 %></strong> followers </p>
+      <p class="text-white "> <strong><%= @user.followings.count - 1 %></strong> followers </p>
 
     </div>
   </div>
