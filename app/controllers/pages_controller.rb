@@ -28,5 +28,9 @@ class PagesController < ApplicationController
         @posts_previous_weeks << [toi, posts_previous_weeks]
       end
     end
+
+    @posts_this_week.sort_by! { |_, posts| posts.first.created_at }.reverse!
+    @posts_previous_weeks.sort_by! { |_, posts| posts.first.created_at }.reverse!
   end
+
 end
