@@ -4,13 +4,26 @@
     <h2>Mes favoris<i class="fa-solid fa-eye icon-logo"></i></h2>
   </div>
 
-  <div class="d-flex justify-content-center">
+  <!--<div class="d-flex justify-content-center">
     <div class="btn-group" role="group" aria-label="Category filters">
       <div class="category-btn btn btn-secondary active" data-action="click->category-filter#filter" data-category-id="">
         All
       </div>
       <% @categories.each do |category| %>
         <div class="category-btn btn btn-secondary" data-action="click->category-filter#filter" data-category-id="<%= category.id %>">
+          <%= category.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>-->
+
+  <div class="d-flex justify-content-center">
+    <div class="custom-category-filter d-flex">
+      <div class="category-btn active" data-action="click->category-filter#filter" data-category-id="">
+        All
+      </div>
+      <% @categories.each do |category| %>
+        <div class="category-btn" data-action="click->category-filter#filter" data-category-id="<%= category.id %>">
           <%= category.name %>
         </div>
       <% end %>

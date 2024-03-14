@@ -19,10 +19,10 @@
   }
 
   .litterature {
-    background-color: #40FA43;
+    background-color: $flashy-green;
   }
   .litterature-color {
-    color: #40FA43;
+    color: $flashy-green;
   }
   .litterature-border {
     position: relative;
@@ -38,17 +38,17 @@
     bottom: -4px;
     left: -4px;
     z-index: -1;
-    background-image: linear-gradient(45deg, #40FA43, white);
+    background-image: linear-gradient(45deg, $flashy-green, white);
     border-radius: inherit;
     background-clip: padding-box;
 
   }
 
   .cinema {
-    background-color: #FFA8FF;
+    background-color: $flashy-pink;
   }
   .cinema-color {
-    color: #FFA8FF;
+    color: $flashy-pink;
   }
   .cinema-border {
     position: relative;
@@ -64,16 +64,16 @@
     bottom: -4px;
     left: -4px;
     z-index: -1;
-    background-image: linear-gradient(45deg, #FFA8FF, white);
+    background-image: linear-gradient(45deg, $flashy-pink, white);
     border-radius: inherit;
     background-clip: padding-box;
   }
 
   .spectacle {
-    background-color: #E0FA41;
+    background-color: $flashy-yellow;
   }
   .spectacle-color {
-    color: #E0FA41;
+    color: $flashy-yellow;
   }
   .spectacle-border {
     position: relative;
@@ -89,16 +89,16 @@
     bottom: -4px;
     left: -4px;
     z-index: -1;
-    background-image: linear-gradient(45deg, #E0FA41, white);
+    background-image: linear-gradient(45deg, $flashy-yellow, white);
     border-radius: inherit;
     background-clip: padding-box;
   }
 
   .exposition {
-    background-color:#7B7BFF;
+    background-color:$flashy-purple;
   }
   .exposition-color {
-    color:#7B7BFF;
+    color:$flashy-purple;
   }
   .exposition-border {
     position: relative;
@@ -114,7 +114,7 @@
     bottom: -4px;
     left: -4px;
     z-index: -1;
-    background-image: linear-gradient(45deg, #7B7BFF, white);
+    background-image: linear-gradient(45deg, $flashy-purple, white);
     border-radius: inherit;
     background-clip: padding-box;
   }
@@ -129,7 +129,7 @@
     margin-bottom: 1rem;
 
     .date {
-      font-size: 14px;
+      font-size: 12px;
       color: gray;
     }
   }

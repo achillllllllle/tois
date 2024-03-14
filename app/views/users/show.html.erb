@@ -9,9 +9,19 @@
       <h2>@<%= @user.username %></h2>
 
       <p class="follow mb-1">
-        <strong><%= @user.followings.count-1 %></strong> following
+        <% if (@user.followings.count - 1) <= 1 %>
+          <strong><%= @user.followings.count - 1 %></strong> abonnement
+        <% else %>
+          <strong><%= @user.followings.count - 1 %></strong> abonnements
+        <% end %>
+
         <span class="mx-2">|</span> <!-- Ajout de cet espace -->
-        <strong><%= @user.followed_users.count-1 %></strong> followers
+
+        <% if (@user.followed_users.count - 1) <= 1 %>
+          <strong><%= @user.followed_users.count - 1 %></strong> abonné
+        <% else %>
+          <strong><%= @user.followed_users.count - 1 %></strong> abonnés
+        <% end %>
       </p>
 
       <% if current_user != @user %>
@@ -21,8 +31,6 @@
           <%= button_to "Suivre", follow_user_path, method:  :patch, form: { class: "ta-classe-form" }, class: "ta-classe-css btn btn-primary mt-3" %>
         <% end %>
       <% end %>
-
-      <p class="text-white "> <strong><%= @user.followings.count - 1 %></strong> followers </p>
     </div>
   </div>
 
