@@ -1,4 +1,4 @@
-<li class="notif-followed border-bottom rounded-4 <%= "bg-primary bg-opacity-50" if !notif.read %>">
+<li class="notif-followed border-bottom <%= "bg-primary bg-opacity-50" if !notif.read %>">
     <div class="d-flex full-notif align-items-center">
       <div class="avatar mt-1">
         <%= cl_image_tag post.user.photo.key, class: "avatar avatar-notif ms-1"  %>
