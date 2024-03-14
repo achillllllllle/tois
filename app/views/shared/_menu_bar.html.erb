@@ -4,7 +4,7 @@
     <div class="d-flex">
       <%= link_to my_feed_path do %>
         <div class="text-center p-2">
-          <i class="fa-solid fa-house text-white fa-2x icon-menu-bar"></i>
+          <i class="fa-solid fa-house fa-2x icon-menu-bar <%= 'active' if controller_name == 'pages' %>"></i>
         </div>
       <% end %>
 
@@ -13,7 +13,7 @@
 
       <%= link_to tois_path do %>
         <div class="text-center p-2">
-          <i class="fa-solid fa-bolt text-white fa-2x icon-menu-bar"></i>
+          <i class="fa-solid fa-bolt fa-2x icon-menu-bar <%= 'active' if controller_name == 'tois' %>"></i>
         </div>
       <% end %>
     </div>
@@ -29,7 +29,7 @@
     <div class="d-flex">
       <%= link_to bookmarks_path do %>
         <div class="text-center p-2">
-          <i class="fa-solid fa-bookmark text-white fa-2x icon-menu-bar"></i>
+          <i class="fa-solid fa-bookmark fa-2x icon-menu-bar <%= 'active' if controller_name == 'bookmarks' %>"></i>
         </div>
       <% end %>
 
