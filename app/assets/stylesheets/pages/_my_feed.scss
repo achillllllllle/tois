@@ -77,9 +77,17 @@
   .litterature-color {
     color: $flashy-green
   }
+  .active-litterature {
+    border: 2px solid $flashy-green;
+    border-radius: 10px;
+  }
 
   .cinema {
     background-color: $flashy-pink;
+  }
+  .active-cinema {
+    border: 2px solid $flashy-pink;
+    border-radius: 10px;
   }
   .cinema-color {
     color: $flashy-pink
@@ -91,12 +99,20 @@
   .spectacle-color {
     color: $flashy-yellow;
   }
+  .active-spectacle {
+    border: 2px solid $flashy-yellow;
+    border-radius: 10px;
+  }
 
   .exposition {
     background-color: $flashy-purple;
   }
   .exposition-color {
     color: $flashy-purple;
+  }
+  .active-exposition {
+    border: 2px solid $flashy-purple;
+    border-radius: 10px;
   }
 
 
@@ -142,4 +158,5 @@
     padding: 1.5rem;
     font-size: 22px;
   }
+
 }
