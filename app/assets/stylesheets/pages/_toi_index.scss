@@ -1,4 +1,17 @@
 #explore-color{
+  a{
+    color: white;
+    padding: 10px;
+  }
+  a.cinema-border.specific-sett{
+    background-color: black;
+
+  }
+  .specific-sett{
+    display: flex;
+    justify-content: space-evenly;
+
+  }
 
   .category-card{
     background-color: #272727;

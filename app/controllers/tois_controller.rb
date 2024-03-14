@@ -13,6 +13,20 @@ class ToisController < ApplicationController
       query = params[:query]
       @tois = @tois.where("LOWER(title) LIKE ?", "%#{query.downcase}%")
     end
+
+    if params[:filter_criteria] == "rating"
+      @tois = @tois.joins(:posts)
+                   .group("tois.id")
+                   .select("tois.*, AVG(rating) AS average_rating")
+                   .reorder(average_rating: :desc)
+    elsif params[:filter_criteria] == "posts"
+      @tois = @tois.joins(:posts)
+                   .group("tois.id")
+                   .select("tois.*, COUNT(posts.id) AS nb_of_posts")
+                   .reorder(nb_of_posts: :desc)
+    end
+
+    @search_params = params.permit(:category_id, :query).to_h
   end
 
   def show
