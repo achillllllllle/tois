@@ -54,6 +54,13 @@
 
               <h2><%= toi.title %></h2>
               <strong><%= toi.posts.count %> avis</strong>
+
+              <% if toi.posts.any? %>
+              <div class="d-flex align-items-center mt-2">
+                  <%#= image_tag toi.posts.first.user.avatar.url(:mini), class: 'rounded-circle mr-2', size: '20x20' %>
+                  <%#= "#{toi.posts.first.user.username} et #{toi.posts.count - 1} autres ont commenté ce TOI" %>
+                </div>
+              <% end %>
             </div>
 
           </div>
