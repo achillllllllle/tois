@@ -54,7 +54,6 @@ export default class extends Controller {
     }
   }
 
-
   clearFilter() {
     const allCategoriesBtn = document.querySelector('button[data-category-id=""]');
     allCategoriesBtn.click();
@@ -72,9 +71,25 @@ export default class extends Controller {
     if (categoryButton) {
       setTimeout(() => {
         categoryButton.click();
-        console.log(categoryButton);
-        categoryButton.classList.toggle("active");
       }, 100);
+    }
+  }
+
+  hoverSeeAll(event) {
+    const categoryId = event.currentTarget.dataset.categoryId;
+    const categoryButton = document.querySelector(`[data-category-id="${categoryId}"]`);
+
+    if (categoryButton) {
+      categoryButton.classList.add('hover');
+    }
+  }
+
+  leaveSeeAll(event) {
+    const categoryId = event.currentTarget.dataset.categoryId;
+    const categoryButton = document.querySelector(`[data-category-id="${categoryId}"]`);
+
+    if (categoryButton) {
+      categoryButton.classList.remove('hover');
     }
   }
 }
