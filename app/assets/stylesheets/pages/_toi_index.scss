@@ -1,16 +1,49 @@
 #explore-color{
-  a{
+  a {
     color: white;
     padding: 10px;
   }
-  a.cinema-border.specific-sett, a.spectacle-border.specific-sett, a.litterature-border.specific-sett, a.exposition-border.specific-sett{
-    background-color: black;
 
+  .specific-sett {
+    text-align: center;
   }
-  .specific-sett{
-    display: flex;
-    justify-content: space-evenly;
 
+  .filter-btn.cinema-active {
+    background-color: $flashy-pink!important;
+  }
+  .filter-btn.litterature-active {
+    background-color: $flashy-green!important;
+  }
+
+  .filter-btn.spectacle-active {
+    background-color: $flashy-yellow!important;
+    color: black;
+  }
+
+  .filter-btn.exposition-active {
+    background-color: $flashy-purple!important;
+    color: black;
+  }
+
+  .filter-btn {
+    display: inline-block;
+    font-family: $headers-font;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: gray;
+    margin-right: 10px;
+    color: white;
+  }
+
+  .active {
+    font-family: $headers-font;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    color: white;
+    background-color: $flashy-pink;
   }
 
   .category-card{
@@ -98,8 +131,7 @@
     border-radius: inherit;
     background-clip: padding-box;
   }
-
-  .cinema {
+  .cinema{
     background-color: $flashy-pink;
   }
   .cinema-color {

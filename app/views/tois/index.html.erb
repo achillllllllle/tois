@@ -24,17 +24,17 @@
         <button type="submit" class="btn btn-flat">
         <i class="fas fa-search"></i>
         </button>
-
       </div>
     <% end %>
 
-    <%average = 0 %>
-   <div class="specific-sett">
-      <%= link_to "Les mieux notés", tois_path(@search_params.merge(filter_criteria: "rating")), class: @category.name.downcase + "-border specific-sett" %>
-      <%= link_to "Les plus commentés", tois_path(@search_params.merge(filter_criteria: "posts")), class:  @category.name.downcase + "-border specific-sett" %>
+    <% average = 0 %>
+    <div class="specific-sett">
+      <%= link_to "Les mieux notés", tois_path(@search_params.merge(filter_criteria: "rating")), class: "filter-btn #{ @category.name.downcase + '-active' if params[:filter_criteria] == 'rating'}" %>
+      <%= link_to "Les plus commentés", tois_path(@search_params.merge(filter_criteria: "posts")), class: "filter-btn #{ @category.name.downcase + '-active' if params[:filter_criteria] == 'posts'}" %>
     </div>
 
-     <% @tois.each_with_index do |toi, index| %>
+
+    <% @tois.each_with_index do |toi, index| %>
       <%= link_to toi_path(toi) do %>
         <div id="avatar-size" class="card <%= @category.name.downcase %>-border">
 
