@@ -25,3 +25,8 @@
   border-radius: 10px;
   background-color: $flashy-green;
 }
+
+.placeholder-white::placeholder {
+  color: white;
+  opacity: 25%;
+}
