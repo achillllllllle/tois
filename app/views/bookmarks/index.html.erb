@@ -10,7 +10,7 @@
         All
       </div>
       <% @categories.each do |category| %>
-        <div class="category-btn" data-action="click->category-filter#filter" data-category-id="<%= category.id %>">
+        <div class="category-btn <%= category.name.downcase %>" data-action="click->category-filter#filter" data-category-id="<%= category.id %>">
           <%= category.name %>
         </div>
       <% end %>
@@ -24,7 +24,7 @@
 
           <div class="d-flex justify-content-between align-items-center">
             <h3>#<%= category.name %></h3>
-            <%= link_to "See all", "#", class: "see-all-link", data: { action: 'click->category-filter#seeAll', category_id: category.id } %>
+            <%= link_to "See all", "#", class: "see-all-link #{category.name.downcase}", data: { action: 'click->category-filter#seeAll', category_id: category.id } %>
           </div>
 
           <div class="bookmarks-list" data-category-filter-target="bookmarksList">
