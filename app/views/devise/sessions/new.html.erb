@@ -6,9 +6,11 @@
       <%= f.input :username,
                   required: false,
                   autofocus: true,
+                  label: false,
                   input_html: { autocomplete: "username", class: "rounded-4 border-3 border-primary placeholder-white", placeholder: "Nom d'utilisateur" } %>
       <%= f.input :password,
                   required: false,
+                  label: false,
                   input_html: { autocomplete: "current-password", class: "rounded-4 border-3 border-primary placeholder-white", placeholder: "Mot de passe" } %>
     </div>
 

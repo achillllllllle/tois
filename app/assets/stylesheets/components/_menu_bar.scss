@@ -24,6 +24,14 @@
   border: solid 2px white;
   border-radius: 50px;
 
+  &:hover {
+    color: black !important;
+
+    &:after {
+      background-color: $flashy-green;
+    }
+  }
+
   &:after {
     content: '';
     background-color: black;
