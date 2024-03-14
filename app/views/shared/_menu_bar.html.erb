@@ -4,7 +4,7 @@
     <div class="d-flex">
       <%= link_to my_feed_path do %>
         <div class="text-center p-2">
-        <i class="fa-solid fa-house fa-2x icon-menu-bar <%= 'active' if (controller_name == 'pages' || (controller_name == 'tois' && request.referer.include?('my_feed'))) %>"></i>
+        <i class="fa-solid fa-house fa-2x icon-menu-bar <%= 'active' if (controller_name == 'tois' && action_name == 'show' && request.referer.include?('my_feed') || (controller_name == 'pages')) %>"></i>
         </div>
       <% end %>
 
@@ -13,7 +13,10 @@
 
       <%= link_to tois_path do %>
         <div class="text-center p-2">
-          <i class="fa-solid fa-bolt fa-2x icon-menu-bar <%= 'active' if (controller_name == 'tois' && !request.referer.include?('my_feed'))%>"></i>
+        <i class="fa-solid fa-bolt fa-2x icon-menu-bar <%= 'active' if
+        (controller_name == 'tois' && !request.referer.include?('my_feed') ||
+        (controller_name == 'tois' && action_name == 'show' && !request.referer.include?('my_feed')) ||
+        (controller_name == 'tois' && action_name == 'index' && request.referer.include?('my_feed'))) %>"></i>
         </div>
       <% end %>
     </div>
