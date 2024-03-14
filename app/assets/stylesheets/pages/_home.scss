@@ -30,3 +30,33 @@
 .unlocked-icon {
   animation: unlockAnimation 2s infinite;
 }
+
+.unlock-page {
+  margin-top: 10rem;
+
+  .culture-jam-title {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+  }
+
+  // .unlock-actions {
+  //   position: absolute;
+  //   top: 200px;
+  //   left: 130px;
+  // }
+
+  .btn {
+    margin: 5px;
+    border-radius: 20px;
+    background-color: $flashy-green;
+    padding-block: 10px;
+    padding-inline: 19px;
+  }
+
+  h3 {
+    font-family: "Poppins";
+    font-size: 25px;
+    font-weight: 600;
+  }
+}
