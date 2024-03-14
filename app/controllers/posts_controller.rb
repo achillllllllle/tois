@@ -57,6 +57,6 @@ class PostsController < ApplicationController
     if params[:post].present? && params[:post].is_a?(Hash)
       allowed_params << :additional_field if params[:post][:additional_field].present?
     end
-    parphomeams.require(:post).permit(allowed_params)
+    params.require(:post).permit(allowed_params)
   end
 end

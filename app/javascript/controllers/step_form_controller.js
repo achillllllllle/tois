@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "step1", "step2", "nextButton"]
+  static targets = [ "step1", "step2", "nextButton","spinner"]
 
   connect() {
     this.showStep(this.step1Target)
