@@ -2,6 +2,11 @@
 
   padding-bottom: 80px;
 
+  h2 {
+    margin-bottom: 0px;
+    margin-left: 10px;
+  }
+
   h3 {
     font-size: 24px;
     line-height: 55px;
@@ -15,24 +20,33 @@
     text-overflow: ellipsis;
   }
 
+  .custom-category-filter {
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
   .category-btn {
-    display: inline-block;
-    border-radius: 20px;
+    // display: inline-block;
+    margin-right: 10px; /* Ajustez la marge entre les boutons selon vos préférences */
     padding: 5px 10px;
+    border-radius: 10px;
     background-color: gray;
     color: white;
+    cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 
     &:hover {
-      background-color: #40FA43;
+      background-color: $flashy-green;
       color: black;
     }
 
     &.active {
-      background-color: #40FA43;
+      background-color: $flashy-green;
       color: black;
     }
   }
+
 
   .white-text {
     color: white;
@@ -66,8 +80,8 @@
 
     .bookmark-img-wrapper {
       position: relative;
-      width: 195px;
-      height: 195px;
+      width: 175px;
+      height: 175px;
       border-radius: 20px;
       overflow: hidden;
       // width: 20%;
