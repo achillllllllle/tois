@@ -7,7 +7,7 @@
   <div class="d-flex justify-content-center">
     <div class="custom-categories d-flex" style="overflow-x: auto; white-space: nowrap;">
       <div class="category-btn active" data-action="click->category-filter#filter" data-category-id="">
-        All
+        Tous
       </div>
       <% @categories.each do |category| %>
         <div class="category-btn <%= category.name.downcase %>" data-action="click->category-filter#filter" data-category-id="<%= category.id %>">
