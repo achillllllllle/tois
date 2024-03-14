@@ -31,6 +31,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      max-width: 215px;
 
       font-weight: 600;
       color: black;
@@ -38,7 +39,7 @@
     }
 
     .infos {
-      margin-left: 1rem;
+      margin-left: 0.5rem;
       color: black;
 
       .other-reviews {
@@ -63,24 +64,24 @@
   }
 
   .litterature {
-    background-color: #40FA43;
+    background-color: $flashy-green;
   }
 
   .cinema {
-    background-color: #FFA8FF;
+    background-color: $flashy-pink;
   }
 
   .spectacle {
-    background-color: #E0FA41;
+    background-color: $flashy-yellow;
   }
 
   .exposition {
-    background-color:#7B7BFF;
+    background-color: $flashy-purple;
   }
 
 
   .bg-color-4 {
-    background-color: #FFA8FF;
+    background-color: $flashy-pink;
   }
 
   .user-rating {
@@ -110,7 +111,7 @@
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 22px;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 220px;
@@ -120,5 +121,6 @@
   h3 {
     padding-left: 1rem;
     padding-bottom: 1rem;
+    font-size: 22px;
   }
 }

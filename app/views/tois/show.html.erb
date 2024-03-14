@@ -60,7 +60,7 @@
               <%= cl_image_tag post.user.photo.key, class: "avatar"  %>
               <div class="user-created-post">
                 <h3> @<%= post.user.username %> </h3>
-                <p class="date mb-0">le <%= post.created_at.strftime("%d %B %Y") %></p> <!-- Affichage de la date -->
+                <p class="date mb-0">Posté le <%= l(post.created_at.to_date, format: :long) %></p>
               </div>
             </div>
             <div class="stars text-primary color-star">
