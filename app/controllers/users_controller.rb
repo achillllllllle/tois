@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     notif = friend.notifications.create(friend: new_follow)
     NotificationChannel.broadcast_to(
       friend,
-      render_to_string(partial: "shared/friend_notification", locals: { user: notif.friend.follower })
+      render_to_string(partial: "shared/friend_notification", locals: { user: notif.friend.follower, notif: notif })
     )
   end
 end

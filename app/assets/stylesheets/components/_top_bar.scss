@@ -21,7 +21,6 @@
   .cpt-notif {
     top: 40px !important;
     font-size: 12px;
-    // transition: transform 0.3s ease-in-out;
   }
 
   .cpt-notif-animate {
@@ -44,8 +43,17 @@
 
   .menu-notif {
     overflow: scroll;
-    max-height: 200px;
-    width: 365px !important;
+    max-height: 140px;
+    width: 290px !important;
+  }
+
+  .notif {
+    font-size: 0.8em;
+    line-height: 18px;
+  }
+
+  .full-notif {
+    height: 38px;
   }
 
   button.account {

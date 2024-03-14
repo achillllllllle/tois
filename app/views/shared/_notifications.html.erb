@@ -10,10 +10,10 @@
       <% if user.notifications.present? %>
         <% user.notifications.sort_by { |notif| notif.created_at }.reverse.each do |notif| %>
           <% if notif.post %>
-            <%= render "shared/post_notification", post: notif.post %>
+            <%= render "shared/post_notification", post: notif.post, notif: notif %>
           <% end %>
           <% if notif.friend %>
-            <%= render "shared/friend_notification", user: notif.friend.follower %>
+            <%= render "shared/friend_notification", user: notif.friend.follower, notif: notif %>
           <% end %>
         <% end %>
       <% end %>

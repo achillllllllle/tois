@@ -12,8 +12,6 @@ export default class extends Controller {
       {
         received: (data) => {
           this.notifContainerTarget.insertAdjacentHTML("afterbegin", data)
-          this.notifContainerTarget.querySelector("li").classList.add("bg-primary")
-          this.notifContainerTarget.querySelector("li").classList.add("bg-opacity-50")
           this.cptTarget.innerText = parseInt(this.cptTarget.innerText) + 1
           this.cptTarget.classList.remove('d-none')
 

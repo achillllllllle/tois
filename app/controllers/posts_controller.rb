@@ -73,7 +73,7 @@ class PostsController < ApplicationController
 
       NotificationChannel.broadcast_to(
         friend,
-        render_to_string(partial: "shared/post_notification", locals: { post: notif.post })
+        render_to_string(partial: "shared/post_notification", locals: { post: notif.post, notif: notif })
       )
     end
   end
