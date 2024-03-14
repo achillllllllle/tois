@@ -10,8 +10,13 @@ class UsersController < ApplicationController
   end
 
   def follow
-    current_user.friends.create!(following_id: @user.id)
-    redirect_to user_path(@user)
+    new_follow = current_user.friends.new(following_id: @user.id)
+    if new_follow.save!
+      notify_friend(new_follow)
+      redirect_to user_path(@user)
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def unfollow
@@ -29,5 +34,16 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def notify_friend(new_follow)
+    friend = new_follow.following
+    return if friend == new_follow.follower
+
+    notif = friend.notifications.create(friend: new_follow)
+    NotificationChannel.broadcast_to(
+      friend,
+      render_to_string(partial: "shared/friend_notification", locals: { user: notif.friend.follower, notif: notif })
+    )
   end
 end

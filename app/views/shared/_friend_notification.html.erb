@@ -1,11 +1,13 @@
-<li class="notif-followed border-bottom">
-    <div class="d-flex">
-      <div class="avatar">
-        <%= cl_image_tag user.photo.key, class: "avatar"  %>
+<li class="notif-followed border-bottom rounded-4 <%= "bg-primary bg-opacity-50" if !notif.read %> ">
+    <div class="d-flex full-notif align-items-center">
+      <div class="avatar mt-1">
+        <%= cl_image_tag user.photo.key, class: "avatar avatar-notif ms-1"  %>
       </div>
-      <div class="d-flex">
-        <strong><p class="me-1" ><%= user.username %></p></strong>
-        <p class="me-1">t'a suivi.</p>
+      <div class="notif text-dark">
+        <%= link_to user_path(user, host: (ENV["DOMAIN"] || "localhost:3000")), class: "text-decoration-none text-dark lh-1 d-flex" do %>
+          <span class="me-1" style="font-weight: bold;"><%= user.username %></span>
+          <span class="me-1">t'a suivi.</span>
+        <% end %>
       </div>
     </div>
 </li>

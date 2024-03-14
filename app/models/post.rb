@@ -13,8 +13,6 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :toi
 
-  after_create :notify_post
-
   def starify(rating)
     stars = ''
     full_stars = rating / 2
@@ -31,19 +29,5 @@ class Post < ApplicationRecord
       stars += "<i class='fa-regular fa-star'></i>"
     end
     stars
-  end
-
-  private
-
-  def notify_post
-    user.following_users.each do |friend|
-      next if friend == user
-
-      notif = friend.notifications.create(post: self)
-      NotificationChannel.broadcast_to(
-        friend,
-        ApplicationController.new.render_to_string(partial: "shared/post_notification", locals: { post: notif.post })
-      )
-    end
   end
 end
