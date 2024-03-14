@@ -59,14 +59,43 @@
               <% end %>
 
               <h2><%= toi.title %></h2>
-              <strong><%= toi.posts.count %> avis</strong>
+              <% if toi.posts.last %>
+                <strong><%= toi.posts.count %> avis</strong>
+              <% end %>
 
               <% if toi.posts.any? %>
-              <div class="d-flex align-items-center mt-2">
-                  <%#= image_tag toi.posts.first.user.avatar.url(:mini), class: 'rounded-circle mr-2', size: '20x20' %>
-                  <%#= "#{toi.posts.first.user.username} et #{toi.posts.count - 1} autres ont commenté ce TOI" %>
+                <div class="d-flex align-items-center mt-2">
+                  <div class="d-flex avatar-mini friend-photo-first">
+                    <% if toi.posts.count == 1 %>
+                      <%= image_tag toi.posts.last.user.photo.url, class: 'rounded-circle mr-2 avatar-mini', size: '20x20' %>
+                    <% else %>
+                      <% toi.posts.last(2).each_with_index do |post, index| %>
+                        <% if index == 0 %>
+                          <div style="position: relative;"> <!-- Première photo -->
+                            <%= image_tag post.user.photo.url, class: 'rounded-circle mr-2 avatar-mini', size: '20x20' %>
+                          </div>
+                        <% else %>
+                          <div style="position: absolute; margin-left: 15px;"> <!-- Deuxième photo -->
+                            <%= image_tag post.user.photo.url, class: 'rounded-circle mr-2 avatar-mini', size: '20x20' %>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="text-comment" <% if toi.posts.count > 1 %>style="margin-left: 20px;"<% end %>>
+                    <% if toi.posts.count == 1 %>
+                      <strong><%= toi.posts.last.user.username %></strong> a commenté ce TOI
+                    <% else %>
+                      <strong><%= toi.posts.last.user.username %></strong> et d'autres amis ont commenté ce TOI
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="text-comment mt-2 ml-0">
+                  Pas encore d'avis : donne le tiens !
                 </div>
               <% end %>
+
             </div>
 
           </div>

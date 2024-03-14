@@ -35,8 +35,6 @@
     }
   }
 
-
-
   .card {
     background-color: $dark-gray;
     margin-bottom: 1.25rem;
@@ -62,6 +60,20 @@
       margin-left: 0rem;
       font-weight: 600;
     }
+  }
+
+  .avatar-mini {
+  width: 30px;
+  height: 30px;
+  }
+
+  .text-comment {
+    font-family: $body-font;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 15px;
+    margin-left: 5px;
+    color: lightgrey;
   }
 
   .litterature {
