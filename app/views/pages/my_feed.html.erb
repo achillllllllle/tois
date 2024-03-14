@@ -22,9 +22,17 @@
                       <%= most_recent_post.starify(most_recent_post.rating).html_safe %>
                     </div>
                   </div>
-                  <% if posts.size > 1 %>
+                  <% if posts.size > 2 %>
                     <div class="other-reviews">
-                      <%= pluralize(posts.size - 1, 'autres avis') %>
+                      <%#= pluralize(posts.size - 1, 'autres avis') %>
+                      <%# <p>Voir les autres avis</p> %>
+                      <i class="fa-solid fa-comments"></i>
+                      <%= "#{pluralize(posts.size - 1, 'autres avis')}" %>
+                    </div>
+                  <% elsif posts.size == 2 %>
+                    <div class="other-reviews">
+                      <i class="fa-solid fa-comments"></i>
+                      <%= "#{pluralize(posts.size - 1, 'autre avis')}" %>
                     </div>
                   <% end %>
               </div>
@@ -52,9 +60,10 @@
                 </div>
               </div>
               <% if posts.size > 1 %>
-                <div class="fw-bold">
-                  <%= pluralize(posts.size - 1, ' autres avis') %>
-                </div>
+                <%# <div class="fw-bold"> %>
+                  <%#= pluralize(posts.size - 1, ' autres avis') %>
+                  <p>Voir les autres avis</p>
+                <%# </div> %>
               <% end %>
           </div>
         </div>
