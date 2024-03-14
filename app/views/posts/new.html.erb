@@ -34,37 +34,18 @@
                         class: 'simple-form-input'
                       } %>
         <%= ff.association :category,
+                            as: :check_boxes,
                             prompt: "Choisis ta catégorie",
+                            placeholder: "Catégorie",
                             label: false,
+                            item_wrapper_class: 'tag-item',
                             input_html: {
-                              class: "simple-form-input",
+                              class: "simple-form-input tag-selector",
                               data: {
                                 action: 'input->post-form#showInputs'
                               }
                             } %>
-        <%= ff.input :trailer,
-                      placeholder: "Trailer",
-                      label: false,
-                      wrapper_html: {
-                        class: "d-none",
-                        data: { post_form_target: "trailer"}
-                      },
-                      input_html: {
-                        class: 'simple-form-input',
-                        data: {
-                          post_form_target: 'trailerInput'
-                        }
-                      } %>
-        <%= ff.input :location,
-                      placeholder: "Lieu",
-                      label: false,
-                      wrapper_html: {
-                        class: "d-none",
-                        data: { post_form_target: "location"}
-                      },
-                      input_html: {
-                        class: 'simple-form-input'
-                      } %>
+
         <%#= ff.input :photo,
                       as: :file,
                       placeholder: "Image",
@@ -72,7 +53,7 @@
                       input_html: {
                         class: 'simple-form-input'
                       } %>
-        <div class="mb-3 d-flex justify-content-center">
+        <div class="mb-3 d-flex justify-content-start">
           <label for="photo-upload" class="custom-file-upload" data-post-form-target="label">
             <i class="fa-solid fa-camera"></i> Choisis une photo
           </label>
@@ -117,6 +98,11 @@
     </button>
   </div>
 
+  <div class="spinner d-none" data-post-form-target="spinner">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
 
   </section>
 
