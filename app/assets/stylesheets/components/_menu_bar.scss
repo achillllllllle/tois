@@ -6,7 +6,11 @@
 }
 
 .icon-menu-bar {
-  color: black !important;
+  color: black;
+}
+
+.active {
+  color: $flashy-green!important;
 }
 
 .plus-menu-bar {
