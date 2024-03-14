@@ -9,16 +9,20 @@ export default class extends Controller {
 
   next() {
     event.preventDefault()
-    this.hideSteps()
+    this.hideStep(this.step1Target)
     this.showStep(this.step2Target)
   }
 
-  hideSteps() {
-    this.step1Target.classList.add('d-none')
-    this.step2Target.classList.add('d-none')
+  hideStep(step) {
+    step.classList.add('fade-out')
+    setTimeout(() => {
+      step.classList.add('d-none')
+      step.classList.remove('fade-out')
+    }, 500)
   }
 
   showStep(step) {
     step.classList.remove('d-none')
+    step.classList.add('fade-in')
   }
 }
