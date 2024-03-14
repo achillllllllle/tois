@@ -17,7 +17,7 @@ class ToisController < ApplicationController
 
   def show
     @posts = @toi.followed_users_posts(current_user).order(created_at: :desc)
-    @user = User.first
+    @post_ratings = @posts.map { |post| [post, post.rating] }
   end
 
   def find_toi
