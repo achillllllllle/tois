@@ -6,7 +6,23 @@
     margin-bottom: 1.25rem;
     padding: 1.25rem;
     color: white;
+
+    display: flex;
+    align-items: center; // Pour aligner les éléments verticalement
+
+    .category-icon-box {
+      flex: 0 0 1.5em; // Fixer une largeur pour la partie de la boîte contenant l'icône
+    }
+    .category-icon {
+      height: 3em; // Fixer la hauteur des icônes
+    }
+
+    .ms-2 {
+      margin-left: 1.5rem !important;
+    }
   }
+
+
 
   .card {
     background-color: #272727;
