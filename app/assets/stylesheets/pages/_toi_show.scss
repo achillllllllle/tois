@@ -11,7 +11,6 @@
 
   .hype-meter .progress-bar {
     width: 100%;
-    background-image: linear-gradient(to right, #fff 0%, #fff 50%, #F9FEDD 50%, #E1FA50 100%);
     background-size: 200% 100%;
     background-position: right bottom;
     background-repeat: no-repeat;
@@ -19,6 +18,23 @@
     overflow: visible;
     border-radius: 60px;
   }
+  .litterature-meter {
+    background-image: linear-gradient(to right, #fff 0%, #fff 50%, #F9FEDD 50%, #40FA43 100%);
+
+  }
+  .cinema-meter {
+    background-image: linear-gradient(to right, #fff 0%, #fff 50%, #F9FEDD 50%, #FFA8FF 100%);
+
+  }
+  .spectacle-meter {
+    background-image: linear-gradient(to right, #fff 0%, #fff 50%, #F9FEDD 50%, #E0FA41 100%);
+
+  }
+  .exposition-meter {
+    background-image: linear-gradient(to right, #fff 0%, #fff 50%, #F9FEDD 50%, #7B7BFF 100%);
+
+  }
+
   .progress {
     overflow: visible;
     border-radius: 60px;
