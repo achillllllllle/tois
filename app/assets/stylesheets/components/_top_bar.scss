@@ -42,6 +42,12 @@
     }
   }
 
+  .menu-notif {
+    overflow: scroll;
+    max-height: 200px;
+    width: 365px !important;
+  }
+
   button.account {
     border: none;
     background: transparent !important;

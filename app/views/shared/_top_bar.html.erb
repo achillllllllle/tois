@@ -10,8 +10,10 @@
       <% end %>
     </div> -->
     <div class="d-flex" data-controller="back" data-action="click->back#goBack">
-      <%= button_to :back, class: "text-center bg-white rounded-circle account p-2" do %>
-        <i class="fa-solid fa-chevron-left text-white fa-2x icon-menu-bar"></i>
+      <% if request.referer %>
+        <%= button_to :back, class: "text-center bg-white rounded-circle account p-2" do %>
+          <i class="fa-solid fa-chevron-left text-white fa-2x icon-menu-bar"></i>
+        <% end %>
       <% end %>
     </div>
 

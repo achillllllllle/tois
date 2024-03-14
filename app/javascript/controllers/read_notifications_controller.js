@@ -5,9 +5,9 @@ export default class extends Controller {
   static values = { path: String }
 
   connect() {
-    this.element.addEventListener('hidden.bs.dropdown', () =>{
+    this.element.addEventListener('hidden.bs.dropdown', () => {
       this.element.outerHTML = this.notifHtml
-     })
+    })
   }
 
   read(event) {

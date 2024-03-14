@@ -11,12 +11,14 @@ export default class extends Controller {
       { channel: "NotificationChannel", id: this.userIdIdValue },
       {
         received: (data) => {
-          console.log(this.cptTarget);
-          this.notifContainerTarget.insertAdjacentHTML("beforeend", data)
+          this.notifContainerTarget.insertAdjacentHTML("afterbegin", data)
+          this.notifContainerTarget.querySelector("li").classList.add("bg-primary")
+          this.notifContainerTarget.querySelector("li").classList.add("bg-opacity-50")
           this.cptTarget.innerText = parseInt(this.cptTarget.innerText) + 1
           this.cptTarget.classList.remove('d-none')
 
-          this.noNotifTarget.classList.toggle('d-none')
+          this.noNotifTarget.classList.add('d-none')
+
           this.cptTarget.classList.add("cpt-notif-animate");
           setTimeout(() => {
             this.cptTarget.classList.remove("cpt-notif-animate");
