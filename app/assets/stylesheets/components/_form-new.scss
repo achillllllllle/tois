@@ -50,7 +50,7 @@
     border-radius: 50rem;
     padding: 0.1rem 0.5rem;
     background-color: white;
-    color: black;
+    color: #272727;
     border: 1px solid #40FA43;
     margin-right: 0.6rem;
     margin-bottom: 0.4rem;
@@ -59,7 +59,7 @@
 
   .tag-selector:checked + label {
     background-color: #40FA43;
-    color: white;
+    color: #272727;
   }
   legend.col-form-label {
     display: none!important;
