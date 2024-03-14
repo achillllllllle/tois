@@ -32,7 +32,26 @@
   </div>
 
   <div class="container container-position position-relative">
+
     <h1 class="p-2 mb-3"><%= @toi.title %></h1>
+
+  <div class="hype-meter">
+      <div class="progress" style="width: 100%;">
+        <div class="progress-bar" role="progressbar">
+          <% @post_ratings.group_by(&:last).each do |rating, posts| %>
+            <%= cl_image_tag posts.first.first.user.photo.key, class: "avatar", style: "left: #{rating.to_i * 10}%; position: absolute;" %>
+            <% if posts.size > 1 %>
+              <div class="count" style="<%= "left: #{rating.to_i * 11}%; position: relative;"  %>">
+                <span>+<%= posts.size - 1 %></span>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+
+
+
     <% @posts.each do |post| %>
       <%= link_to user_path(post.user) do %>
         <div class="card <%= @toi.category.name.downcase%>-border ">
