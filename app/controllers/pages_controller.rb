@@ -5,6 +5,11 @@ class PagesController < ApplicationController
 
   def my_feed
     @tois = current_user.followed_users_tois
+    
+    if params[:filter_criteria].present?
+      @tois = @tois.joins(:category).where("LOWER(categories.name) = ?", params[:filter_criteria].downcase)
+    end
+
     @posts_this_week = []
     @posts_previous_weeks = []
 
@@ -34,6 +39,11 @@ class PagesController < ApplicationController
 
     @posts_this_week.sort_by! { |_, posts| posts.first.created_at }.reverse!
     @posts_previous_weeks.sort_by! { |_, posts| posts.first.created_at }.reverse!
+
+
+
+
   end
+
 
 end

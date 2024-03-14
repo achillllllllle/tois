@@ -1,6 +1,12 @@
 .my-feed {
 
+
   padding-bottom: 80px;
+
+  .filter-category{
+    display: flex;
+    justify-content: space-evenly;
+  }
 
   .avatar {
     height: 40px;
@@ -68,17 +74,29 @@
   .litterature {
     background-color: $flashy-green;
   }
+  .litterature-color {
+    color: $flashy-green
+  }
 
   .cinema {
     background-color: $flashy-pink;
+  }
+  .cinema-color {
+    color: $flashy-pink
   }
 
   .spectacle {
     background-color: $flashy-yellow;
   }
+  .spectacle-color {
+    color: $flashy-yellow;
+  }
 
   .exposition {
     background-color: $flashy-purple;
+  }
+  .exposition-color {
+    color: $flashy-purple;
   }
 
 
@@ -121,8 +139,7 @@
   }
 
   h3 {
-    padding-left: 1rem;
-    padding-bottom: 1rem;
+    padding: 1.5rem;
     font-size: 22px;
   }
 }

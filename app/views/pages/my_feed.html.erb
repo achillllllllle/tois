@@ -1,7 +1,25 @@
 <div class="container my-feed fullheight">
 
   <div class="page-title">
-    <h1>Mon<br>fil<i class="fa-solid fa-play icon-logo fa-rotate-90"></i></h1>
+    <%= link_to my_feed_path do %>
+       <h1>Mon<br>fil<i class="fa-solid fa-play icon-logo fa-rotate-90"></i></h1>
+    <% end %>
+  </div>
+  <div class="filter-category">
+    <%= link_to my_feed_path(filter_criteria: "cinema") do %>
+        <i class="fa-solid fa-film fa-2x ms-2 category-icon-box cinema-color"></i>
+    <% end %>
+
+    <%= link_to my_feed_path(filter_criteria:"spectacle") do %>
+          <i class="fa-solid fa-masks-theater fa-2x ms-2 category-icon-box spectacle-color"></i>
+    <% end %>
+
+    <%= link_to my_feed_path(filter_criteria:"litterature") do %>
+        <i class="fa-solid fa-book fa-2x ms-2 category-icon-box litterature-color"></i>
+    <% end %>
+    <%= link_to my_feed_path(filter_criteria:"exposition") do %>
+        <i class="fa-solid fa-building-columns fa-2x ms-2 category-icon-box exposition-color"></i>
+    <% end %>
   </div>
 
   <% if @posts_this_week.size > 0 %>
