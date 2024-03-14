@@ -1,6 +1,6 @@
 <div class="dropdown-center" data-controller="read-notifications notification-subscription" data-action="show.bs.dropdown->read-notifications#read" data-read-notifications-path-value="<%= read_notifications_user_path(user) %>" data-notification-subscription-user-id-value="<%= current_user.id %>">
   <button class="text-center bg-white rounded-circle  p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-bars  fa-solid fa-bell text-white fa-2x icon-menu-bar position-relative">
+          <i class="fa-solid fa-bars  fa-solid fa-bell fa-2x icon-menu-bar position-relative">
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cpt-notif <%= "d-none" unless user.unread_notifications.count > 0 %>"
             data-notification-subscription-target="cpt"> <%= user.unread_notifications.count %> </span>
           </i>
