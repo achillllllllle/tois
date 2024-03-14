@@ -15,10 +15,8 @@ export default class extends Controller {
 
   hideStep(step) {
     step.classList.add('fade-out')
-    setTimeout(() => {
-      step.classList.add('d-none')
-      step.classList.remove('fade-out')
-    }, 500)
+    step.classList.add('d-none')
+    step.classList.remove('fade-out')
   }
 
   showStep(step) {
