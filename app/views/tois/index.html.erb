@@ -45,9 +45,10 @@
 
             <div class="toi-infos">
 
-              <% if toi.posts.last %>
+              <% if toi.posts.last && toi.starify_average(current_user) %>
                 <div class="d-flex flex-row justify-content-between">
                   <div class="stars text-primary color-star">
+
                     <%=toi.starify_average(current_user).html_safe %>
 
                       <%# Post.where(toi_id: toi.id).each do |note| %>
@@ -88,7 +89,7 @@
                     <% if toi.posts.count == 1 %>
                       <strong><%= toi.posts.last.user.username %></strong> a donné son avis
                     <% else %>
-                      <strong><%= toi.posts.last.user.username %></strong> et d'autres amis ont donné leur avis
+                      <strong><%= toi.posts.last.user.username %></strong> et d'autres ont donné leur avis
                     <% end %>
                   </div>
                 </div>
