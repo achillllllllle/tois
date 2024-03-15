@@ -29,28 +29,27 @@ class Toi < ApplicationRecord
   end
 
   def starify_average(user)
-    if followed_users_posts(user).count > 0
-      avg_rating = 0
-      followed_users_posts(user).each do |post|
-        avg_rating += post.rating
+    avg_rating = 0
+    posts.each do |post|
+      avg_rating += post.rating
 
-      end
-      avg_rating /= followed_users_posts(user).count
-      stars = ''
-      full_stars = avg_rating / 2
-
-      half_star = avg_rating % 2
-      full_stars.to_i.times do
-        stars += "<i class='fa-solid fa-star'></i>"
-
-      end
-      half_star.to_i.times do
-        stars += "<i class='fa-solid fa-star-half-stroke'></i>"
-      end
-      (((10-avg_rating)-(10-avg_rating)%2)/2).times do
-        stars += "<i class='fa-regular fa-star'></i>"
-      end
-      stars
     end
+    avg_rating /= posts.count
+    stars = ''
+    full_stars = avg_rating / 2
+
+    half_star = avg_rating % 2
+    full_stars.to_i.times do
+      stars += "<i class='fa-solid fa-star'></i>"
+
+    end
+    half_star.to_i.times do
+      stars += "<i class='fa-solid fa-star-half-stroke'></i>"
+    end
+    (((10-avg_rating)-(10-avg_rating)%2)/2).times do
+      stars += "<i class='fa-regular fa-star'></i>"
+    end
+    stars
+
   end
 end

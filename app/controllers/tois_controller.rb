@@ -30,7 +30,11 @@ class ToisController < ApplicationController
   end
 
   def show
-    @posts = @toi.followed_users_posts(current_user).order(created_at: :desc)
+    if request.referer.include?('my_feed')
+      @posts = @toi.followed_users_posts(current_user).order(created_at: :desc)
+    else
+      @posts = @toi.posts.order(created_at: :desc)
+    end
     @post_ratings = @posts.map { |post| [post, post.rating] }
   end
 
