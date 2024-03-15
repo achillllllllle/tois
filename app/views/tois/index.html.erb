@@ -29,10 +29,12 @@
 
     <% average = 0 %>
     <div class="specific-sett">
-      <%= link_to "Les mieux notés", tois_path(@search_params.merge(filter_criteria: "rating")), class: "filter-btn #{ @category.name.downcase + '-active' if params[:filter_criteria] == 'rating'}" %>
-      <%= link_to "Les plus commentés", tois_path(@search_params.merge(filter_criteria: "posts")), class: "filter-btn #{ @category.name.downcase + '-active' if params[:filter_criteria] == 'posts'}" %>
-    </div>
 
+      <%= link_to "Les mieux notés", (params[:filter_criteria] == "rating" ? tois_path(@search_params) : tois_path(@search_params.merge(filter_criteria: "rating"))), class: "filter-btn #{ @category.name.downcase + '-active' if params[:filter_criteria] == 'rating'}" %>
+
+      <%= link_to "Les plus commentés", (params[:filter_criteria] == "posts" ? tois_path(@search_params) : tois_path(@search_params.merge(filter_criteria: "posts"))), class: "filter-btn #{ @category.name.downcase + '-active' if params[:filter_criteria] == 'posts'}" %>
+
+    </div>
 
     <% @tois.each_with_index do |toi, index| %>
       <%= link_to toi_path(toi) do %>
